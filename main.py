@@ -109,7 +109,7 @@ while True:
     elif escolha == "9":
         resultado = operacao_percentual(x,y)
         print(f"O resultado do percentual é: {resultado}")
-        
+
     elif escolha == "0":
         print("Saindo do programa...")
         break
