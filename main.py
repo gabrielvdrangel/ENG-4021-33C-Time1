@@ -7,6 +7,7 @@ def operacao_soma (x,y):
     return resultado
 
 
+
 #SUBTRAÇÃO
 
 def operacao_subtracao (x,y):
