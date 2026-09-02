@@ -3,7 +3,8 @@
 #SOMA
 
 def operacao_soma (x,y):
-    return
+    resultado = x + y
+    return resultado
 
 
 #SUBTRAÇÃO
@@ -27,7 +28,8 @@ def operacao_divisao (x,y):
 #EXPONENCIAÇÃO
 
 def operacao_exponenciacao (x,y):
-    return
+    resultado = x ** y
+    return resultado
 
 
 #RADICIAÇÃO
