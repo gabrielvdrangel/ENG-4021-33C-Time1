@@ -11,13 +11,15 @@ def operacao_soma (x,y):
 #SUBTRAÇÃO
 
 def operacao_subtracao (x,y):
-    return
+    resultado = x - y
+    return resultado
 
 
 #MULTIPLICAÇÃO
 
 def operacao_multiplicacao (x,y):
-    return
+    resultado = x * y
+    return resultado
 
 
 #DIVISÃO
