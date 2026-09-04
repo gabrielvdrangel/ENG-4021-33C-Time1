@@ -11,19 +11,22 @@ def operacao_soma (x,y):
 #SUBTRAÇÃO
 
 def operacao_subtracao (x,y):
-    return
+    resultado = x - y
+    return resultado
 
 
 #MULTIPLICAÇÃO
 
 def operacao_multiplicacao (x,y):
-    return
+    resultado = x * y
+    return resultado
 
 
 #DIVISÃO
 
 def operacao_divisao (x,y):
-    return
+    resultado = x / y
+    return resultado
 
 
 #EXPONENCIAÇÃO
@@ -43,13 +46,15 @@ def operacao_radicacao (x,y):
 #DIVISÃO INTEIRA
 
 def operacao_divisao_inteira (x,y):
-    return  
+    resultado = x // y
+    return resultado
 
 
 #RESTO
 
 def operacao_resto (x,y):
-    return
+    resultado = x % y
+    return resultado
 
 
 #PERCENTUAL
