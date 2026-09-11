@@ -40,11 +40,15 @@ def operacao_radicacao (x,y):
 #DIVISÃO INTEIRA
 
 def operacao_divisao_inteira (x,y):
+    resultado = x // y
+    return resultado
 
 
 #RESTO
 
 def operacao_resto (x,y):
+    resultado = x % y 
+    return resultado
 
 
 #PERCENTUAL
