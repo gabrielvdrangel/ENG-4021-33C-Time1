@@ -20,6 +20,8 @@
     --green-bg:#E4F5EA; --green-text:#1E8E4B;
     --peach-bg:#FBE7DA; --peach-text:#C1592C;
     --red-bg:#FBE4E4; --red-text:#D64545;
+    --blue-bg:#E4ECFB; --blue-text:#2F5FC7;
+    --purple:#6C5CE7; --purple-bg:#EEEAFC; --purple-text:#6C5CE7;
     --radius-lg:22px;
     --radius-md:14px;
     --radius-sm:10px;
@@ -262,14 +264,15 @@
 
   .bottom-nav{
     flex:0 0 auto; display:flex; align-items:center; justify-content:space-around;
-    padding:12px 10px 14px; border-top:1px solid var(--border); background:#fff;
+    padding:10px 4px 12px; border-top:1px solid var(--border); background:#fff;
   }
   .nav-item{
-    display:flex; flex-direction:column; align-items:center; gap:4px;
+    display:flex; flex-direction:column; align-items:center; gap:3px;
     background:none; border:none; cursor:pointer; color:var(--muted); padding:2px;
+    font-size:9.5px; font-family:'Inter',sans-serif; font-weight:600; flex:1; min-width:0;
   }
-  .nav-item svg{width:22px;height:22px;}
-  .nav-item.active{color:var(--orange);}
+  .nav-item svg{width:20px;height:20px;}
+  .nav-item.active{color:var(--purple);}
   .home-indicator{
     flex:0 0 auto; display:flex; justify-content:center; padding-bottom:8px; background:#fff;
   }
@@ -526,6 +529,95 @@
     display:block; text-align:center; border:1px dashed var(--orange); color:var(--orange);
     border-radius:10px; padding:10px; font-size:12.5px; font-weight:600; margin-bottom:10px; text-decoration:none; cursor:pointer;
   }
+
+  /* ---------- Prazos / Recomendações / Candidaturas ---------- */
+  .page-head{padding:2px 0 4px;}
+  .page-head h1{font-size:22px; font-weight:600; color:var(--text); margin:0 0 6px;}
+  .page-head p{font-size:12.5px; color:var(--muted); margin:0 0 16px; line-height:1.5;}
+  .chip-row{display:flex; gap:8px; overflow-x:auto; padding-bottom:16px;}
+  .chip-row::-webkit-scrollbar{display:none;}
+  .chip{
+    padding:9px 16px; border-radius:999px; border:1px solid var(--border); background:#fff;
+    color:var(--text); font-size:12.5px; font-weight:600; cursor:pointer; white-space:nowrap; flex:0 0 auto;
+  }
+  .chip.active{background:var(--purple); color:#fff; border-color:var(--purple);}
+
+  .date-group-title{font-size:12.5px; font-weight:700; color:var(--muted); margin:18px 0 10px;}
+  .date-group-title:first-of-type{margin-top:2px;}
+
+  .op-card{
+    display:flex; gap:12px; border:1px solid var(--border); border-radius:16px; padding:14px;
+    margin-bottom:12px; cursor:pointer; align-items:flex-start;
+  }
+  .op-icon{
+    width:40px;height:40px;border-radius:11px; flex:0 0 auto;
+    display:flex; align-items:center; justify-content:center; color:#fff;
+  }
+  .op-icon svg{width:19px;height:19px;}
+  .op-icon.ic-estagio{background:var(--navy);}
+  .op-icon.ic-monitoria{background:var(--green-text);}
+  .op-icon.ic-pesquisa{background:var(--purple);}
+  .op-icon.ic-extensao{background:var(--orange);}
+  .op-body{flex:1; min-width:0;}
+  .op-toprow{display:flex; align-items:center; gap:8px; margin-bottom:6px; flex-wrap:wrap;}
+  .op-tag{font-size:10.5px; font-weight:700; padding:3px 9px; border-radius:999px;}
+  .op-tag.estagio{background:var(--blue-bg); color:var(--blue-text);}
+  .op-tag.monitoria{background:var(--green-bg); color:var(--green-text);}
+  .op-tag.pesquisa{background:var(--purple-bg); color:var(--purple-text);}
+  .op-tag.extensao{background:var(--peach-bg); color:var(--peach-text);}
+  .op-urgency{font-size:10.5px; font-weight:700; padding:3px 9px; border-radius:999px; margin-left:auto;}
+  .op-title{font-size:14px; font-weight:600; color:var(--text); margin:0 0 3px;}
+  .op-sub{font-size:12px; color:var(--muted); margin:0 0 6px;}
+  .op-meta{display:flex; flex-direction:column; gap:3px;}
+  .op-meta span{display:flex; align-items:center; gap:6px; font-size:11.5px; color:var(--muted);}
+  .op-meta svg{width:12.5px;height:12.5px; flex:0 0 auto;}
+  .op-chevron{align-self:center; color:var(--muted); flex:0 0 auto;}
+  .op-chevron svg{width:16px;height:16px;}
+  .op-heart{margin-left:auto; color:var(--muted); flex:0 0 auto; cursor:pointer;}
+  .op-heart svg{width:18px;height:18px;}
+  .op-heart.liked{color:var(--red-text);}
+  .op-match{font-size:11px; font-weight:700; color:var(--green-text); background:var(--green-bg); padding:3px 9px; border-radius:999px;}
+
+  .rec-profile{
+    display:flex; align-items:center; gap:12px; border:1px solid var(--border); border-radius:16px;
+    padding:14px; margin-bottom:16px;
+  }
+  .rec-profile .rp-avatar{
+    width:44px;height:44px;border-radius:50%; background:var(--navy); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:15px; flex:0 0 auto;
+  }
+  .rec-profile .rp-name{font-size:14px; font-weight:600; color:var(--text); margin:0 0 2px;}
+  .rec-profile .rp-sub{font-size:11.5px; color:var(--muted); margin:0;}
+  .rec-profile svg.chev{width:16px;height:16px; color:var(--muted); margin-left:auto; flex:0 0 auto;}
+
+  .see-more-btn{
+    width:100%; padding:13px; border-radius:12px; border:none; background:var(--purple-bg);
+    color:var(--purple); font-weight:600; font-size:13.5px; cursor:pointer; margin:4px 0 8px;
+  }
+
+  .cand-status{font-size:10.5px; font-weight:700; padding:3px 9px; border-radius:999px;}
+  .cand-status.analise{background:var(--blue-bg); color:var(--blue-text);}
+  .cand-status.aprovada, .cand-status.concluido{background:var(--green-bg); color:var(--green-text);}
+  .cand-status.arquivada{background:var(--peach-bg); color:var(--peach-text);}
+  .cand-result{font-size:10.5px; font-weight:700; margin-left:auto;}
+  .cand-result.pos{color:var(--green-text);}
+  .cand-result.neg{color:var(--red-text);}
+  .op-date{font-size:11.5px; color:var(--muted); margin-top:4px;}
+
+  .tip-card{
+    display:flex; align-items:center; gap:10px; background:var(--purple-bg); border-radius:14px;
+    padding:14px; margin:8px 0 4px; font-size:12px; color:var(--purple-text); font-weight:500;
+  }
+  .tip-card svg{width:20px;height:20px; flex:0 0 auto;}
+  .tip-card svg.chev{width:15px;height:15px; margin-left:auto;}
+
+  /* ---------- Mais (menu) ---------- */
+  .more-row{
+    display:flex; align-items:center; gap:14px; padding:16px 2px; border-bottom:1px solid var(--border);
+    cursor:pointer; font-size:14.5px; font-weight:600; color:var(--text);
+  }
+  .more-row svg{width:20px;height:20px; color:var(--navy); flex:0 0 auto;}
+  .more-row .chev{margin-left:auto; width:16px;height:16px; color:var(--muted);}
 </style>
 </head>
 <body>
@@ -754,10 +846,11 @@
       </div>
 
       <div class="bottom-nav">
-        <button class="nav-item active"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5L12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Início</button>
-        <button class="nav-item" onclick="go('conversas')"><svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Conversas</button>
-        <button class="nav-item" onclick="go('notificacoes')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 0 1-3.4 0" stroke="currentColor" stroke-width="1.8"/></svg>Notificações</button>
-        <button class="nav-item" onclick="go('perfil')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7l8-4 8 4v7c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Perfil</button>
+        <button class="nav-item" data-nav="home" onclick="go('home')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5L12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Início</button>
+        <button class="nav-item" data-nav="prazos" onclick="go('prazos')"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="16" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M4 10h16M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Prazos</button>
+        <button class="nav-item" data-nav="recomendacoes" onclick="go('recomendacoes')"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Recomendações</button>
+        <button class="nav-item" data-nav="candidaturas" onclick="go('candidaturas')"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="17" rx="1.5" stroke="currentColor" stroke-width="1.7"/><path d="M8 9h8M8 13h8M8 17h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Candidaturas</button>
+        <button class="nav-item" data-nav="mais" onclick="go('mais')"><svg viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="19" cy="12" r="1.6" fill="currentColor"/></svg>Mais</button>
       </div>
       <div class="home-indicator"><div class="bar"></div></div>
     </div>
@@ -780,11 +873,11 @@
               <svg viewBox="0 0 24 24" fill="none"><path d="M6 4h12v17l-6-4-6 4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
               <span>Salvos</span>
             </div>
-            <div class="grid-card" onclick="go('soon')">
+            <div class="grid-card" onclick="go('candidaturas')">
               <svg viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="17" rx="1.5" stroke="currentColor" stroke-width="1.7"/><path d="M8 9h8M8 13h8M8 17h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
               <span>Candidaturas</span>
             </div>
-            <div class="grid-card" onclick="go('soon')">
+            <div class="grid-card" onclick="go('recomendacoes')">
               <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
               <span>Recomendados</span>
             </div>
@@ -797,10 +890,11 @@
         </div>
       </div>
       <div class="bottom-nav">
-        <button class="nav-item" onclick="go('home')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5L12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Início</button>
-        <button class="nav-item" onclick="go('conversas')"><svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Conversas</button>
-        <button class="nav-item" onclick="go('notificacoes')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 0 1-3.4 0" stroke="currentColor" stroke-width="1.8"/></svg>Notificações</button>
-        <button class="nav-item active"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7l8-4 8 4v7c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Perfil</button>
+        <button class="nav-item" data-nav="home" onclick="go('home')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5L12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Início</button>
+        <button class="nav-item" data-nav="prazos" onclick="go('prazos')"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="16" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M4 10h16M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Prazos</button>
+        <button class="nav-item" data-nav="recomendacoes" onclick="go('recomendacoes')"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Recomendações</button>
+        <button class="nav-item" data-nav="candidaturas" onclick="go('candidaturas')"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="17" rx="1.5" stroke="currentColor" stroke-width="1.7"/><path d="M8 9h8M8 13h8M8 17h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Candidaturas</button>
+        <button class="nav-item" data-nav="mais" onclick="go('mais')"><svg viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="19" cy="12" r="1.6" fill="currentColor"/></svg>Mais</button>
       </div>
       <div class="home-indicator"><div class="bar"></div></div>
     </div>
@@ -816,9 +910,9 @@
         <p class="section-title">Salvos</p>
         <div class="tabs-row">
           <button class="tab-item active">Salvas</button>
-          <button class="tab-item" onclick="go('soon')">Prazos</button>
-          <button class="tab-item" onclick="go('soon')">Candidaturas</button>
-          <button class="tab-item" onclick="go('soon')">Recomendadas</button>
+          <button class="tab-item" onclick="go('prazos')">Prazos</button>
+          <button class="tab-item" onclick="go('candidaturas')">Candidaturas</button>
+          <button class="tab-item" onclick="go('recomendacoes')">Recomendadas</button>
         </div>
 
         <div class="list-card" onclick="go('empresa')">
@@ -848,10 +942,11 @@
         </div>
       </div>
       <div class="bottom-nav">
-        <button class="nav-item" onclick="go('home')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5L12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Início</button>
-        <button class="nav-item" onclick="go('conversas')"><svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Conversas</button>
-        <button class="nav-item" onclick="go('notificacoes')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 0 1-3.4 0" stroke="currentColor" stroke-width="1.8"/></svg>Notificações</button>
-        <button class="nav-item active" onclick="go('perfil')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7l8-4 8 4v7c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Perfil</button>
+        <button class="nav-item" data-nav="home" onclick="go('home')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5L12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Início</button>
+        <button class="nav-item" data-nav="prazos" onclick="go('prazos')"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="16" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M4 10h16M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Prazos</button>
+        <button class="nav-item" data-nav="recomendacoes" onclick="go('recomendacoes')"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Recomendações</button>
+        <button class="nav-item" data-nav="candidaturas" onclick="go('candidaturas')"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="17" rx="1.5" stroke="currentColor" stroke-width="1.7"/><path d="M8 9h8M8 13h8M8 17h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Candidaturas</button>
+        <button class="nav-item" data-nav="mais" onclick="go('mais')"><svg viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="19" cy="12" r="1.6" fill="currentColor"/></svg>Mais</button>
       </div>
       <div class="home-indicator"><div class="bar"></div></div>
     </div>
@@ -961,10 +1056,11 @@
         </div>
       </div>
       <div class="bottom-nav">
-        <button class="nav-item" onclick="go('home')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5L12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Início</button>
-        <button class="nav-item" onclick="go('conversas')"><svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Conversas</button>
-        <button class="nav-item" onclick="go('notificacoes')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 0 1-3.4 0" stroke="currentColor" stroke-width="1.8"/></svg>Notificações</button>
-        <button class="nav-item" onclick="go('perfil')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7l8-4 8 4v7c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Perfil</button>
+        <button class="nav-item" data-nav="home" onclick="go('home')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5L12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Início</button>
+        <button class="nav-item" data-nav="prazos" onclick="go('prazos')"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="16" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M4 10h16M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Prazos</button>
+        <button class="nav-item" data-nav="recomendacoes" onclick="go('recomendacoes')"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Recomendações</button>
+        <button class="nav-item" data-nav="candidaturas" onclick="go('candidaturas')"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="17" rx="1.5" stroke="currentColor" stroke-width="1.7"/><path d="M8 9h8M8 13h8M8 17h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Candidaturas</button>
+        <button class="nav-item" data-nav="mais" onclick="go('mais')"><svg viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="19" cy="12" r="1.6" fill="currentColor"/></svg>Mais</button>
       </div>
       <div class="home-indicator"><div class="bar"></div></div>
     </div>
@@ -1127,10 +1223,11 @@
         </div>
       </div>
       <div class="bottom-nav">
-        <button class="nav-item" onclick="go('home')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5L12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Início</button>
-        <button class="nav-item active"><svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Conversas</button>
-        <button class="nav-item" onclick="go('notificacoes')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 0 1-3.4 0" stroke="currentColor" stroke-width="1.8"/></svg>Notificações</button>
-        <button class="nav-item" onclick="go('perfil')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7l8-4 8 4v7c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Perfil</button>
+        <button class="nav-item" data-nav="home" onclick="go('home')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5L12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Início</button>
+        <button class="nav-item" data-nav="prazos" onclick="go('prazos')"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="16" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M4 10h16M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Prazos</button>
+        <button class="nav-item" data-nav="recomendacoes" onclick="go('recomendacoes')"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Recomendações</button>
+        <button class="nav-item" data-nav="candidaturas" onclick="go('candidaturas')"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="17" rx="1.5" stroke="currentColor" stroke-width="1.7"/><path d="M8 9h8M8 13h8M8 17h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Candidaturas</button>
+        <button class="nav-item" data-nav="mais" onclick="go('mais')"><svg viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="19" cy="12" r="1.6" fill="currentColor"/></svg>Mais</button>
       </div>
       <div class="home-indicator"><div class="bar"></div></div>
     </div>
@@ -1198,10 +1295,11 @@
         </div>
       </div>
       <div class="bottom-nav">
-        <button class="nav-item" onclick="go('home')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5L12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Início</button>
-        <button class="nav-item" onclick="go('conversas')"><svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Conversas</button>
-        <button class="nav-item active"><svg viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 0 1-3.4 0" stroke="currentColor" stroke-width="1.8"/></svg>Notificações</button>
-        <button class="nav-item" onclick="go('perfil')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7l8-4 8 4v7c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Perfil</button>
+        <button class="nav-item" data-nav="home" onclick="go('home')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5L12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Início</button>
+        <button class="nav-item" data-nav="prazos" onclick="go('prazos')"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="16" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M4 10h16M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Prazos</button>
+        <button class="nav-item" data-nav="recomendacoes" onclick="go('recomendacoes')"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Recomendações</button>
+        <button class="nav-item" data-nav="candidaturas" onclick="go('candidaturas')"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="17" rx="1.5" stroke="currentColor" stroke-width="1.7"/><path d="M8 9h8M8 13h8M8 17h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Candidaturas</button>
+        <button class="nav-item" data-nav="mais" onclick="go('mais')"><svg viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="19" cy="12" r="1.6" fill="currentColor"/></svg>Mais</button>
       </div>
       <div class="home-indicator"><div class="bar"></div></div>
     </div>
@@ -1289,10 +1387,11 @@
         </div>
       </div>
       <div class="bottom-nav">
-        <button class="nav-item active"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5L12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Início</button>
-        <button class="nav-item" onclick="go('conversas')"><svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Conversas</button>
-        <button class="nav-item" onclick="go('notificacoes')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 0 1-3.4 0" stroke="currentColor" stroke-width="1.8"/></svg>Notificações</button>
-        <button class="nav-item" onclick="go('perfil')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7l8-4 8 4v7c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Perfil</button>
+        <button class="nav-item" data-nav="home" onclick="go('home')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5L12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Início</button>
+        <button class="nav-item" data-nav="prazos" onclick="go('prazos')"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="16" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M4 10h16M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Prazos</button>
+        <button class="nav-item" data-nav="recomendacoes" onclick="go('recomendacoes')"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Recomendações</button>
+        <button class="nav-item" data-nav="candidaturas" onclick="go('candidaturas')"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="17" rx="1.5" stroke="currentColor" stroke-width="1.7"/><path d="M8 9h8M8 13h8M8 17h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Candidaturas</button>
+        <button class="nav-item" data-nav="mais" onclick="go('mais')"><svg viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="19" cy="12" r="1.6" fill="currentColor"/></svg>Mais</button>
       </div>
       <div class="home-indicator"><div class="bar"></div></div>
     </div>
@@ -1334,15 +1433,427 @@
         </div>
       </div>
       <div class="bottom-nav">
-        <button class="nav-item active"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5L12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Início</button>
-        <button class="nav-item" onclick="go('conversas')"><svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Conversas</button>
-        <button class="nav-item" onclick="go('notificacoes')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 0 1-3.4 0" stroke="currentColor" stroke-width="1.8"/></svg>Notificações</button>
-        <button class="nav-item" onclick="go('perfil')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7l8-4 8 4v7c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Perfil</button>
+        <button class="nav-item" data-nav="home" onclick="go('home')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5L12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Início</button>
+        <button class="nav-item" data-nav="prazos" onclick="go('prazos')"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="16" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M4 10h16M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Prazos</button>
+        <button class="nav-item" data-nav="recomendacoes" onclick="go('recomendacoes')"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Recomendações</button>
+        <button class="nav-item" data-nav="candidaturas" onclick="go('candidaturas')"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="17" rx="1.5" stroke="currentColor" stroke-width="1.7"/><path d="M8 9h8M8 13h8M8 17h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Candidaturas</button>
+        <button class="nav-item" data-nav="mais" onclick="go('mais')"><svg viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="19" cy="12" r="1.6" fill="currentColor"/></svg>Mais</button>
       </div>
       <div class="home-indicator"><div class="bar"></div></div>
     </div>
 
-    <!-- ============ EM BREVE (Prazos / Candidaturas / Recomendados / Categorias) ============ -->
+    <!-- ============ PRAZOS ============ -->
+    <div class="screen" data-screen="prazos">
+      <div class="top-row">
+        <button class="icon-btn icon-avatar" onclick="go('perfil')">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.6" stroke="currentColor" stroke-width="1.8"/><path d="M5 20c1.3-3.6 4.2-5.4 7-5.4s5.7 1.8 7 5.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <h2 style="margin:0; font-size:17px; color:var(--text); flex:1;">Prazos</h2>
+        <button class="icon-btn" onclick="go('filtros')">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M7 12h10M10 18h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="body-scroll">
+        <div class="page-head">
+          <p>Não perca nenhuma oportunidade. Veja os prazos mais próximos e organize sua semana.</p>
+        </div>
+        <div class="chip-row">
+          <button class="chip active">Todos</button>
+          <button class="chip">Estágios</button>
+          <button class="chip">Monitorias</button>
+          <button class="chip">Pesquisa</button>
+          <button class="chip">Extensão</button>
+        </div>
+
+        <p class="date-group-title">Hoje, 4 de setembro</p>
+        <div class="op-card" onclick="go('empresaVagas')">
+          <div class="op-icon ic-monitoria"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6l8-2 8 2v13l-8-2-8 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 4v15" stroke="currentColor" stroke-width="1.6"/></svg></div>
+          <div class="op-body">
+            <div class="op-toprow">
+              <span class="op-tag monitoria">Monitoria</span>
+              <span class="op-urgency" style="background:var(--red-bg); color:var(--red-text);">Termina hoje</span>
+            </div>
+            <p class="op-title">Monitoria de Cálculo II</p>
+            <p class="op-sub">Departamento de Matemática</p>
+            <div class="op-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>Rio de Janeiro · Presencial</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Bolsa: R$ 600/mês</span>
+            </div>
+          </div>
+          <span class="op-chevron"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+
+        <p class="date-group-title">Amanhã, 5 de setembro</p>
+        <div class="op-card" onclick="go('empresaVagas')">
+          <div class="op-icon ic-estagio"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="1.6"/></svg></div>
+          <div class="op-body">
+            <div class="op-toprow">
+              <span class="op-tag estagio">Estágio</span>
+              <span class="op-urgency" style="background:var(--red-bg); color:var(--red-text);">Termina amanhã</span>
+            </div>
+            <p class="op-title">Estágio em Engenharia de Produção</p>
+            <p class="op-sub">Empresa Alfa</p>
+            <div class="op-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>Rio de Janeiro · Híbrido</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Bolsa: R$ 1.800/mês · 6h/dia</span>
+            </div>
+          </div>
+          <span class="op-chevron"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+
+        <div class="op-card" onclick="go('empresaVagas')">
+          <div class="op-icon ic-pesquisa"><svg viewBox="0 0 24 24" fill="none"><path d="M9 3h6M12 3v6M8 9h8l1.5 9a2 2 0 0 1-2 2.3h-7a2 2 0 0 1-2-2.3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+          <div class="op-body">
+            <div class="op-toprow">
+              <span class="op-tag pesquisa">Pesquisa</span>
+              <span class="op-urgency" style="background:var(--red-bg); color:var(--red-text);">Termina amanhã</span>
+            </div>
+            <p class="op-title">Projeto de Pesquisa em Logística</p>
+            <p class="op-sub">Laboratório de Produção</p>
+            <div class="op-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>Rio de Janeiro · Presencial</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Bolsa: R$ 800/mês</span>
+            </div>
+          </div>
+          <span class="op-chevron"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+
+        <p class="date-group-title">7 de setembro</p>
+        <div class="op-card" onclick="go('empresaVagas')">
+          <div class="op-icon ic-extensao"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="9" r="3" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/><path d="M3 20c.7-3.4 3-5 6-5s5.3 1.6 6 5M15 20c.5-2.2 1.8-3.6 4-3.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+          <div class="op-body">
+            <div class="op-toprow">
+              <span class="op-tag extensao">Extensão</span>
+              <span class="op-urgency" style="background:var(--peach-bg); color:var(--peach-text);">Termina em 3 dias</span>
+            </div>
+            <p class="op-title">Projeto de Extensão — Consultoria Jr.</p>
+            <p class="op-sub">Núcleo de Consultoria</p>
+            <div class="op-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>Rio de Janeiro · Híbrido</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Sem bolsa</span>
+            </div>
+          </div>
+          <span class="op-chevron"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+
+        <p class="date-group-title">10 de setembro</p>
+        <div class="op-card" onclick="go('empresaVagas')">
+          <div class="op-icon ic-monitoria"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6l8-2 8 2v13l-8-2-8 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 4v15" stroke="currentColor" stroke-width="1.6"/></svg></div>
+          <div class="op-body">
+            <div class="op-toprow">
+              <span class="op-tag monitoria">Monitoria</span>
+              <span class="op-urgency" style="background:var(--peach-bg); color:var(--peach-text);">Termina em 6 dias</span>
+            </div>
+            <p class="op-title">Monitoria de Física I</p>
+            <p class="op-sub">Departamento de Física</p>
+            <div class="op-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>Rio de Janeiro · Presencial</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Bolsa: R$ 500/mês</span>
+            </div>
+          </div>
+          <span class="op-chevron"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </div>
+      <div class="bottom-nav">
+        <button class="nav-item" data-nav="home" onclick="go('home')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5L12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Início</button>
+        <button class="nav-item" data-nav="prazos" onclick="go('prazos')"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="16" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M4 10h16M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Prazos</button>
+        <button class="nav-item" data-nav="recomendacoes" onclick="go('recomendacoes')"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Recomendações</button>
+        <button class="nav-item" data-nav="candidaturas" onclick="go('candidaturas')"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="17" rx="1.5" stroke="currentColor" stroke-width="1.7"/><path d="M8 9h8M8 13h8M8 17h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Candidaturas</button>
+        <button class="nav-item" data-nav="mais" onclick="go('mais')"><svg viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="19" cy="12" r="1.6" fill="currentColor"/></svg>Mais</button>
+      </div>
+      <div class="home-indicator"><div class="bar"></div></div>
+    </div>
+
+    <!-- ============ RECOMENDAÇÕES ============ -->
+    <div class="screen" data-screen="recomendacoes">
+      <div class="top-row">
+        <button class="icon-btn icon-avatar" onclick="go('perfil')">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.6" stroke="currentColor" stroke-width="1.8"/><path d="M5 20c1.3-3.6 4.2-5.4 7-5.4s5.7 1.8 7 5.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <h2 style="margin:0; font-size:17px; color:var(--text); flex:1;">Recomendações</h2>
+        <button class="icon-btn" onclick="go('filtros')">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M7 12h10M10 18h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="body-scroll">
+        <div class="page-head">
+          <p>Com base no seu perfil, aqui estão as melhores oportunidades para você.</p>
+        </div>
+
+        <div class="rec-profile" onclick="go('editarPerfil')">
+          <div class="rp-avatar">MP</div>
+          <div>
+            <p class="rp-name">Miguel Perez</p>
+            <p class="rp-sub">Engenharia de Produção · 2º período</p>
+          </div>
+          <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+
+        <div class="chip-row">
+          <button class="chip active">Todos</button>
+          <button class="chip">Estágios</button>
+          <button class="chip">Monitorias</button>
+          <button class="chip">Pesquisa</button>
+          <button class="chip">Extensão</button>
+        </div>
+
+        <div class="op-card" onclick="go('empresaVagas')">
+          <div class="op-icon ic-estagio"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="1.6"/></svg></div>
+          <div class="op-body">
+            <div class="op-toprow">
+              <span class="op-match">94% compatível</span>
+              <span class="op-tag estagio">Estágio</span>
+              <span class="op-heart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20s-7-4.4-9.5-8.8C.8 8 2.4 4.5 6 4a5.4 5.4 0 0 1 6 3 5.4 5.4 0 0 1 6-3c3.6.5 5.2 4 3.5 7.2C19 15.6 12 20 12 20z"/></svg></span>
+            </div>
+            <p class="op-title">Estágio em Engenharia de Produção</p>
+            <p class="op-sub">Empresa Beta</p>
+            <div class="op-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>Rio de Janeiro · Híbrido</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>R$ 1.500/mês · 6h/dia</span>
+            </div>
+          </div>
+          <span class="op-chevron"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+
+        <div class="op-card" onclick="go('empresaVagas')">
+          <div class="op-icon ic-monitoria"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6l8-2 8 2v13l-8-2-8 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 4v15" stroke="currentColor" stroke-width="1.6"/></svg></div>
+          <div class="op-body">
+            <div class="op-toprow">
+              <span class="op-match">91% compatível</span>
+              <span class="op-tag monitoria">Monitoria</span>
+              <span class="op-heart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20s-7-4.4-9.5-8.8C.8 8 2.4 4.5 6 4a5.4 5.4 0 0 1 6 3 5.4 5.4 0 0 1 6-3c3.6.5 5.2 4 3.5 7.2C19 15.6 12 20 12 20z"/></svg></span>
+            </div>
+            <p class="op-title">Monitoria de Introdução à Engenharia</p>
+            <p class="op-sub">Departamento de Produção</p>
+            <div class="op-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>Rio de Janeiro · Presencial</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Bolsa: R$ 600/mês · 12h/sem</span>
+            </div>
+          </div>
+          <span class="op-chevron"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+
+        <div class="op-card" onclick="go('empresaVagas')">
+          <div class="op-icon ic-pesquisa"><svg viewBox="0 0 24 24" fill="none"><path d="M9 3h6M12 3v6M8 9h8l1.5 9a2 2 0 0 1-2 2.3h-7a2 2 0 0 1-2-2.3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+          <div class="op-body">
+            <div class="op-toprow">
+              <span class="op-match">87% compatível</span>
+              <span class="op-tag pesquisa">Pesquisa</span>
+              <span class="op-heart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20s-7-4.4-9.5-8.8C.8 8 2.4 4.5 6 4a5.4 5.4 0 0 1 6 3 5.4 5.4 0 0 1 6-3c3.6.5 5.2 4 3.5 7.2C19 15.6 12 20 12 20z"/></svg></span>
+            </div>
+            <p class="op-title">Projeto de Pesquisa em Gestão de Projetos</p>
+            <p class="op-sub">Laboratório de Engenharia de Produção</p>
+            <div class="op-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>Rio de Janeiro · Presencial</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Bolsa: R$ 900/mês</span>
+            </div>
+          </div>
+          <span class="op-chevron"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+
+        <div class="op-card" onclick="go('empresaVagas')">
+          <div class="op-icon ic-extensao"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="9" r="3" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/><path d="M3 20c.7-3.4 3-5 6-5s5.3 1.6 6 5M15 20c.5-2.2 1.8-3.6 4-3.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+          <div class="op-body">
+            <div class="op-toprow">
+              <span class="op-match">82% compatível</span>
+              <span class="op-tag extensao">Extensão</span>
+              <span class="op-heart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20s-7-4.4-9.5-8.8C.8 8 2.4 4.5 6 4a5.4 5.4 0 0 1 6 3 5.4 5.4 0 0 1 6-3c3.6.5 5.2 4 3.5 7.2C19 15.6 12 20 12 20z"/></svg></span>
+            </div>
+            <p class="op-title">Estágio de Extensão — Consultoria Jr.</p>
+            <p class="op-sub">Núcleo de Consultoria</p>
+            <div class="op-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>Rio de Janeiro · Híbrido</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Sem bolsa · 5h/sem</span>
+            </div>
+          </div>
+          <span class="op-chevron"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+
+        <div class="op-card" onclick="go('empresaVagas')">
+          <div class="op-icon ic-estagio"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="1.6"/></svg></div>
+          <div class="op-body">
+            <div class="op-toprow">
+              <span class="op-match">76% compatível</span>
+              <span class="op-tag estagio">Estágio</span>
+              <span class="op-heart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20s-7-4.4-9.5-8.8C.8 8 2.4 4.5 6 4a5.4 5.4 0 0 1 6 3 5.4 5.4 0 0 1 6-3c3.6.5 5.2 4 3.5 7.2C19 15.6 12 20 12 20z"/></svg></span>
+            </div>
+            <p class="op-title">Estágio em Logística e Supply Chain</p>
+            <p class="op-sub">Empresa Gamma</p>
+            <div class="op-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>Rio de Janeiro · Presencial</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>R$ 1.300/mês · 6h/dia</span>
+            </div>
+          </div>
+          <span class="op-chevron"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+
+        <button class="see-more-btn">Ver mais recomendações</button>
+      </div>
+      <div class="bottom-nav">
+        <button class="nav-item" data-nav="home" onclick="go('home')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5L12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Início</button>
+        <button class="nav-item" data-nav="prazos" onclick="go('prazos')"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="16" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M4 10h16M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Prazos</button>
+        <button class="nav-item" data-nav="recomendacoes" onclick="go('recomendacoes')"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Recomendações</button>
+        <button class="nav-item" data-nav="candidaturas" onclick="go('candidaturas')"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="17" rx="1.5" stroke="currentColor" stroke-width="1.7"/><path d="M8 9h8M8 13h8M8 17h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Candidaturas</button>
+        <button class="nav-item" data-nav="mais" onclick="go('mais')"><svg viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="19" cy="12" r="1.6" fill="currentColor"/></svg>Mais</button>
+      </div>
+      <div class="home-indicator"><div class="bar"></div></div>
+    </div>
+
+    <!-- ============ CANDIDATURAS ============ -->
+    <div class="screen" data-screen="candidaturas">
+      <div class="header">
+        <button class="back-btn" onclick="go('perfil')">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <h2 style="flex:1;">Minhas candidaturas</h2>
+        <button class="icon-btn" onclick="go('filtros')" style="border:none;">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M7 12h10M10 18h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="body-scroll">
+        <div class="page-head" style="padding-top:0;">
+          <p style="margin-top:-8px;">Acompanhe o status das suas candidaturas e não perca nenhuma atualização.</p>
+        </div>
+        <div class="chip-row">
+          <button class="chip active">Todas</button>
+          <button class="chip">Em análise</button>
+          <button class="chip">Finalizadas</button>
+          <button class="chip">Arquivadas</button>
+        </div>
+
+        <div class="op-card" onclick="go('empresaVagas')">
+          <div class="op-icon ic-estagio"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="1.6"/></svg></div>
+          <div class="op-body">
+            <div class="op-toprow"><span class="cand-status analise">Em análise</span></div>
+            <p class="op-title">Estágio em Engenharia de Produção</p>
+            <p class="op-sub">Empresa Beta</p>
+            <p class="op-date">Enviada em 28/08/2024</p>
+          </div>
+          <span class="op-chevron"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+
+        <div class="op-card" onclick="go('empresaVagas')">
+          <div class="op-icon ic-monitoria"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6l8-2 8 2v13l-8-2-8 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 4v15" stroke="currentColor" stroke-width="1.6"/></svg></div>
+          <div class="op-body">
+            <div class="op-toprow"><span class="cand-status analise">Em análise</span></div>
+            <p class="op-title">Monitoria de Introdução à Engenharia</p>
+            <p class="op-sub">Departamento de Produção</p>
+            <p class="op-date">Enviada em 25/08/2024</p>
+          </div>
+          <span class="op-chevron"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+
+        <div class="op-card" onclick="go('empresaVagas')">
+          <div class="op-icon ic-pesquisa"><svg viewBox="0 0 24 24" fill="none"><path d="M9 3h6M12 3v6M8 9h8l1.5 9a2 2 0 0 1-2 2.3h-7a2 2 0 0 1-2-2.3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+          <div class="op-body">
+            <div class="op-toprow"><span class="cand-status analise">Em análise</span></div>
+            <p class="op-title">Projeto de Pesquisa em Gestão de Projetos</p>
+            <p class="op-sub">Laboratório de Engenharia de Produção</p>
+            <p class="op-date">Enviada em 20/08/2024</p>
+          </div>
+          <span class="op-chevron"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+
+        <div class="op-card" onclick="go('empresaVagas')">
+          <div class="op-icon ic-extensao"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="9" r="3" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/><path d="M3 20c.7-3.4 3-5 6-5s5.3 1.6 6 5M15 20c.5-2.2 1.8-3.6 4-3.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+          <div class="op-body">
+            <div class="op-toprow">
+              <span class="cand-status aprovada">Finalizada</span>
+              <span class="cand-result pos">Aprovada</span>
+            </div>
+            <p class="op-title">Projeto de Extensão — Consultoria Jr.</p>
+            <p class="op-sub">Núcleo de Consultoria</p>
+            <p class="op-date">Enviada em 15/06/2024</p>
+          </div>
+          <span class="op-chevron"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+
+        <div class="op-card" onclick="go('empresaVagas')">
+          <div class="op-icon ic-estagio" style="background:var(--muted);"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="1.6"/></svg></div>
+          <div class="op-body">
+            <div class="op-toprow">
+              <span class="cand-status arquivada">Arquivado</span>
+              <span class="cand-result neg">Não selecionado</span>
+            </div>
+            <p class="op-title">Estágio em Logística</p>
+            <p class="op-sub">Empresa Delta</p>
+            <p class="op-date">Enviada em 10/08/2024</p>
+          </div>
+          <span class="op-chevron"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+
+        <div class="op-card" onclick="go('empresaVagas')">
+          <div class="op-icon ic-monitoria"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6l8-2 8 2v13l-8-2-8 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 4v15" stroke="currentColor" stroke-width="1.6"/></svg></div>
+          <div class="op-body">
+            <div class="op-toprow">
+              <span class="cand-status concluido">Finalizada</span>
+              <span class="cand-result pos">Concluído</span>
+            </div>
+            <p class="op-title">Monitoria de Física I</p>
+            <p class="op-sub">Departamento de Física</p>
+            <p class="op-date">Enviada em 05/08/2024</p>
+          </div>
+          <span class="op-chevron"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+
+        <div class="tip-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.4.9 1 .9 1.7v.4h5.2v-.4c0-.7.3-1.3.9-1.7A6 6 0 0 0 12 3z"/></svg>
+          Dica: mantenha seu perfil atualizado para aumentar suas chances de ser selecionado.
+          <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+      <div class="bottom-nav">
+        <button class="nav-item" data-nav="home" onclick="go('home')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5L12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Início</button>
+        <button class="nav-item" data-nav="prazos" onclick="go('prazos')"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="16" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M4 10h16M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Prazos</button>
+        <button class="nav-item" data-nav="recomendacoes" onclick="go('recomendacoes')"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Recomendações</button>
+        <button class="nav-item" data-nav="candidaturas" onclick="go('candidaturas')"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="17" rx="1.5" stroke="currentColor" stroke-width="1.7"/><path d="M8 9h8M8 13h8M8 17h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Candidaturas</button>
+        <button class="nav-item" data-nav="mais" onclick="go('mais')"><svg viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="19" cy="12" r="1.6" fill="currentColor"/></svg>Mais</button>
+      </div>
+      <div class="home-indicator"><div class="bar"></div></div>
+    </div>
+
+    <!-- ============ MAIS ============ -->
+    <div class="screen" data-screen="mais">
+      <div class="header">
+        <h2>Mais</h2>
+      </div>
+      <div class="body-scroll">
+        <div class="more-row" onclick="go('conversas')">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+          Conversas
+          <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="more-row" onclick="go('notificacoes')">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 0 1-3.4 0" stroke="currentColor" stroke-width="1.7"/></svg>
+          Notificações
+          <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="more-row" onclick="go('perfil')">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.6" stroke="currentColor" stroke-width="1.7"/><path d="M5 20c1.3-3.6 4.2-5.4 7-5.4s5.7 1.8 7 5.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          Perfil
+          <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="more-row" onclick="go('salvos')">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6 4h12v17l-6-4-6 4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+          Salvos
+          <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="more-row" onclick="logout()" style="color:var(--red-text);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 21H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3"/><path d="M16 17l5-5-5-5M21 12H9"/></svg>
+          Sair da conta
+        </div>
+      </div>
+      <div class="bottom-nav">
+        <button class="nav-item" data-nav="home" onclick="go('home')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5L12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Início</button>
+        <button class="nav-item" data-nav="prazos" onclick="go('prazos')"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="16" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M4 10h16M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Prazos</button>
+        <button class="nav-item" data-nav="recomendacoes" onclick="go('recomendacoes')"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Recomendações</button>
+        <button class="nav-item" data-nav="candidaturas" onclick="go('candidaturas')"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="17" rx="1.5" stroke="currentColor" stroke-width="1.7"/><path d="M8 9h8M8 13h8M8 17h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Candidaturas</button>
+        <button class="nav-item active" data-nav="mais" onclick="go('mais')"><svg viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="19" cy="12" r="1.6" fill="currentColor"/></svg>Mais</button>
+      </div>
+      <div class="home-indicator"><div class="bar"></div></div>
+    </div>
+
+    <!-- ============ EM BREVE (Realizados / Categorias) ============ -->
     <div class="screen" data-screen="soon">
       <div class="soon-screen">
         <div class="soon-back">
@@ -1369,6 +1880,18 @@
     document.querySelector('[data-screen="'+name+'"]').classList.add('active');
     if(history_stack[history_stack.length-1] !== name){ history_stack.push(name); }
     closeMenu();
+    updateNav(name);
+  }
+
+  var navMap = {
+    home:'home', prazos:'prazos', recomendacoes:'recomendacoes', candidaturas:'candidaturas',
+    mais:'mais', perfil:'mais', conversas:'mais', notificacoes:'mais', salvos:'mais', editarPerfil:'mais'
+  };
+  function updateNav(screen){
+    var active = navMap[screen] || null;
+    document.querySelectorAll('.nav-item').forEach(function(btn){
+      btn.classList.toggle('active', active && btn.getAttribute('data-nav') === active);
+    });
   }
 
   function back(){
@@ -1377,6 +1900,7 @@
       var prev = history_stack[history_stack.length-1];
       document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
       document.querySelector('[data-screen="'+prev+'"]').classList.add('active');
+      updateNav(prev);
     } else {
       go('splash');
     }
@@ -1402,6 +1926,16 @@
     closeMenu();
     go('soon');
   }
+
+  document.addEventListener('click', function(e){
+    var chip = e.target.closest('.chip');
+    if(chip){
+      chip.parentElement.querySelectorAll('.chip').forEach(function(c){ c.classList.remove('active'); });
+      chip.classList.add('active');
+    }
+    var heart = e.target.closest('.op-heart');
+    if(heart){ heart.classList.toggle('liked'); }
+  });
 
   function setSeg(seguindo){
     document.getElementById('segSeguindo').classList.toggle('active', seguindo);
