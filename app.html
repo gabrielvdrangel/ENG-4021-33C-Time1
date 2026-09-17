@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PUC Oportunidades — Protótipo</title>
+<title>Fluxo — Protótipo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -125,12 +125,11 @@
     overflow-y:auto;
   }
   .logo-badge{
-    width:64px;height:64px;border-radius:18px;
-    background:var(--navy);
     display:flex;align-items:center;justify-content:center;
-    font-size:28px;
     margin-bottom:14px;
   }
+  .logo-badge svg{width:56px; height:28px;}
+  .wave-mini{width:26px; height:13px; flex:0 0 auto;}
   .brand{font-size:22px; color:var(--text); font-weight:600; margin:0;}
   .brand span{color:var(--orange);}
   .subtitle{color:var(--muted); font-size:13px; margin:6px 0 40px;}
@@ -436,6 +435,97 @@
   .soon-body svg{width:40px;height:40px; color:#4A90E2; opacity:.85;}
   .soon-body p{color:#fff; font-size:19px; font-weight:600; margin:0; font-family:'Poppins',sans-serif;}
   .soon-body span{color:#8A93A3; font-size:12.5px;}
+
+  /* ---------- Conversas / Notificações lists ---------- */
+  .chat-row, .notif-row{
+    display:flex; align-items:center; gap:13px; padding:14px 0; border-bottom:1px solid var(--border);
+    cursor:pointer;
+  }
+  .chat-row:last-child, .notif-row:last-child{border-bottom:none;}
+  .row-avatar{
+    width:46px;height:46px;border-radius:50%; background:var(--surface); flex:0 0 auto;
+    display:flex; align-items:center; justify-content:center; color:var(--muted);
+  }
+  .row-avatar svg{width:22px;height:22px;}
+  .chat-row .ci, .notif-row .ci{min-width:0; flex:1;}
+  .chat-row .cn, .notif-row .cn{font-size:14.5px; font-weight:600; color:var(--text); margin:0 0 2px;}
+  .chat-row .cs{font-size:12.5px; color:var(--muted); margin:0;}
+  .chat-row .cs.unread, .notif-row .cs.unread{color:var(--orange); font-weight:600;}
+  .dot{width:8px;height:8px; border-radius:50%; background:var(--orange); flex:0 0 auto;}
+  .notif-row .ct{font-size:11px; color:var(--muted); margin-top:2px;}
+
+  .notif-seg{display:flex; gap:8px; padding:2px 0 14px; overflow-x:auto;}
+  .notif-seg .seg-btn{padding:8px 16px; font-size:12.5px; white-space:nowrap;}
+
+  /* ---------- Pesquisar ---------- */
+  .search-header{
+    display:flex; align-items:center; gap:10px; padding:6px 18px 14px;
+  }
+  .search-input{
+    flex:1; display:flex; align-items:center; gap:8px;
+    background:var(--surface); border-radius:999px; padding:10px 16px; color:var(--text); font-size:13.5px;
+  }
+  .search-input svg{width:16px;height:16px; color:var(--muted); flex:0 0 auto;}
+  .search-input input{border:none; background:none; outline:none; font-size:13.5px; width:100%; font-family:'Inter',sans-serif; color:var(--text);}
+  .recentes-head{display:flex; align-items:center; justify-content:space-between; margin:6px 0 14px;}
+  .recentes-head span{font-size:13px; color:var(--muted); display:flex; align-items:center; gap:6px;}
+  .recentes-head a{font-size:12.5px; color:var(--orange); font-weight:600; text-decoration:none; cursor:pointer;}
+  .avatar-strip{display:flex; gap:10px; overflow-x:auto; padding-bottom:18px;}
+  .avatar-strip .circ{width:52px;height:52px;border-radius:50%; background:var(--surface); flex:0 0 auto;}
+  .recent-item{
+    display:flex; align-items:center; gap:10px; padding:12px 0; border-bottom:1px solid var(--border);
+    font-size:14px; color:var(--text); cursor:pointer;
+  }
+  .recent-item svg.clk{width:16px;height:16px; color:var(--muted); flex:0 0 auto;}
+  .recent-item span.txt{flex:1;}
+  .recent-item span.rm{color:var(--muted); font-size:15px; cursor:pointer;}
+  .keyboard{
+    flex:0 0 auto; background:var(--surface); padding:10px 8px 14px; border-top:1px solid var(--border);
+  }
+  .kb-row{display:flex; justify-content:center; gap:5px; margin-bottom:6px;}
+  .kb-key{
+    background:#fff; border-radius:6px; box-shadow:0 1px 1px rgba(0,0,0,.08);
+    padding:9px 0; text-align:center; font-size:13px; color:var(--text); width:29px; flex:0 0 auto;
+  }
+  .kb-key.wide{width:64px; background:#D7DBE1; color:var(--text);}
+  .kb-key.space{flex:1; background:#fff;}
+  .kb-key.go{background:var(--orange); color:#fff; width:64px; font-weight:600;}
+
+  /* ---------- Editar perfil ---------- */
+  .avatar-edit-wrap{display:flex; flex-direction:column; align-items:center; margin:6px 0 30px;}
+  .avatar-edit{
+    width:110px;height:110px;border-radius:50%; background:var(--surface);
+    display:flex; align-items:center; justify-content:center; color:var(--muted); margin-bottom:12px;
+  }
+  .avatar-edit svg{width:46px;height:46px;}
+  .avatar-edit-wrap a{color:var(--orange); font-size:13px; font-weight:600; text-decoration:none; display:flex; align-items:center; gap:5px; cursor:pointer;}
+  .edit-field{border-bottom:1px solid var(--border); padding:12px 2px 14px; margin-bottom:4px;}
+  .edit-field label{display:block; font-size:11.5px; color:var(--muted); margin-bottom:6px;}
+  .edit-field .val-row{display:flex; align-items:center; justify-content:space-between;}
+  .edit-field .val-row input{
+    border:none; outline:none; font-size:15px; color:var(--text); font-family:'Inter',sans-serif;
+    width:100%; background:transparent; font-weight:500;
+  }
+  .edit-field .val-row svg{width:16px;height:16px; color:var(--muted); flex:0 0 auto;}
+  .edit-footer{display:flex; gap:12px; padding:18px 0 10px; margin-top:auto;}
+  .btn-cancel{background:var(--red-bg); color:var(--red-text); border:none;}
+  .btn-apply{background:#1E8E4B; color:#fff; border:none;}
+
+  /* ---------- Empresa Publicações / Vagas ---------- */
+  .pub-card{border:1px solid var(--border); border-radius:16px; overflow:hidden; margin-bottom:16px;}
+  .pub-media{height:150px; background:linear-gradient(135deg,#F0F1F4,#E4E7EC);}
+  .pub-text{padding:12px 14px 6px; font-size:13.5px; color:var(--text); line-height:1.5;}
+  .pub-actions{display:flex; align-items:center; gap:14px; padding:8px 14px 12px;}
+  .pub-actions svg{width:18px;height:18px; color:var(--muted);}
+
+  .vaga-card{border:1px solid var(--border); border-radius:16px; padding:16px; margin-bottom:16px;}
+  .vaga-head{display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:8px;}
+  .vaga-head h3{margin:0; font-size:15px; color:var(--text); font-weight:600;}
+  .vaga-desc{font-size:13px; color:var(--muted); line-height:1.5; margin:0 0 14px;}
+  .vaga-link{
+    display:block; text-align:center; border:1px dashed var(--orange); color:var(--orange);
+    border-radius:10px; padding:10px; font-size:12.5px; font-weight:600; margin-bottom:10px; text-decoration:none; cursor:pointer;
+  }
 </style>
 </head>
 <body>
@@ -456,8 +546,8 @@
     <!-- ============ SPLASH ============ -->
     <div class="screen active" data-screen="splash">
       <div class="center-screen" style="justify-content:center; padding-top:0;">
-        <div class="logo-badge">🎓</div>
-        <h1 class="brand">PUC <span>oportunidades</span></h1>
+        <div class="logo-badge"><svg viewBox="0 0 64 32" fill="none"><path d="M2 10c6-8 12-8 18 0s12 8 18 0 12-8 18 0" stroke="#0F2A4D" stroke-width="4" stroke-linecap="round"/><path d="M2 18c6-8 12-8 18 0s12 8 18 0 12-8 18 0" stroke="#C1592C" stroke-width="4" stroke-linecap="round"/><path d="M2 26c6-8 12-8 18 0s12 8 18 0 12-8 18 0" stroke="#AAB4C4" stroke-width="4" stroke-linecap="round"/></svg></div>
+        <h1 class="brand">Fluxo</h1>
         <p class="subtitle">Ambiente de oportunidades online</p>
         <div class="btn-stack" style="margin-top:60px;">
           <button class="btn btn-primary" onclick="go('login')">Entrar</button>
@@ -469,8 +559,8 @@
     <!-- ============ LOGIN ============ -->
     <div class="screen" data-screen="login">
       <div class="center-screen">
-        <div class="logo-badge">🎓</div>
-        <h1 class="brand">PUC <span>oportunidades</span></h1>
+        <div class="logo-badge"><svg viewBox="0 0 64 32" fill="none"><path d="M2 10c6-8 12-8 18 0s12 8 18 0 12-8 18 0" stroke="#0F2A4D" stroke-width="4" stroke-linecap="round"/><path d="M2 18c6-8 12-8 18 0s12 8 18 0 12-8 18 0" stroke="#C1592C" stroke-width="4" stroke-linecap="round"/><path d="M2 26c6-8 12-8 18 0s12 8 18 0 12-8 18 0" stroke="#AAB4C4" stroke-width="4" stroke-linecap="round"/></svg></div>
+        <h1 class="brand">Fluxo</h1>
         <p class="subtitle">Ambiente de oportunidades online</p>
         <div class="form-block">
           <div class="field">
@@ -498,7 +588,7 @@
         </button>
       </div>
       <div class="center-screen" style="padding-top:10px;">
-        <div class="logo-badge">🎓</div>
+        <div class="logo-badge"><svg viewBox="0 0 64 32" fill="none"><path d="M2 10c6-8 12-8 18 0s12 8 18 0 12-8 18 0" stroke="#0F2A4D" stroke-width="4" stroke-linecap="round"/><path d="M2 18c6-8 12-8 18 0s12 8 18 0 12-8 18 0" stroke="#C1592C" stroke-width="4" stroke-linecap="round"/><path d="M2 26c6-8 12-8 18 0s12 8 18 0 12-8 18 0" stroke="#AAB4C4" stroke-width="4" stroke-linecap="round"/></svg></div>
         <h1 class="brand" style="font-size:19px;">Recuperar Senha</h1>
         <div class="form-block" style="margin-top:50px;">
           <div class="field">
@@ -518,7 +608,7 @@
         </button>
       </div>
       <div class="center-screen" style="padding-top:10px;">
-        <div class="logo-badge">🎓</div>
+        <div class="logo-badge"><svg viewBox="0 0 64 32" fill="none"><path d="M2 10c6-8 12-8 18 0s12 8 18 0 12-8 18 0" stroke="#0F2A4D" stroke-width="4" stroke-linecap="round"/><path d="M2 18c6-8 12-8 18 0s12 8 18 0 12-8 18 0" stroke="#C1592C" stroke-width="4" stroke-linecap="round"/><path d="M2 26c6-8 12-8 18 0s12 8 18 0 12-8 18 0" stroke="#AAB4C4" stroke-width="4" stroke-linecap="round"/></svg></div>
         <h1 class="brand" style="font-size:19px;">Cadastro</h1>
         <div style="width:100%; margin-top:60px;">
           <div class="choice-card" onclick="go('cadastroAluno')">
@@ -541,7 +631,7 @@
         </button>
       </div>
       <div class="center-screen" style="padding-top:6px;">
-        <div class="logo-badge">🎓</div>
+        <div class="logo-badge"><svg viewBox="0 0 64 32" fill="none"><path d="M2 10c6-8 12-8 18 0s12 8 18 0 12-8 18 0" stroke="#0F2A4D" stroke-width="4" stroke-linecap="round"/><path d="M2 18c6-8 12-8 18 0s12 8 18 0 12-8 18 0" stroke="#C1592C" stroke-width="4" stroke-linecap="round"/><path d="M2 26c6-8 12-8 18 0s12 8 18 0 12-8 18 0" stroke="#AAB4C4" stroke-width="4" stroke-linecap="round"/></svg></div>
         <h1 class="brand" style="font-size:19px;">Cadastro Aluno</h1>
         <div class="form-block" style="margin-top:36px;">
           <div class="field"><input type="text" placeholder="Insira sua matrícula"></div>
@@ -568,7 +658,7 @@
         </button>
       </div>
       <div class="center-screen" style="padding-top:6px;">
-        <div class="logo-badge">🎓</div>
+        <div class="logo-badge"><svg viewBox="0 0 64 32" fill="none"><path d="M2 10c6-8 12-8 18 0s12 8 18 0 12-8 18 0" stroke="#0F2A4D" stroke-width="4" stroke-linecap="round"/><path d="M2 18c6-8 12-8 18 0s12 8 18 0 12-8 18 0" stroke="#C1592C" stroke-width="4" stroke-linecap="round"/><path d="M2 26c6-8 12-8 18 0s12 8 18 0 12-8 18 0" stroke="#AAB4C4" stroke-width="4" stroke-linecap="round"/></svg></div>
         <h1 class="brand" style="font-size:19px;">Cadastro Organização</h1>
         <div class="form-block" style="margin-top:36px;">
           <div class="field"><input type="text" placeholder="Insira o nome da organização"></div>
@@ -592,7 +682,7 @@
         <button class="icon-btn icon-avatar" onclick="go('perfil')">
           <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.6" stroke="currentColor" stroke-width="1.8"/><path d="M5 20c1.3-3.6 4.2-5.4 7-5.4s5.7 1.8 7 5.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
         </button>
-        <div class="search-bar">
+        <div class="search-bar" onclick="go('pesquisar')" style="cursor:pointer;">
           <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8"/><path d="M20 20l-3.8-3.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
           Pesquisar
         </div>
@@ -665,8 +755,8 @@
 
       <div class="bottom-nav">
         <button class="nav-item active"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5L12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Início</button>
-        <button class="nav-item" onclick="go('soon')"><svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Conversas</button>
-        <button class="nav-item" onclick="go('soon')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 0 1-3.4 0" stroke="currentColor" stroke-width="1.8"/></svg>Notificações</button>
+        <button class="nav-item" onclick="go('conversas')"><svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Conversas</button>
+        <button class="nav-item" onclick="go('notificacoes')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 0 1-3.4 0" stroke="currentColor" stroke-width="1.8"/></svg>Notificações</button>
         <button class="nav-item" onclick="go('perfil')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7l8-4 8 4v7c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Perfil</button>
       </div>
       <div class="home-indicator"><div class="bar"></div></div>
@@ -684,7 +774,7 @@
           <div class="avatar-lg">B</div>
           <p class="profile-name">Beatriz Lima</p>
           <p class="profile-sub">Engenharia de Computação</p>
-          <button class="btn-pill">Editar perfil</button>
+          <button class="btn-pill" onclick="go('editarPerfil')">Editar perfil</button>
           <div class="grid-2">
             <div class="grid-card" onclick="go('salvos')">
               <svg viewBox="0 0 24 24" fill="none"><path d="M6 4h12v17l-6-4-6 4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
@@ -708,8 +798,8 @@
       </div>
       <div class="bottom-nav">
         <button class="nav-item" onclick="go('home')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5L12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Início</button>
-        <button class="nav-item" onclick="go('soon')"><svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Conversas</button>
-        <button class="nav-item" onclick="go('soon')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 0 1-3.4 0" stroke="currentColor" stroke-width="1.8"/></svg>Notificações</button>
+        <button class="nav-item" onclick="go('conversas')"><svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Conversas</button>
+        <button class="nav-item" onclick="go('notificacoes')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 0 1-3.4 0" stroke="currentColor" stroke-width="1.8"/></svg>Notificações</button>
         <button class="nav-item active"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7l8-4 8 4v7c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Perfil</button>
       </div>
       <div class="home-indicator"><div class="bar"></div></div>
@@ -759,8 +849,8 @@
       </div>
       <div class="bottom-nav">
         <button class="nav-item" onclick="go('home')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5L12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Início</button>
-        <button class="nav-item" onclick="go('soon')"><svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Conversas</button>
-        <button class="nav-item" onclick="go('soon')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 0 1-3.4 0" stroke="currentColor" stroke-width="1.8"/></svg>Notificações</button>
+        <button class="nav-item" onclick="go('conversas')"><svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Conversas</button>
+        <button class="nav-item" onclick="go('notificacoes')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 0 1-3.4 0" stroke="currentColor" stroke-width="1.8"/></svg>Notificações</button>
         <button class="nav-item active" onclick="go('perfil')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7l8-4 8 4v7c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Perfil</button>
       </div>
       <div class="home-indicator"><div class="bar"></div></div>
@@ -831,8 +921,8 @@
         <button class="follow-btn" onclick="toggleFollow(this)">Seguir</button>
       </div>
       <div class="company-tabs">
-        <button class="company-tab" onclick="go('soon')">Publicações</button>
-        <button class="company-tab" onclick="go('soon')">Vagas e PS</button>
+        <button class="company-tab" onclick="go('empresaPub')">Publicações</button>
+        <button class="company-tab" onclick="go('empresaVagas')">Vagas e PS</button>
         <button class="company-tab active">Feedbacks</button>
       </div>
       <div class="body-scroll">
@@ -872,8 +962,8 @@
       </div>
       <div class="bottom-nav">
         <button class="nav-item" onclick="go('home')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5L12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Início</button>
-        <button class="nav-item" onclick="go('soon')"><svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Conversas</button>
-        <button class="nav-item" onclick="go('soon')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 0 1-3.4 0" stroke="currentColor" stroke-width="1.8"/></svg>Notificações</button>
+        <button class="nav-item" onclick="go('conversas')"><svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Conversas</button>
+        <button class="nav-item" onclick="go('notificacoes')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 0 1-3.4 0" stroke="currentColor" stroke-width="1.8"/></svg>Notificações</button>
         <button class="nav-item" onclick="go('perfil')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7l8-4 8 4v7c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Perfil</button>
       </div>
       <div class="home-indicator"><div class="bar"></div></div>
@@ -893,8 +983,8 @@
         <button class="follow-btn">Seguir</button>
       </div>
       <div class="company-tabs">
-        <button class="company-tab" onclick="go('soon')">Publicações</button>
-        <button class="company-tab" onclick="go('soon')">Vagas e PS</button>
+        <button class="company-tab" onclick="go('empresaPub')">Publicações</button>
+        <button class="company-tab" onclick="go('empresaVagas')">Vagas e PS</button>
         <button class="company-tab active">Feedbacks</button>
       </div>
       <div class="body-scroll" style="position:relative;">
@@ -924,6 +1014,332 @@
           <button class="modal-save" onclick="closeModal()">Salvar preferência</button>
         </div>
       </div>
+    </div>
+
+    <!-- ============ PESQUISAR ============ -->
+    <div class="screen" data-screen="pesquisar">
+      <div class="search-header">
+        <button class="back-btn" onclick="go('home')" style="padding:0;">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M19 12H5M11 6l-6 6 6 6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="search-input">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8"/><path d="M20 20l-3.8-3.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <input type="text" placeholder="Pesquisar" autofocus>
+        </div>
+        <button class="icon-btn" onclick="go('filtros')">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M7 12h10M10 18h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="body-scroll">
+        <div class="recentes-head">
+          <span><svg class="clk" viewBox="0 0 24 24" fill="none" style="width:15px;height:15px;"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Recentes</span>
+          <a>Exibir tudo</a>
+        </div>
+        <div class="avatar-strip">
+          <div class="circ"></div><div class="circ"></div><div class="circ"></div>
+          <div class="circ"></div><div class="circ"></div><div class="circ"></div>
+        </div>
+        <div class="recent-item" onclick="go('home')">
+          <svg class="clk" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="txt">Estágio engenharia</span><span class="rm">✕</span>
+        </div>
+        <div class="recent-item" onclick="go('home')">
+          <svg class="clk" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="txt">Monitoria de Cálculo</span><span class="rm">✕</span>
+        </div>
+        <div class="recent-item" onclick="go('empresa')">
+          <svg class="clk" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="txt">Pégasus FSAE</span><span class="rm">✕</span>
+        </div>
+        <div class="recent-item" onclick="go('home')">
+          <svg class="clk" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="txt">IC em robótica</span><span class="rm">✕</span>
+        </div>
+        <div class="recent-item" onclick="go('empresa')">
+          <svg class="clk" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="txt">Empresa júnior</span><span class="rm">✕</span>
+        </div>
+        <div class="recent-item" onclick="go('home')">
+          <svg class="clk" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="txt">Liga acadêmica de dados</span><span class="rm">✕</span>
+        </div>
+      </div>
+      <div class="keyboard">
+        <div class="kb-row">
+          <div class="kb-key">q</div><div class="kb-key">w</div><div class="kb-key">e</div><div class="kb-key">r</div><div class="kb-key">t</div><div class="kb-key">y</div><div class="kb-key">u</div><div class="kb-key">i</div><div class="kb-key">o</div><div class="kb-key">p</div>
+        </div>
+        <div class="kb-row">
+          <div class="kb-key">a</div><div class="kb-key">s</div><div class="kb-key">d</div><div class="kb-key">f</div><div class="kb-key">g</div><div class="kb-key">h</div><div class="kb-key">j</div><div class="kb-key">k</div><div class="kb-key">l</div>
+        </div>
+        <div class="kb-row">
+          <div class="kb-key wide">⇧</div><div class="kb-key">z</div><div class="kb-key">x</div><div class="kb-key">c</div><div class="kb-key">v</div><div class="kb-key">b</div><div class="kb-key">n</div><div class="kb-key">m</div><div class="kb-key wide">⌫</div>
+        </div>
+        <div class="kb-row">
+          <div class="kb-key wide">123</div><div class="kb-key wide">😊</div><div class="kb-key space">espaço</div><div class="kb-key go" onclick="go('home')">buscar</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ CONVERSAS ============ -->
+    <div class="screen" data-screen="conversas">
+      <div class="top-row">
+        <button class="icon-btn icon-avatar" onclick="go('perfil')">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.6" stroke="currentColor" stroke-width="1.8"/><path d="M5 20c1.3-3.6 4.2-5.4 7-5.4s5.7 1.8 7 5.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <h2 style="margin:0; font-size:17px; color:var(--text); flex:1;">Conversas</h2>
+        <button class="icon-btn" style="border:none;"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      </div>
+      <div class="body-scroll">
+        <div class="chat-row" onclick="go('home')">
+          <div class="row-avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.6" stroke="currentColor" stroke-width="1.7"/><path d="M5 20c1.3-3.6 4.2-5.4 7-5.4s5.7 1.8 7 5.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+          <div class="ci"><p class="cn">Beatriz Lima</p><p class="cs">Visto por último há 15 horas</p></div>
+        </div>
+        <div class="chat-row" onclick="go('home')">
+          <div class="row-avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.6" stroke="currentColor" stroke-width="1.7"/><path d="M5 20c1.3-3.6 4.2-5.4 7-5.4s5.7 1.8 7 5.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+          <div class="ci"><p class="cn">Lucas Pereira</p><p class="cs">Visto por último hoje às 16:27</p></div>
+        </div>
+        <div class="chat-row" onclick="go('empresa')">
+          <div class="row-avatar"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="8" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="1.6"/></svg></div>
+          <div class="ci"><p class="cn">Empresa Júnior Compute</p><p class="cs unread">Nova mensagem</p></div>
+          <div class="dot"></div>
+        </div>
+        <div class="chat-row" onclick="go('home')">
+          <div class="row-avatar"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="8" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="1.6"/></svg></div>
+          <div class="ci"><p class="cn">Pégasus FSAE</p><p class="cs unread">Nova mensagem</p></div>
+          <div class="dot"></div>
+        </div>
+        <div class="chat-row" onclick="go('home')">
+          <div class="row-avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.6" stroke="currentColor" stroke-width="1.7"/><path d="M5 20c1.3-3.6 4.2-5.4 7-5.4s5.7 1.8 7 5.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+          <div class="ci"><p class="cn">Marina Alves</p><p class="cs unread">Nova mensagem</p></div>
+          <div class="dot"></div>
+        </div>
+        <div class="chat-row" onclick="go('home')">
+          <div class="row-avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.6" stroke="currentColor" stroke-width="1.7"/><path d="M5 20c1.3-3.6 4.2-5.4 7-5.4s5.7 1.8 7 5.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+          <div class="ci"><p class="cn">João Pedro</p><p class="cs">Visualizou sua mensagem</p></div>
+        </div>
+        <div class="chat-row" onclick="go('home')">
+          <div class="row-avatar"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="8" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="1.6"/></svg></div>
+          <div class="ci"><p class="cn">Depto. de Engenharia</p><p class="cs">Visualizou sua mensagem</p></div>
+        </div>
+        <div class="chat-row" onclick="go('home')">
+          <div class="row-avatar"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="8" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="1.6"/></svg></div>
+          <div class="ci"><p class="cn">Liga de Robótica</p><p class="cs">Visualizou sua mensagem</p></div>
+        </div>
+      </div>
+      <div class="bottom-nav">
+        <button class="nav-item" onclick="go('home')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5L12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Início</button>
+        <button class="nav-item active"><svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Conversas</button>
+        <button class="nav-item" onclick="go('notificacoes')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 0 1-3.4 0" stroke="currentColor" stroke-width="1.8"/></svg>Notificações</button>
+        <button class="nav-item" onclick="go('perfil')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7l8-4 8 4v7c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Perfil</button>
+      </div>
+      <div class="home-indicator"><div class="bar"></div></div>
+    </div>
+
+    <!-- ============ NOTIFICAÇÕES ============ -->
+    <div class="screen" data-screen="notificacoes">
+      <div class="top-row">
+        <button class="icon-btn icon-avatar" onclick="go('perfil')">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.6" stroke="currentColor" stroke-width="1.8"/><path d="M5 20c1.3-3.6 4.2-5.4 7-5.4s5.7 1.8 7 5.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <div class="search-bar" onclick="go('pesquisar')" style="cursor:pointer;">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8"/><path d="M20 20l-3.8-3.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          Pesquisar
+        </div>
+        <button class="icon-btn" style="border:none;"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      </div>
+      <div class="body-scroll">
+        <div class="notif-seg">
+          <button class="seg-btn active">Todas</button>
+          <button class="seg-btn">PS</button>
+          <button class="seg-btn">Mensagens</button>
+          <button class="seg-btn">Monitorias</button>
+        </div>
+        <div class="notif-row" onclick="go('empresa')">
+          <div class="row-avatar"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="8" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="1.6"/></svg></div>
+          <div class="ci">
+            <p class="cn">Empresa Júnior Compute</p>
+            <p class="cs unread">O processo seletivo fecha em 2 dias.</p>
+            <p class="ct">há 20 min</p>
+          </div>
+          <div class="dot"></div>
+        </div>
+        <div class="notif-row" onclick="go('home')">
+          <div class="row-avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.6" stroke="currentColor" stroke-width="1.7"/><path d="M5 20c1.3-3.6 4.2-5.4 7-5.4s5.7 1.8 7 5.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+          <div class="ci">
+            <p class="cn">Marina Alves</p>
+            <p class="cs unread">Te mandou uma mensagem.</p>
+            <p class="ct">há 1 hora</p>
+          </div>
+          <div class="dot"></div>
+        </div>
+        <div class="notif-row" onclick="go('home')">
+          <div class="row-avatar"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="8" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="1.6"/></svg></div>
+          <div class="ci">
+            <p class="cn">Pégasus FSAE</p>
+            <p class="cs">Processo seletivo aberto para novos membros.</p>
+            <p class="ct">há 5 horas</p>
+          </div>
+        </div>
+        <div class="notif-row" onclick="go('home')">
+          <div class="row-avatar"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.6" stroke="currentColor" stroke-width="1.7"/><path d="M5 20c1.3-3.6 4.2-5.4 7-5.4s5.7 1.8 7 5.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+          <div class="ci">
+            <p class="cn">João Pedro</p>
+            <p class="cs">Vai dar monitoria sexta às 16:30.</p>
+            <p class="ct">ontem</p>
+          </div>
+        </div>
+        <div class="notif-row" onclick="go('home')">
+          <div class="row-avatar"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="8" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="1.6"/></svg></div>
+          <div class="ci">
+            <p class="cn">Depto. de Engenharia</p>
+            <p class="cs">Nova vaga de iniciação científica em robótica.</p>
+            <p class="ct">ontem</p>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-nav">
+        <button class="nav-item" onclick="go('home')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5L12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Início</button>
+        <button class="nav-item" onclick="go('conversas')"><svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Conversas</button>
+        <button class="nav-item active"><svg viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 0 1-3.4 0" stroke="currentColor" stroke-width="1.8"/></svg>Notificações</button>
+        <button class="nav-item" onclick="go('perfil')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7l8-4 8 4v7c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Perfil</button>
+      </div>
+      <div class="home-indicator"><div class="bar"></div></div>
+    </div>
+
+    <!-- ============ EDITAR PERFIL ============ -->
+    <div class="screen" data-screen="editarPerfil">
+      <div class="header">
+        <button class="back-btn" onclick="go('perfil')">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <h2>Editar perfil</h2>
+      </div>
+      <div class="body-scroll" style="display:flex; flex-direction:column;">
+        <div class="avatar-edit-wrap">
+          <div class="avatar-edit"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="4" stroke="currentColor" stroke-width="1.6"/><path d="M4 21c1.6-4.4 5.2-6.6 8-6.6s6.4 2.2 8 6.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+          <a>Editar foto de perfil
+            <svg viewBox="0 0 24 24" fill="none" width="13" height="13"><path d="M4 20h4L18 10l-4-4L4 16z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <div class="edit-field">
+          <label>Nome</label>
+          <div class="val-row"><input type="text" value="Beatriz">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 20h4L18 10l-4-4L4 16z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="edit-field">
+          <label>Sobrenome</label>
+          <div class="val-row"><input type="text" value="Lima">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 20h4L18 10l-4-4L4 16z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="edit-field">
+          <label style="color:var(--orange);">Data de nascimento</label>
+          <div class="val-row"><input type="text" value="14 / 03 / 2004">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 20h4L18 10l-4-4L4 16z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="edit-field">
+          <label>Curso</label>
+          <div class="val-row"><input type="text" value="Engenharia de Computação">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 20h4L18 10l-4-4L4 16z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="edit-footer">
+          <button class="btn btn-cancel" onclick="go('perfil')">Cancelar</button>
+          <button class="btn btn-apply" onclick="go('perfil')">Aplicar mudanças</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ EMPRESA — PUBLICAÇÕES ============ -->
+    <div class="screen" data-screen="empresaPub">
+      <div class="header" style="justify-content:space-between;">
+        <button class="back-btn" onclick="go('home')">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="icon-btn" style="border:none;"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      </div>
+      <div class="company-head">
+        <div class="company-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="1.6"/></svg></div>
+        <p class="company-name">Empresa Júnior Compute</p>
+        <button class="follow-btn" onclick="toggleFollow(this)">Seguir</button>
+      </div>
+      <div class="company-tabs">
+        <button class="company-tab active">Publicações</button>
+        <button class="company-tab" onclick="go('empresaVagas')">Vagas e PS</button>
+        <button class="company-tab" onclick="go('empresa')">Feedbacks</button>
+      </div>
+      <div class="body-scroll">
+        <div class="pub-card">
+          <div class="pub-media"></div>
+          <p class="pub-text">Conheça os projetos entregues neste semestre pela nossa equipe de desenvolvimento.</p>
+          <div class="pub-actions">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.4-9.5-8.8C.8 8 2.4 4.5 6 4a5.4 5.4 0 0 1 6 3 5.4 5.4 0 0 1 6-3c3.6.5 5.2 4 3.5 7.2C19 15.6 12 20 12 20z" stroke="currentColor" stroke-width="1.6"/></svg>
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/></svg>
+          </div>
+        </div>
+        <div class="pub-card">
+          <div class="pub-media"></div>
+          <p class="pub-text">Bastidores do último hackathon interno — squads formados em 48h.</p>
+          <div class="pub-actions">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.4-9.5-8.8C.8 8 2.4 4.5 6 4a5.4 5.4 0 0 1 6 3 5.4 5.4 0 0 1 6-3c3.6.5 5.2 4 3.5 7.2C19 15.6 12 20 12 20z" stroke="currentColor" stroke-width="1.6"/></svg>
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-nav">
+        <button class="nav-item active"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5L12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Início</button>
+        <button class="nav-item" onclick="go('conversas')"><svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Conversas</button>
+        <button class="nav-item" onclick="go('notificacoes')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 0 1-3.4 0" stroke="currentColor" stroke-width="1.8"/></svg>Notificações</button>
+        <button class="nav-item" onclick="go('perfil')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7l8-4 8 4v7c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Perfil</button>
+      </div>
+      <div class="home-indicator"><div class="bar"></div></div>
+    </div>
+
+    <!-- ============ EMPRESA — VAGAS E PS ============ -->
+    <div class="screen" data-screen="empresaVagas">
+      <div class="header" style="justify-content:space-between;">
+        <button class="back-btn" onclick="go('home')">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="icon-btn" style="border:none;"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      </div>
+      <div class="company-head">
+        <div class="company-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="1.6"/></svg></div>
+        <p class="company-name">Empresa Júnior Compute</p>
+        <button class="follow-btn" onclick="toggleFollow(this)">Seguir</button>
+      </div>
+      <div class="company-tabs">
+        <button class="company-tab" onclick="go('empresaPub')">Publicações</button>
+        <button class="company-tab active">Vagas e PS</button>
+        <button class="company-tab" onclick="go('empresa')">Feedbacks</button>
+      </div>
+      <div class="body-scroll">
+        <div class="vaga-card">
+          <div class="vaga-head">
+            <h3>Processo seletivo 2026.1</h3>
+            <span class="badge badge-soon">Encerra em breve</span>
+          </div>
+          <p class="vaga-desc">Fecha em 2 dias. Vagas para desenvolvimento, design e gestão de projetos.</p>
+          <a class="vaga-link">Inscrições no link a seguir →</a>
+          <button class="btn btn-primary" onclick="alert('Candidatura enviada!')">Candidatar-se</button>
+        </div>
+        <div class="vaga-card">
+          <div class="vaga-head">
+            <h3 style="color:var(--muted);">Monitoria de Algoritmos</h3>
+            <span class="badge badge-ok">Aberta</span>
+          </div>
+          <p class="vaga-desc">Inscrições até 30 de setembro.</p>
+        </div>
+      </div>
+      <div class="bottom-nav">
+        <button class="nav-item active"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5L12 4l8 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Início</button>
+        <button class="nav-item" onclick="go('conversas')"><svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Conversas</button>
+        <button class="nav-item" onclick="go('notificacoes')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 0 1-3.4 0" stroke="currentColor" stroke-width="1.8"/></svg>Notificações</button>
+        <button class="nav-item" onclick="go('perfil')"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7l8-4 8 4v7c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Perfil</button>
+      </div>
+      <div class="home-indicator"><div class="bar"></div></div>
     </div>
 
     <!-- ============ EM BREVE (Prazos / Candidaturas / Recomendados / Categorias) ============ -->
