@@ -25,6 +25,8 @@ def operacao_multiplicacao (x,y):
 #DIVISÃO
 
 def operacao_divisao (x,y):
+    resultado = x/y
+    return resultado
 
 
 #EXPONENCIAÇÃO
