@@ -14,9 +14,8 @@
     <svg class="logo"><use href="#logo"/></svg>
     <h1>Recuperar Senha</h1>
     <form data-demo="Email enviado.">
-      <input aria-label="Email" type="email" placeholder="Insira seu email" required>
+      <input ="Email" type="email" placeholder="Insira seu email" required>
       <button class="btn navy" type="submit">Buscar</button>
-      <p class="msg" role="status"></p>
     </form>
   </section>
 </main>
