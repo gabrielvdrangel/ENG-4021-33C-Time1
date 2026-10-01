@@ -1,0 +1,20 @@
+.logo {
+  --navy: #1b2d52;
+  --navy-btn: #172a4c;
+  --clay: #b25e3b;
+  --green: #3e8a55;
+  --grey: #8a93a6;
+  --field: #f3f4f6;
+  --line: #e3e5ea;
+}
+* { box-sizing: border-box; margin: 0; }
+html, body { height: 100%; }
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--navy);
+  background: linear-gradient(155deg, #1b2d52 0%, #1b2d52 45%, #6b4a46 100%) fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 0;
+}

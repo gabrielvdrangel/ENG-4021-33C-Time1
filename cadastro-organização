@@ -1,0 +1,33 @@
+!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prisma</title>
+<link href="style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+    <main class="tela" id="organizacao">
+  <section class="card">
+    <button class="back" data-go="cadastro" aria-label="Voltar"><svg width="26" height="26"><use href="#chev"/></svg></button>
+    <svg class="logo"><use href="#logo"/></svg>
+    <h1>Cadastro Organização</h1>
+    <form data-next="home" data-toast="Conta criada! Bem-vindo(a), {nome}." data-demo="Conta de organização criada.">
+      <input aria-label="Nome da organização" placeholder="Nome da organização" required>
+      <input aria-label="Email da organização" type="email" placeholder="Email da organização" required>
+      <input aria-label="Senha" type="password" placeholder="Crie uma senha" autocomplete="new-password" required>
+      <fieldset>
+        <legend>A organização faz parte da PUC?</legend>
+        <div class="sim-nao">
+          <input type="radio" name="puc" id="puc-sim" value="sim" checked>
+          <label for="puc-sim">Sim</label>
+          <input type="radio" name="puc" id="puc-nao" value="nao">
+          <label for="puc-nao">Não</label>
+        </div>
+      </fieldset>
+      <button class="btn clay" type="submit">Criar conta</button>
+      <p class="msg" role="status"></p>
+    </form>
+  </section>
+</main>

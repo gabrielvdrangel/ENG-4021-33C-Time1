@@ -1,0 +1,25 @@
+!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prisma</title>
+<link href="style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+    <main class="tela" id="recuperar">
+  <section class="card">
+    <button class="back" data-go="login" aria-label="Voltar"><svg width="26" height="26"><use href="#chev"/></svg></button>
+    <svg class="logo"><use href="#logo"/></svg>
+    <h1>Recuperar Senha</h1>
+    <form data-demo="Email enviado.">
+      <input aria-label="Email" type="email" placeholder="Insira seu email" required>
+      <button class="btn navy" type="submit">Buscar</button>
+      <p class="msg" role="status"></p>
+    </form>
+  </section>
+</main>
+ </script>
+</body>
+</html>
