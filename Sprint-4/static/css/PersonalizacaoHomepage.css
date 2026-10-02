@@ -1,0 +1,89 @@
+/*=======================================Caracteristicas padroes da pagina=======================================*/
+
+body{
+    background-color: #faebd7;
+    font-family: 'poppins', sans-serif;
+}
+
+/*=======================================Classes do navegador=======================================*/
+
+.navbar{
+    display: flex;
+    align-items: right;
+    padding: 20px;
+    border-bottom: 1px solid #A9A9A9; 
+}
+
+nav{
+    flex: 1;
+    text-align: right;
+}
+
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(170, 57, 16);
+}
+
+.container{
+    max-width: 1300px;
+    margin: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/*=========================================ajuste dos botoes importados======================================*/
+
+.botoes{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 20px;
+}
+
+
+/*==========================================Bloco principal da pagina========================================*/
+.feed{
+    max-width: 600px;
+    margin: 30px auto;
+}
+
+/*===========================================Ajuste do formato da foto de perfil=======================================*/
+.avatar{
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+}
+
+/*===========================================Ajuste do tamanho dos icones importados=======================================*/
+i{
+    font-size: 15px;
+}
+
+/*===========================================Ajuste da barra de pesquisa importada=======================================*/
+
+.busca{
+    max-width: 400px;
+}
+
+/*===========================================Bloco que incui os botoes e a barra de pesquisa=======================================*/
+.filtro{
+    display: flex;
+    justify-content: center;   
+    padding: 20px 0;
+}
+
+/*==============================================================================*/
+
+.card{
+    margin: 10px;
+}
