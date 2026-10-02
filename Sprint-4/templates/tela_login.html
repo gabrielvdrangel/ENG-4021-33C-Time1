@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prisma - Entrar</title>
+    <link rel="stylesheet" href="../static/css/tela-login.css">
+</head>
+<body>
+    <div class="caixa">
+        <a href="entrar-cadastrar.html" class="voltar">←</a>
+        <img src="../static/img/logoprisma2.png" alt="Logotipo da marca Prisma, com a palavra Prisma em letras estilizadas em azul e roxo, em um fundo transparente, exibido acima do formulário de login em uma página de entrada do ambiente digital da organização" width="100px">
+        <h1>Prisma</h1>
+        <p>Ambiente de oportunidades online</p>
+         <form onsubmit="location.href='tela_homepage.html'; return false;">
+
+            <label for="matricula">Matrícula</label>
+            <input type="text" id="matricula" name="matricula" placeholder="6 dígitos numéricos">
+
+            <label for="senha">Senha</label>
+            <input id="senha" name="senha" placeholder="Digite sua senha">
+
+            <a href="../templates/esqueci-senha.html" class="esqueceu">Esqueceu a senha ou o login?</a>
+
+            <button href="../templates/tela_homepage.html" type="submit" class="entrar">Entrar</button>
+
+        </form>
+
+    </div>
+</body>
+</html>
