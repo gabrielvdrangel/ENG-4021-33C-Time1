@@ -1,0 +1,211 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f6f8;
+    display: flex;
+}
+
+a {
+    text-decoration: none;
+}
+
+.menu-lateral {
+    width: 250px;
+    height: 100vh;
+    background-color: white;
+    border-right: 1px solid #e5e5e5;
+    padding: 25px 16px;
+    position: fixed;
+}
+
+.logo {
+    margin-bottom: 40px;
+    margin-left: 10px;
+}
+
+.logo-icone {
+    font-size: 22px;
+    font-weight: bold;
+    color: #1a2b4a;
+}
+
+.logo-texto {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1a2b4a;
+    margin-left: 8px;
+}
+
+.item-menu {
+    display: block;
+    padding: 14px 15px;
+    color: #6b7280;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-bottom: 4px;
+}
+
+.item-menu:hover {
+    background-color: #f3f3f3;
+}
+
+.ativo {
+    background-color: #fbe3d6;
+    color: #c4572e;
+}
+
+.usuario-rodape {
+    position: absolute;
+    bottom: 60px;
+    left: 16px;
+    right: 16px;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bolinha-pequena {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: #1a2b4a;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nome-pequeno {
+    font-size: 13px;
+    font-weight: bold;
+    color: #222;
+}
+
+.curso-pequeno {
+    font-size: 11px;
+    color: #888;
+}
+
+.sair-menu {
+    position: absolute;
+    bottom: 25px;
+    left: 30px;
+    color: #d62828;
+    font-size: 13px;
+}
+
+.conteudo {
+    margin-left: 250px;
+    width: 760px;
+    margin-right: auto;
+    padding-top: 25px;
+    position: relative;
+    left: 205px;
+}
+
+.voltar {
+    font-size: 22px;
+    color: #1a2b4a;
+}
+
+.centro {
+    text-align: center;
+}
+
+.titulo-editar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.titulo-editar h2 {
+    font-size: 19px;
+    color: #1a2b4a;
+}
+
+.avatar-vazio {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background-color: #f0f1f3;
+    color: #555;
+    font-size: 50px;
+    line-height: 110px;
+    margin: 20px auto 15px auto;
+}
+
+.editar-foto {
+    color: #c4572e;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.formulario {
+    margin-top: 40px;
+}
+
+.campo {
+    border-bottom: 1px solid #ddd;
+    padding: 12px 2px;
+}
+
+.campo label {
+    display: block;
+    font-size: 11px;
+    color: #777;
+    margin-bottom: 6px;
+}
+
+.label-laranja {
+    color: #c4572e !important;
+}
+
+.campo input,
+.campo select {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    font-size: 15px;
+    color: #222;
+    outline: none;
+}
+
+.botoes {
+    display: flex;
+    gap: 12px;
+    margin-top: 210px;
+}
+
+.botao-cancelar,
+.botao-aplicar {
+    flex: 1;
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.botao-cancelar {
+    background-color: #fbe3e3;
+    color: #d62828;
+}
+
+.botao-aplicar {
+    background-color: #1e8e3e;
+    color: white;
+}
+
+.botao-aplicar:hover {
+    background-color: #177331;
+}
