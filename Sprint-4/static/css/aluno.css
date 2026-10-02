@@ -1,0 +1,118 @@
+:root {
+  --navy: #1b2d52;
+  --navy-btn: #172a4c;
+  --clay: #b25e3b;
+  --green: #3e8a55;
+  --grey: #8a93a6;
+  --field: #f3f4f6;
+  --line: #e3e5ea;
+}
+
+* { box-sizing: border-box; margin: 0; }
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--navy);
+  background: linear-gradient(155deg, #1b2d52 0%, #1b2d52 45%, #6b4a46 100%) fixed;
+}
+
+.tela {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  padding: 56px 32px 32px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, .25);
+  text-align: center;
+}
+
+.back {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: 0;
+  border-radius: 50%;
+  color: var(--grey);
+  cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.back:hover { background: var(--field); color: var(--navy); }
+
+.logo {
+  display: block;
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  margin: 0 auto 16px;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 24px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 14px 16px;
+  font: inherit;
+  color: var(--navy);
+  background: var(--field);
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+}
+input::placeholder { color: var(--grey); }
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--navy);
+  background: #fff;
+}
+
+select {
+  appearance: none;
+  cursor: pointer;
+  padding-right: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%238a93a6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+}
+
+.btn {
+  margin-top: 8px;
+  padding: 15px;
+  font: inherit;
+  font-weight: 700;
+  color: #fff;
+  border: 0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: filter .2s;
+}
+.btn:hover { filter: brightness(1.08); }
+.btn.clay { background: var(--clay); }

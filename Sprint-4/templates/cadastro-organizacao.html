@@ -1,22 +1,22 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Prisma</title>
-<link href="style.css" rel="stylesheet" type="text/css"/>
+<link href="../static/css/organizaçao.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 
-    <main class="tela" id="organizacao">
+<main class="tela" id="organizacao">
   <section class="card">
     <button class="back" data-go="cadastro" aria-label="Voltar"><svg width="26" height="26"><use href="#chev"/></svg></button>
-    <svg class="logo"><use href="#logo"/></svg>
+    <img class="logo" src="../static/img/logoprisma2.png" alt="Logo Prisma">
     <h1>Cadastro Organização</h1>
     <form data-next="home" data-toast="Conta criada! Bem-vindo(a), {nome}." data-demo="Conta de organização criada.">
-      <input ="Nome da organização" placeholder="Nome da organização" required>
-      <input ="Email da organização" type="email" placeholder="Email da organização" required>
-      <input ="Senha" type="password" placeholder="Crie uma senha" autocomplete="new-password" required>
+      <input type="text" name="nome" placeholder="Nome da organização" required>
+      <input type="email" name="email" placeholder="Email da organização" required>
+      <input type="password" name="senha" placeholder="Crie uma senha" autocomplete="new-password" required>
       <fieldset>
         <legend>A organização faz parte da PUC?</legend>
         <div class="sim-nao">
