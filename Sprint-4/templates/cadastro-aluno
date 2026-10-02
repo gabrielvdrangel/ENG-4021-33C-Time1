@@ -14,25 +14,24 @@
     <svg class="logo"><use href="#logo"/></svg>
     <h1>Cadastro Aluno</h1>
     <form data-next="home" data-toast="Conta criada! Bem-vindo(a), {nome}." data-demo="Conta de aluno criada.">
-      <input aria-label="Nome completo" placeholder="Nome completo" autocomplete="name" required>
-      <input aria-label="Matrícula" inputmode="numeric" maxlength="7" pattern="\d{7}" placeholder="Matrícula (7 dígitos)" required>
-      <input aria-label="Senha" type="password" placeholder="Crie uma senha" autocomplete="new-password" required>
-      <input aria-label="Email" type="email" placeholder="aluno@aluno.puc-rio.br" autocomplete="email" required>
-      <select aria-label="Curso">
+      <input ="Nome completo" placeholder="Nome completo" autocomplete="name" required>
+      <input ="Matrícula" type="numeric" maxlength="7" pattern="\d{7}" placeholder="Matrícula (7 dígitos)" required>
+      <input ="Senha" type="password" placeholder="Crie uma senha" autocomplete="new-password" required>
+      <input ="Email" type="email" placeholder="aluno@aluno.puc-rio.br" autocomplete="email" required>
+      <select ="Curso">
         <option>Engenharia de Computação</option>
         <option>Engenharia de Produção</option>
         <option>Engenharia Mecânica</option>
         <option>Engenharia Elétrica</option>
         <option>Engenharia Civil</option>
       </select>
-      <select aria-label="Período">
+      <select ="Período">
         <option>1º período</option><option>2º período</option><option>3º período</option>
         <option>4º período</option><option>5º período</option><option>6º período</option>
         <option>7º período</option><option>8º período</option><option>9º período</option>
         <option>10º período</option>
       </select>
       <button class="btn clay" type="submit">Criar conta</button>
-      <p class="msg" role="status"></p>
     </form>
   </section>
 </main>
