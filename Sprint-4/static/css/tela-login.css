@@ -1,0 +1,95 @@
+:root {
+    --navy: #0F2A4D;
+    --laranja: #C1592C;
+    --cinzinha: #8A93A3;
+    --branco: #E9EBEF;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    background-color: var(--navy);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.caixa {
+    position: relative;
+    background-color: var(--branco);
+    width: 360px;
+    padding: 80px 30px;
+    border-radius: 20px;
+    text-align: center;
+}
+img {
+    display: block;
+    margin: 0 auto;
+}
+h1 {
+    color: var(--navy);
+    margin: 10px 0 5px;
+}
+p {
+    color: var(--cinzinha);
+    font-size: 14px;
+    margin: 0 0 40px;
+}
+
+.voltar {
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    font-size: 24px;
+    color: var(--navy);
+    text-decoration: none;
+}
+
+form {
+    text-align: left;
+}
+label {
+    display: block;
+    color: var(--navy);
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+input {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    border: 1px solid var(--cinzinha);
+    border-radius: 12px;
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+input:focus {
+    border-color: var(--laranja);
+    outline: none;
+}
+
+.esqueceu {
+    display: block;
+    text-align: right;
+    color: var(--cinzinha);
+    font-size: 13px;
+    text-decoration: none;
+    margin-bottom: 24px;
+}
+.esqueceu:hover {
+    color: var(--laranja);
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    cursor: pointer;
+}
+.entrar {
+    background-color: var(--laranja);
+    color: var(--branco);
+}
