@@ -10,7 +10,6 @@
 * { box-sizing: border-box; margin: 0; }
 html, body { height: 100%; }
 body {
-  font-family: "Inter", system-ui, sans-serif;
   color: var(--navy);
   background: linear-gradient(155deg, #1b2d52 0%, #1b2d52 45%, #6b4a46 100%) fixed;
   display: flex;
