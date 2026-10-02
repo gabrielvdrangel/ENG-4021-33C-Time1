@@ -7,6 +7,10 @@
   --field: #f3f4f6;
   --line: #e3e5ea;
 }
+.logo {
+  display: flex;
+  align-items: center;
+}
 * { box-sizing: border-box; margin: 0; }
 html, body { height: 100%; }
 body {
