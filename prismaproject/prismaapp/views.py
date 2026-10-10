@@ -8,6 +8,7 @@ def notificacoes(request):
 
 def login(request):
     return render(request, 'tela_login.html')
+
 def salvos(request):
     return render(request, 'tela_salvos.html')
 
