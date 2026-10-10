@@ -20,4 +20,6 @@ from prismaapp.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', salvos, name='salvos'),
+    path('realizados/', realizados, name='realizados'),
 ]
