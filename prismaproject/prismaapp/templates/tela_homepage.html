@@ -18,6 +18,9 @@
             </div>
             <nav>
               <ul>
+                <li><a href="../templates/tela_homepage.html">Inicio</a></li>
+                <li><a href="../templates/tela_conversas.html">mensagens</a></li>
+                <li><a href="../templates/tela_notificações.html">Notificações</a></li>
                 <li><a href="{% url 'homepage' %}">Inicio</a></li>
                 <li><a href="{% url 'conversas' %}">Mensagens</a></li>
                 <li><a href="{% url 'notificacoes' %}">Notificações</a></li>
@@ -50,20 +53,21 @@
 
     <div class="feed">
 
+      {% for post in Postagens %}
       <div class="card">
 
         <div class="card-header d-flex align-items-center bg-white">
             <img src="../static/img/RioBotzPefil.png"  class="avatar me-2"/>
             <div>
-              <strong>Rio Botz</strong><br />
-              <small>há 2 horas</small>
+              <strong>{{ post.Nome }}</strong><br />
+              <small>{{ post.data_publicacao }}</small>
             </div>
           </div>
 
           <img src="../static/img/RioBotzPost.png" class="card-img-top"/>
 
           <div class="card-body">
-            <p class="card-text">Estão abertas as inscrições para o processo seletivo</p>
+            <p class="card-text">{{ post.descricao }}</p>
           </div>
 
           <div class="card-footer bg-white">
@@ -73,43 +77,7 @@
           </div>
       </div>
       
-      <div class="card post">
-        <div class="card-header d-flex align-items-center bg-white">
-            <img src="../static/img/EmpresaJuniorPefil.png"  class="avatar me-2"/>
-            <div>
-              <strong>Empresa Junior</strong><br />
-              <small>há 10 horas</small>
-            </div>
-          </div>
-          <img src="../static/img/EmpresaJuniorPost.png" class="card-img-top"/>
-          <div class="card-body">
-            <p class="card-text">Estão abertas as inscrições para o processo seletivo</p>
-          </div>
-          <div class="card-footer bg-white">
-            <button class="btn btn-outline-primary"><i class="bi bi-heart-fill"></i></button>
-            <button class="btn btn-outline-primary"><i class="bi bi-chat-right-fill"></i></button>
-            <button class="btn btn-outline-primary"><i class="bi bi-bookmark-fill"></i></button>
-        </div>
-      </div>
-
-      <div class="card post">
-        <div class="card-header d-flex align-items-center bg-white">
-            <img src="../static/img/ConsultingClubPefil.png"  class="avatar me-2"/>
-            <div>
-              <strong>Consulting club</strong><br />
-              <small>há 1 dia</small>
-            </div>
-          </div>
-          <img src="../static/img/ConsultingClubPost.png" class="card-img-top"/>
-          <div class="card-body">
-            <p class="card-text">Estão abertas as inscrições para o processo seletivo</p>
-          </div>
-          <div class="card-footer bg-white">
-            <button class="btn btn-outline-primary"><i class="bi bi-heart-fill"></i></button>
-            <button class="btn btn-outline-primary"><i class="bi bi-chat-right-fill"></i></button>
-            <button class="btn btn-outline-primary"><i class="bi bi-bookmark-fill"></i></button>
-        </div>
-      </div>
+      {% endfor %}
 
     </div>
 

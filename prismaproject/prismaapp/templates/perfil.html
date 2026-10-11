@@ -13,9 +13,9 @@
         <a href="{% url 'homepage' %}" class="voltar">&lt;</a>
 
         <div class="centro">
-            <div class="avatar">B</div>
-            <h2 class="nome">Beatriz Lima</h2>
-            <p class="curso">Engenharia de Computação · 5º período</p>
+            <div class="avatar">H</div>
+            <h2 class="nome">{{usuario.nome}}</h2>
+            <p class="curso">{{usuario.curso}}</p>
 
             <a href="{% url 'editar_perfil' %}" class="botao-editar">Editar perfil</a>
         </div>

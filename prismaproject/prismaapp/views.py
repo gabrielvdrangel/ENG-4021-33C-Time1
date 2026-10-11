@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import usuario, publicacoes
 
 def prazos(request):
     return render(request, 'tela_prazos.html')
@@ -16,10 +17,12 @@ def realizados(request):
     return render(request, 'tela_realizados.html')
 
 def perfil(request):
-    return render(request, 'perfil.html')
+    user = usuario.objects.first() 
+    return render(request, 'perfil.html', context={'usuario': user})
 
 def homepage(request):
-    return render(request, 'tela_homepage.html')
+    Postagens = publicacoes.objects.all()
+    return render(request, 'tela_homepage.html', context={'Postagens': Postagens})
 
 def candidaturas(request):
     return render(request, 'tela_candidaturas.html')
