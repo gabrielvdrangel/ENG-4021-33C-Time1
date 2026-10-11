@@ -1,15 +1,7 @@
-:root {
-    --navy: #0F2A4D;
-    --laranja: #C1592C;
-    --cinzinha: #8A93A3;
-    --branco: #E9EBEF;
-}
-* {
-    box-sizing: border-box;
-}
+
 body {
     margin: 0;
-    background-color: var(--navy);
+    background-color: #f7ebdb;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,7 +20,7 @@ img {
     margin: 0 auto;
 }
 h1 {
-    color: var(--navy);
+    color: #0F2A4D;
     margin: 10px 0 5px;
 }
 p {
@@ -51,7 +43,7 @@ form {
 }
 label {
     display: block;
-    color: var(--navy);
+    color: #0F2A4D;
     font-size: 14px;
     margin-bottom: 6px;
 }
