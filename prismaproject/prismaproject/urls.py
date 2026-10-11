@@ -25,4 +25,20 @@ urlpatterns = [
     path('login/', login, name='login'),
     path('', salvos, name='salvos'),
     path('realizados/', realizados, name='realizados'),
+    path('perfil/', perfil, name='perfil'),
+    path('homepage/', homepage, name='homepage'),
+    path('candidaturas/', candidaturas, name='candidaturas'),
+    path('chat/', chat, name='chat'),
+    path('conversas/', conversas, name='conversas'),
+    path('entrar/', entrar_cadastrar, name='entrar_cadastrar'),
+    path('cadastro/', escolhe_cadastro, name='escolhe_cadastro'),
+    path('cadastro-organizacao/', cadastro_organizacao, name='cadastro_organizacao'),
+    path('esqueci-senha/', esqueci_senha, name='esqueci_senha'),
+    path('perfil/', perfil, name='perfil'),
+    path('perfil/editar/', editar_perfil, name='editar_perfil'),
+    path('cadastro/', cadastro, name='cadastro'),
+    path('cadastro/aluno/', cadastro_aluno, name='cadastro_aluno'),
+    path('cadastro/organizacao/', cadastro_organizacao, name='cadastro_organizacao'),
 ]
+
+
