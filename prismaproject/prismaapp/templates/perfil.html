@@ -10,36 +10,36 @@
 
 
     <div class="conteudo">
-        <a href="../templates/tela_homepage.html" class="voltar">&lt;</a>
+        <a href="{% url 'homepage' %}" class="voltar">&lt;</a>
 
         <div class="centro">
             <div class="avatar">B</div>
             <h2 class="nome">Beatriz Lima</h2>
             <p class="curso">Engenharia de Computação · 5º período</p>
 
-            <a href="../templates/editar-perfil.html" class="botao-editar">Editar perfil</a>
+            <a href="{% url 'editar_perfil' %}" class="botao-editar">Editar perfil</a>
         </div>
 
         <div class="grade-cards">
-    <a href="../templates/tela_salvos.html" class="card">
+    <a href="{% url 'salvos' %}" class="card">
         <span class="icone-card">&#9873;</span>
         <p>Salvos</p>
     </a>
-    <a href="../templates/tela_candidaturas.html" class="card">
+    <a href="{% url 'candidaturas' %}" class="card">
         <span class="icone-card">&#9776;</span>
         <p>Candidaturas</p>
     </a>
-    <a href="../templates/tela_prazos.html" class="card">
+    <a href="{% url 'prazos' %}" class="card">
         <span class="icone-card">&#9783;</span>
         <p>Prazos</p>
     </a>
-    <a href="../templates/tela_realizados.html" class="card">
+    <a href="{% url 'realizados' %}" class="card">
         <span class="icone-card">&#10003;</span>
         <p>Realizados</p>
     </a>
 </div>
 
-        <a href="../templates/entrar-cadastrar.html" class="sair-centro">Sair da conta</a>
+        <a href="{% url 'entrar_cadastrar' %}" class="sair-centro">Sair da conta</a>
     </div>
 
 </body>

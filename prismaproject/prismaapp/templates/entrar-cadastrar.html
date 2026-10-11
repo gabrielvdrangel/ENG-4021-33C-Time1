@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -11,8 +12,8 @@
         <img src="../static/img/logoprisma2.png" alt="Logo Prisma" width="100px">
         <h1>Prisma</h1>
         <p>Ambiente de oportunidades online</p>
-        <a href="../templates/tela_login.html" class="entrar">Entrar</a>
-        <a href="../templates/escolhe-cadastro.html" class="cadastrar">Cadastrar-se</a>
+        <a href="{% url 'login' %}" class="entrar">Entrar</a>
+        <a href="{% url 'escolhe_cadastro' %}" class="cadastrar">Cadastrar-se</a>
     </div>
 </body>
 </html>

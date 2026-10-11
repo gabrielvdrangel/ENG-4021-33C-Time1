@@ -8,6 +8,7 @@ def notificacoes(request):
 
 def login(request):
     return render(request, 'tela_login.html')
+
 def salvos(request):
     return render(request, 'tela_salvos.html')
 
@@ -41,17 +42,9 @@ def cadastro_organizacao(request):
 def esqueci_senha(request):
     return render(request, 'esqueci-senha.html')
 
-def perfil(request):
-    return render(request, 'perfil.html')
-
 def editar_perfil(request):
     return render(request, 'editar-perfil.html')
 
-def cadastro(request):
-    return render(request,'tela_cadastro.html')
-
 def cadastro_aluno(request):
-    return render(request,'tela_cadastro_aluno.html')
+    return render(request,'cadastro-aluno.html')
 
-def cadastro_organizacao(request):
-    return render(request,'tela_cadastro_organizacao.html')
