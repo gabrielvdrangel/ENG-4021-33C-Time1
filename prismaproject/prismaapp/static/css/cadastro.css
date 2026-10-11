@@ -40,7 +40,7 @@ body {
   background: none;
   border: 0;
   border-radius: 50%;
-  color: var(--grey);
+  color:#f7ebdb ;
   cursor: pointer;
 }
 
@@ -72,7 +72,7 @@ h1 {
   font: inherit;
   font-size: 1rem;
   font-weight: 600;
-  color: var(--navy);
+  color: #0F2A4D;
   background: #f7ebdb;
   border: 1.5px solid var(--line);
   border-radius: 14px;
