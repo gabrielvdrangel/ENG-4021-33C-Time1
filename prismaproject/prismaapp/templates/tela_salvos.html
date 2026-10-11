@@ -21,6 +21,9 @@
                 <li><a href="../templates/tela_conversas.html">mensagens</a></li>
                 <li><a href="../templates/tela_notificações.html">Notificações</a></li>
                 <li><a href="../templates/perfil.html"><img src="../static/img/perfil.png" width="30px"></a></li>
+                <li><a href="{% url 'conversas' %}">Mensagens</a></li>
+                <li><a href="{% url 'notificacoes' %}">Notificações</a></li>
+                <li><a href="{% url 'perfil' %}"><img src="../static/img/perfil.png" width="30px"></a></li>
               </ul>
             </nav>
         </div>
@@ -30,15 +33,15 @@
     <div class = "caixa">
         <p>Beatriz Lima</p>
         <span>Estudante de Engenharia de Software</span>
-        <a href="" class="link-sair">Sair da conta</a>
+        <a href="{% url 'entrar_cadastrar' %}" class="link-sair">Sair da conta</a>
     </div>
 
     <h2 class="color">Salvos</h2>
 
     <div id="abas">
         <span class="link-abas">Salvos</span> 
-        <a href="../templates/tela_prazos.html" class="link-abas">Prazos</a>
-        <a href="../templates/tela_candidaturas.html" class="link-abas">Candidaturas</a>
+        <a href="{% url 'prazos' %}" class="link-abas">Prazos</a>
+        <a href="{% url 'candidaturas' %}" class="link-abas">Candidaturas</a>
         <a href="{% url 'realizados' %}" class="link-abas">Realizados</a>
     </div>
 

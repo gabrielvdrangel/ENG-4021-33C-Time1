@@ -1,15 +1,3 @@
-:root {
-  --navy: #1b2d52;
-  --navy-btn: #172a4c;
-  --clay: #b25e3b;
-  --green: #3e8a55;
-  --grey: #8a93a6;
-  --field: #f3f4f6;
-  --line: #e3e5ea;
-}
-
-* { box-sizing: border-box; margin: 0; }
-
 body {
   min-height: 100vh;
   min-height: 100dvh;
@@ -18,8 +6,8 @@ body {
   justify-content: center;
   padding: 24px 16px;
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-  color: var(--navy);
-  background: linear-gradient(155deg, #1b2d52 0%, #1b2d52 45%, #6b4a46 100%) fixed;
+  color: #0F2A4D;
+  background: #f7ebdb;
 }
 
 .tela {
@@ -50,11 +38,10 @@ body {
   background: none;
   border: 0;
   border-radius: 50%;
-  color: var(--grey);
+  color: #f7ebdb;
   cursor: pointer;
   transition: background .2s, color .2s;
 }
-.back:hover { background: var(--field); color: var(--navy); }
 
 .logo {
   display: block;
@@ -91,7 +78,7 @@ input:focus,
 select:focus {
   outline: none;
   border-color: var(--navy);
-  background: #fff;
+  background: #f7ebdb;
 }
 
 select {
@@ -108,7 +95,7 @@ select {
   padding: 15px;
   font: inherit;
   font-weight: 700;
-  color: #fff;
+  color: #0F2A4D;
   border: 0;
   border-radius: 12px;
   cursor: pointer;

@@ -1,21 +1,13 @@
-:root {
-    --navy: #0F2A4D;
-    --laranja: #C1592C;
-    --cinzinha: #8A93A3;
-    --branco: #E9EBEF;
-}
-* {
-    box-sizing: border-box;
-}
+
 body {
-    background-color: var(--navy);
+    background-color: #f7ebdb;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
 }
 .caixa {
-    background-color: var(--branco);
+    background-color: #f7ebdb;
     width: 360px;
     padding: 80px 30px;
     border-radius: 20px;
@@ -26,7 +18,7 @@ img {
     margin: 0 auto;
 }
 h1 {
-    color: var(--navy);
+    color: #f7ebdb;
     margin: 10px 0 5px;
 }
 p {
@@ -50,8 +42,8 @@ a {
 }
 
 .cadastrar {
-    border: 2px solid var(--navy);
-    color: var(--navy);
+    border: 2px solid #0F2A4D;
+    color: #0F2A4D;
     padding: 10px 25px;
     text-decoration: none;
     border-radius: 15px;
