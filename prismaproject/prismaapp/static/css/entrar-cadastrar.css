@@ -1,31 +1,35 @@
-
-body {
-    background-color: #f7ebdb;
+body{
+    background-color: #faebd7;
+    font-family: 'poppins', sans-serif;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     min-height: 100vh;
 }
+
 .caixa {
-    background-color: #f7ebdb;
-    width: 360px;
-    padding: 80px 30px;
+    background-color: #fcd8a883;
+    width: 600px;
+    padding: 120px 40px;
     border-radius: 20px;
     text-align: center;
 }
+
 img {
     display: block;
     margin: 0 auto;
 }
 h1 {
-    color: #f7ebdb;
+    color: #000000;
     margin: 10px 0 5px;
 }
+
 p {
-    color: var(--cinzinha);
+    color: #1c2024;
     font-size: 14px;
     margin: 0 0 50px;
 }
+
 a {
     display: block;
     padding: 15px;
@@ -33,18 +37,4 @@ a {
     text-decoration: none;
     margin-bottom: 14px;
 }
-.entrar {
-    background-color: var(--laranja);
-    color: var(--branco);
-    padding: 10px 25px;
-    text-decoration: none;
-    border-radius: 15px;
-}
 
-.cadastrar {
-    border: 2px solid #0F2A4D;
-    color: #0F2A4D;
-    padding: 10px 25px;
-    text-decoration: none;
-    border-radius: 15px;
-}
