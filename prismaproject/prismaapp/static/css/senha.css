@@ -19,7 +19,7 @@ body {
   padding: 24px 16px;
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
   color: var(--navy);
-  background: linear-gradient(155deg, #1b2d52 0%, #1b2d52 45%, #6b4a46 100%) fixed;
+  background: #f7ebdb,
 }
 
 .tela {
@@ -33,7 +33,7 @@ body {
   width: 100%;
   max-width: 400px;
   padding: 56px 32px 32px;
-  background: #fff;
+  background: #f7ebdb;
   border-radius: 20px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, .25);
   text-align: center;
@@ -54,7 +54,6 @@ body {
   cursor: pointer;
   transition: background .2s, color .2s;
 }
-.back:hover { background: var(--field); color: var(--navy); }
 
 .logo {
   display: block;
@@ -87,7 +86,7 @@ input[type="email"] {
   padding: 14px 16px;
   font: inherit;
   color: var(--navy);
-  background: var(--field);
+  background: #f7ebdb;
   border: 1.5px solid var(--line);
   border-radius: 12px;
   transition: border-color .2s, background .2s;
@@ -96,7 +95,7 @@ input::placeholder { color: var(--grey); }
 input[type="email"]:focus {
   outline: none;
   border-color: var(--navy);
-  background: #fff;
+  background: #f7ebdb;
 }
 
 .btn {
