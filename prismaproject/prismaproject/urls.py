@@ -30,4 +30,10 @@ urlpatterns = [
     path('candidaturas/', candidaturas, name='candidaturas'),
     path('chat/', chat, name='chat'),
     path('conversas/', conversas, name='conversas'),
+    path('', views.entrar_cadastrar, name='entrar_cadastrar'),
+    path('cadastro/', views.escolhe_cadastro, name='escolhe_cadastro'),
+    path('cadastro/organizacao/', views.cadastro_organizacao, name='cadastro_organizacao'),
+    path('esqueci-senha/', views.esqueci_senha, name='esqueci_senha'),
+    path('perfil/', views.perfil, name='perfil'),
+    path('perfil/editar/', views.editar_perfil, name='editar_perfil'),
 ]

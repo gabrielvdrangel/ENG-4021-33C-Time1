@@ -29,3 +29,20 @@ def chat(request):
 def conversas(request):
     return render(request, 'tela_conversas.html')
 
+def entrar_cadastrar(request):
+    return render(request, 'entrar-cadastrar.html')
+
+def escolhe_cadastro(request):
+    return render(request, 'escolhe-cadastro.html')
+
+def cadastro_organizacao(request):
+    return render(request, 'cadastro-organizacao.html')
+
+def esqueci_senha(request):
+    return render(request, 'esqueci-senha.html')
+
+def perfil(request):
+    return render(request, 'perfil.html')
+
+def editar_perfil(request):
+    return render(request, 'editar-perfil.html')
