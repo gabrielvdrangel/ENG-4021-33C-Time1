@@ -37,3 +37,9 @@ urlpatterns = [
     path('perfil/', views.perfil, name='perfil'),
     path('perfil/editar/', views.editar_perfil, name='editar_perfil'),
 ]
+
+urlpatterns=[
+    path('cadastro/',cadastro), name='cadastro'),
+    path('cadastro/aluno/',cadastro), cadastro_aluno='cadastro_aluno'),
+    path('cadastro/organizacao/',cadastro_organizacao), name='cadastro_organizacao'),
+]
