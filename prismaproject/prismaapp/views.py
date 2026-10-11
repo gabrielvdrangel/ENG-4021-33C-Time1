@@ -46,3 +46,12 @@ def perfil(request):
 
 def editar_perfil(request):
     return render(request, 'editar-perfil.html')
+
+def cadastro(request):
+    return render(request,'tela_cadastro.html')
+
+def cadastro_aluno(request):
+    return render(request,'tela_cadastro_aluno.html')
+
+def cadastro_organizacao(request):
+    return render(request,'tela_cadastro_organizacao.html')
