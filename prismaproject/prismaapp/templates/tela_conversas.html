@@ -1,8 +1,9 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
   <head>
     <title>Prisma</title> 
-    <link rel="stylesheet" href="../static/css/PersonalizacaoMensagens.css" />
+    <link rel="stylesheet" href="{% static 'css/PersonalizacaoMensagens.css' %}" />
     
   </head>
 
@@ -12,14 +13,14 @@
     <div class="container">
       <div class="navbar"> 
             <div>
-                <img src="../static/img/logoprisma2.png" width="200px">
+                <img src="{% static 'img/logoprisma2.png' %}" width="200px">
             </div>
             <nav>
               <ul>
                 <li><a href="{% url 'homepage' %}">Inicio</a></li>
                 <li><a href="{% url 'conversas' %}">Mensagens</a></li>
                 <li><a href="{% url 'notificacoes' %}">Notificações</a></li>
-                <li><a href="{% url 'perfil' %}"><img src="../static/img/perfil.png" width="30px"></a></li>
+                <li><a href="{% url 'perfil' %}"><img src="{% static 'img/perfil.png' %}" width="30px"></a></li>
               </ul>
             </nav>
     
@@ -34,7 +35,7 @@
       
  
         <a href="{% url 'chat' %}" class="caixa">
-          <img src="../static/img/EmpresaJuniorPefil.png" class="avatar" />
+          <img src="{% static 'img/EmpresaJuniorPefil.png' %}" class="avatar" />
 
           <div>
 
@@ -46,7 +47,7 @@
         </a>
  
         <a href="" class="caixa">
-          <img src="../static/img/perfil.png" class="avatar" />
+          <img src="{% static 'img/perfil.png' %}" class="avatar" />
 
           <div>
 
@@ -57,7 +58,7 @@
         </a>
  
         <a href="" class="caixa">
-          <img src="../static/img/RioBotzPefil.png" class="avatar" />
+          <img src="{% static 'img/RioBotzPefil.png' %}" class="avatar" />
 
           <div>
             
@@ -68,7 +69,7 @@
         </a>
  
         <a href="" class="caixa">
-          <img src="../static/img/perfil.png" class="avatar" />
+          <img src="{% static 'img/perfil.png' %}" class="avatar" />
 
           <div>
 
@@ -79,7 +80,7 @@
         </a>
  
         <a href="" class="caixa">
-          <img src="../static/img/perfil.png" class="avatar" />
+          <img src="{% static 'img/perfil.png' %}" class="avatar" />
 
           <div>
 
@@ -90,7 +91,7 @@
         </a>
  
         <a href="" class="caixa">
-          <img src="../static/img/TecGrafPefil.png" class="avatar" />
+          <img src="{% static 'img/TecGrafPefil.png' %}" class="avatar" />
 
           <div>
 

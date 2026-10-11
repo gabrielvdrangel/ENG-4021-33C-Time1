@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Prisma</title>
-<link href="../static/css/cadastro.css" rel="stylesheet" type="text/css"/>
+<link href="{% static 'css/cadastro.css' %}" rel="stylesheet" type="text/css"/>
 </head>
 <body>
  
@@ -12,7 +13,7 @@
 <main class="screen" id="cadastro">
   <section class="card">
     <button class="back" data-go="login" aria-label="Voltar"><svg width="26" height="26"><use href=""/></svg></button>
-    <img class="logo" src="../static/img/logoprisma2.png" alt="Prisma">
+    <img class="logo" src="{% static 'img/logoprisma2.png' %}" alt="Prisma">
     <h1>Cadastro</h1>
     <div class="options">
       <a class="option" href="{% url 'cadastro_aluno' %}">

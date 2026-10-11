@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prisma</title>
-    <link rel="stylesheet" href="../static/css/tela_prazos.css" />
+    <link rel="stylesheet" href="{% static 'css/tela_prazos.css' %}" />
 
 </head>
 <body>
@@ -12,7 +13,7 @@
 <div class="container">
         <div class="navbar"> 
             <div class="logo">
-                <img src="../static/img/logo.svg" width="100px">
+                <img src="{% static 'img/logo.svg' %}" width="100px">
                 <span class="color">Prisma</span>
             </div>
             <nav>
@@ -20,7 +21,7 @@
                 <li><a href="{% url 'homepage' %}">Inicio</a></li>
                 <li><a href="{% url 'conversas' %}">Mensagens</a></li>
                 <li><a href="{% url 'notificacoes' %}">Notificações</a></li>
-                <li><a href="{% url 'perfil' %}"><img src="../static/img/perfil.png" width="30px"></a></li>
+                <li><a href="{% url 'perfil' %}"><img src="{% static 'img/perfil.png' %}" width="30px"></a></li>
               </ul>
             </nav>
         </div>
@@ -43,7 +44,7 @@
 
     <div class ="caixa">
         <div class="logo-caixa">
-            <img src="../static/img/mat.png">
+            <img src="{% static 'img/mat.png' %}">
             <div class="caixa-texto">
                 <h3 class="color">Monitoria de Cálculo 2</h3>
             </div>
@@ -57,7 +58,7 @@
 
     <div class ="caixa">
         <div class="logo-caixa">
-            <img src="../static/img/alfa.png">
+            <img src="{% static 'img/alfa.png' %}">
             <div class="caixa-texto">
                 <h3 class="color">Estágio em Engenharia de Produção</h3>
             </div>
@@ -69,7 +70,7 @@
 
     <div class ="caixa">
         <div class="logo-caixa">
-            <img src="../static/img/lab.webp">
+            <img src="{% static 'img/lab.webp' %}">
             <div class="caixa-texto">
                 <h3 class="color">Iniciação Científica - CNPq</h3>
             </div>
@@ -83,7 +84,7 @@
 
     <div class ="caixa">
         <div class="logo-caixa">
-            <img src="../static/img/cc.png">
+            <img src="{% static 'img/cc.png' %}">
             <div class="caixa-texto">
                 <h3 class="color">Processo Seletivo - Consulting Club</h3>
             </div>
@@ -97,7 +98,7 @@
 
     <div class ="caixa">
         <div class="logo-caixa">
-            <img src="../static/img/fis.png">
+            <img src="{% static 'img/fis.png' %}">
             <div class="caixa-texto">
                 <h3 class="color">Monitoria de Física 1</h3>
             </div>
