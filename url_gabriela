@@ -1,0 +1,8 @@
+from django.urls import path 
+from prismaapp.view import *
+
+url patterns=[
+    path('cadastro/',cadastro), name='cadastro'),
+    path('cadastro/aluno/',cadastro), cadastro_aluno='cadastro_aluno'),
+    path('cadastro/organizacao/',cadastro_organizacao), name='cadastro_organizacao'),
+]
