@@ -25,4 +25,9 @@ urlpatterns = [
     path('login/', login, name='login'),
     path('', salvos, name='salvos'),
     path('realizados/', realizados, name='realizados'),
+    path('perfil/', perfil, name='perfil'),
+    path('homepage/', homepage, name='homepage'),
+    path('candidaturas/', candidaturas, name='candidaturas'),
+    path('chat/', chat, name='chat'),
+    path('conversas/', conversas, name='conversas'),
 ]

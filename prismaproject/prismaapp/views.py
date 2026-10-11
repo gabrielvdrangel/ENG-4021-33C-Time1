@@ -14,3 +14,18 @@ def salvos(request):
 def realizados(request):
     return render(request, 'tela_realizados.html')
 
+def perfil(request):
+    return render(request, 'perfil.html')
+
+def homepage(request):
+    return render(request, 'tela_homepage.html')
+
+def candidaturas(request):
+    return render(request, 'tela_candidaturas.html')
+
+def chat(request):
+    return render(request, 'tela_chat.html')
+
+def conversas(request):
+    return render(request, 'tela_conversas.html')
+
