@@ -30,16 +30,15 @@ urlpatterns = [
     path('candidaturas/', candidaturas, name='candidaturas'),
     path('chat/', chat, name='chat'),
     path('conversas/', conversas, name='conversas'),
-    path('', views.entrar_cadastrar, name='entrar_cadastrar'),
-    path('cadastro/', views.escolhe_cadastro, name='escolhe_cadastro'),
-    path('cadastro/organizacao/', views.cadastro_organizacao, name='cadastro_organizacao'),
-    path('esqueci-senha/', views.esqueci_senha, name='esqueci_senha'),
-    path('perfil/', views.perfil, name='perfil'),
-    path('perfil/editar/', views.editar_perfil, name='editar_perfil'),
+    path('entrar/', entrar_cadastrar, name='entrar_cadastrar'),
+    path('cadastro/', escolhe_cadastro, name='escolhe_cadastro'),
+    path('cadastro-organizacao/', cadastro_organizacao, name='cadastro_organizacao'),
+    path('esqueci-senha/', esqueci_senha, name='esqueci_senha'),
+    path('perfil/', perfil, name='perfil'),
+    path('perfil/editar/', editar_perfil, name='editar_perfil'),
+    path('cadastro/', cadastro, name='cadastro'),
+    path('cadastro/aluno/', cadastro_aluno, name='cadastro_aluno'),
+    path('cadastro/organizacao/', cadastro_organizacao, name='cadastro_organizacao'),
 ]
 
-urlpatterns=[
-    path('cadastro/',cadastro), name='cadastro'),
-    path('cadastro/aluno/',cadastro), cadastro_aluno='cadastro_aluno'),
-    path('cadastro/organizacao/',cadastro_organizacao), name='cadastro_organizacao'),
-]
+
