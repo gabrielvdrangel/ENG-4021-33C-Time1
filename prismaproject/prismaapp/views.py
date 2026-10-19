@@ -24,6 +24,10 @@ def homepage(request):
     Postagens = oportunidades.objects.all()
     return render(request, 'tela_homepage.html', context={'Postagens': Postagens})
 
+def homepage_org(request):
+    Postagens = oportunidades.objects.all()
+    return render(request, 'tela_homepage-org.html', context={'Postagens': Postagens})
+
 def candidaturas(request):
     return render(request, 'tela_candidaturas.html')
 
