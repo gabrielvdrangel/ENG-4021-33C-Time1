@@ -27,6 +27,7 @@ urlpatterns = [
     path('realizados/', realizados, name='realizados'),
     path('perfil/', perfil, name='perfil'),
     path('homepage/', homepage, name='homepage'),
+    path('homepage-org/', homepage_org, name='homepage_org'),
     path('candidaturas/', candidaturas, name='candidaturas'),
     path('chat/', chat, name='chat'),
     path('conversas/', conversas, name='conversas'),

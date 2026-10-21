@@ -51,7 +51,7 @@
 
     <div class="feed">
 
-      {% for post in Postagens %}
+      {% for post in oportunidades %}
       <div class="card">
 
         <div class="card-header d-flex align-items-center bg-white">
@@ -65,7 +65,7 @@
           <img src="{% static 'img/RioBotzPost.png' %}" class="card-img-top"/>
 
           <div class="card-body">
-            <p class="card-text">{{ post.descricao }}</p>
+            <p class="card-text">{{ post.descricao }}<br><br> finaliza em {{ post.limite_inscricao }}</p>
           </div>
 
           <div class="card-footer bg-white">

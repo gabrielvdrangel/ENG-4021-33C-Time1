@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import usuario, oportunidades
+from .models import usuario, oportunidade
 
 def prazos(request):
     return render(request, 'tela_prazos.html')
@@ -21,8 +21,12 @@ def perfil(request):
     return render(request, 'perfil.html', context={'usuario': user})
 
 def homepage(request):
-    Postagens = oportunidades.objects.all()
-    return render(request, 'tela_homepage.html', context={'Postagens': Postagens})
+    oportunidades = oportunidade.objects.all()
+    return render(request, 'tela_homepage.html', context={'oportunidades': oportunidades})
+
+def homepage_org(request):
+    oportunidades = oportunidade.objects.all()
+    return render(request, 'tela_homepage-org.html', context={'oportunidades': oportunidades})
 
 def candidaturas(request):
     return render(request, 'tela_candidaturas.html')
