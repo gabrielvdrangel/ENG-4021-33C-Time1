@@ -5,10 +5,10 @@ class usuario(models.Model):
     login = models.IntegerField(unique=True)
     senha = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
-    curso = models.CharField(max_length=100)
-    periodo = models.IntegerField()
+    curso = models.CharField(max_length=100,null=True, blank=True)
+    periodo = models.IntegerField(null=True, blank=True)
 
-class oportunidades(models.Model):
+class oportunidade(models.Model):
     Nome = models.CharField(max_length=100)
     Tipo = models.CharField(max_length=100)
     descricao = models.TextField()
