@@ -37,6 +37,7 @@ urlpatterns = [
     path('esqueci-senha/', esqueci_senha, name='esqueci_senha'),
     path('perfil/editar/', editar_perfil, name='editar_perfil'),
     path('cadastro-aluno/', cadastro_aluno, name='cadastro_aluno'),
+    path('add-publicacao/', add_publicacao, name='add_publicacao'),
 ]
 
 

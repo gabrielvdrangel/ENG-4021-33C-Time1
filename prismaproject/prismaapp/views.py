@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import usuario, oportunidade
 
 def prazos(request):
@@ -54,4 +54,15 @@ def editar_perfil(request):
 
 def cadastro_aluno(request):
     return render(request,'cadastro-aluno.html')
+
+def add_publicacao(request):
+    if request.method == 'POST':
+        oportunidade.objects.create(
+            Nome=request.POST['Nome'],
+            Tipo=request.POST['Tipo'],
+            descricao=request.POST['descricao'],
+            limite_inscricao=request.POST['limite_inscricao'],
+        )
+        return redirect('homepage_org')
+    return render(request, 'tela_add-publicacao.html')
 
