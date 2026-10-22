@@ -50,6 +50,13 @@ def esqueci_senha(request):
     return render(request, 'esqueci-senha.html')
 
 def editar_perfil(request):
+    user = usuario.objects.first()
+    if request.method == 'POST':
+        user.nome = request.POST['nome']
+        user.curso = request.POST['curso']
+        user.periodo = request.POST['periodo']
+        user.save()
+        return redirect('perfil')
     return render(request, 'editar-perfil.html')
 
 def cadastro_aluno(request):
