@@ -10,50 +10,44 @@
 </head>
 <body>
 
-<div class="caixa">
-        <img src="{% static 'img/logoprisma2.png' %}" width="100px">
-        <h1>Prisma</h1>
-        <p>Ambiente de oportunidades online</p>
-        <form>
+  <form method="post" action="{% url 'cadastro_aluno' %}">
+    {% csrf_token %}
 
-  <div class="form-group">
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Nome Completo">
-  </div>
+    <div class="caixa">
+            <img src="{% static 'img/logoprisma2.png' %}" width="100px">
+            <h1>Prisma</h1>
+            <p>Ambiente de oportunidades online</p>
 
-  <div class="form-group">
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Matricula (7 digitos)">
-  </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name = "nome" placeholder="Nome completo" required>
+      </div>
 
-  <div class="form-group">
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Crie uma senha">
-  </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name = "login" placeholder="Matricula (7 digitos)" required>
+      </div>
 
-  <div class="form-group">
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email">
-  </div>
+      <div class="form-group">
+        <input type="password" class="form-control" name = "senha" placeholder="Crie uma senha" required>
+      </div>
 
-  <div class="form-group">
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>Engenharia da Computação</option>
-      <option>Engenharia de Controle e Automação</option>
-      <option>Engenharia de Produção</option>
-      <option>Engenharia Elétrica</option>
-      <option>Engenharia Mecânica</option>
-    </select>
-  </div>
-  
-  <div class="form-group">
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>1º período</option>
-      <option>2º período</option>
-      <option>3º período</option>
-      <option>4º período</option>
-      <option>5º período</option>
-    </select>
-  </div>
-</form>
+      <div class="form-group">
+        <input type="email" class="form-control" name = "email" placeholder="Email" required>
+      </div>
 
-<a href="{% url 'homepage' %}" class="btn btn-outline-primary">Criar Conta</a>
+      <div class="form-group">
+        <input type="text" class="form-control" name = "curso" placeholder="Curso" required>
+      </div>
+      
+      <div class="form-group">
+        <input type="number" class="form-control" name = "periodo" placeholder="Período (número)" required>
+      </div>
+
+      {% if erro %}<p class="text-danger">{{ erro }}</p>{% endif %}
+
+      <button type="submit" class="btn btn-outline-primary">Criar Conta</button>
+
+  </form>
+
     </div>
 
 </body>

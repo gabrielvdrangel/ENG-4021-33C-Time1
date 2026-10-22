@@ -53,6 +53,33 @@ def editar_perfil(request):
     return render(request, 'editar-perfil.html')
 
 def cadastro_aluno(request):
+    if request.method == 'POST':
+        nome = request.POST['nome']
+        login = request.POST['login']
+        senha = request.POST['senha']
+        email = request.POST['email']
+        curso = request.POST['curso']
+        periodo = request.POST['periodo']
+
+        if not login.isdigit():
+            return render(request, 'cadastro-aluno.html', {'erro': 'Matrícula deve conter apenas números.'})
+
+        if usuario.objects.filter(login=login).exists():
+            return render(request, 'cadastro-aluno.html', {'erro': 'Matrícula já cadastrada.'})
+
+        if usuario.objects.filter(email=email).exists():
+            return render(request, 'cadastro-aluno.html', {'erro': 'Email já cadastrado.'})
+
+        usuario.objects.create(
+            nome=nome,
+            login=int(login),
+            senha=senha,
+            email=email,
+            curso=curso,
+            periodo=periodo
+        )
+        return redirect('homepage')
+
     return render(request,'cadastro-aluno.html')
 
 def add_publicacao(request):
