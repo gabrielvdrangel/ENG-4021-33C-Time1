@@ -65,8 +65,8 @@ def cadastro_organizacao(request):
         
     return render(request, 'cadastro-organizacao.html', {'erro': erro})
 
-def perfil_organizacao(request):
-    return render(request, 'perfil_organizacao.html')
+def tela_perfil_org(request):
+    return render(request, 'tela_perfil_org.html')
     
 def esqueci_senha(request):
     return render(request, 'esqueci-senha.html')
@@ -121,4 +121,3 @@ def add_publicacao(request):
         )
         return redirect('homepage_org')
     return render(request, 'tela_add-publicacao.html')
-

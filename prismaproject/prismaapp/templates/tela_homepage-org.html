@@ -62,7 +62,7 @@
         <div class="card-header d-flex align-items-center bg-white">
             <img src="{% static 'img/RioBotzPefil.png' %}"  class="avatar me-2"/>
             <div>
-              <strong>{{ post.Nome }}</strong><br />
+              <a href="{% url 'tela_perfil_org' %}"><strong>{{ post.Nome }}</strong></a><br/>
               <small>{{ post.data_publicacao }}</small>
             </div>
           </div>

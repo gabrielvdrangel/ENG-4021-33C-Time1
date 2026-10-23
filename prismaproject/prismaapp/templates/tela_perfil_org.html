@@ -1,92 +1,85 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Prisma</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
     <link rel="stylesheet" href="{% static 'css/tela_perfil_org.css' %}" />
+    
   </head>
+
 
   <body>
 
-    <!-- Barra de navegação -->
-    <div class="container">
-      <div class="navbar">
-        <div>
-          <img src="{% static 'img/logoprisma2.png' %}" width="200px" alt="Logo Prisma" />
+      <div class="container">
+        <div class="navbar"> 
+            <div>
+                <img src="{% static 'img/logoprisma2.png' %}" width="200px">
+            </div>
+            <nav>
+              <ul>
+                <li><a href="{% url 'homepage' %}">Inicio</a></li>
+                <li><a href="{% url 'conversas' %}">Mensagens</a></li>
+                <li><a href="{% url 'notificacoes' %}">Notificações</a></li>
+                <li><a href="{% url 'perfil' %}"><img src="{% static 'img/perfil.png' %}" width="30px"></a></li>
+              </ul>
+            </nav>
+    
+    
+ 
         </div>
-        <nav>
-          <ul>
-            <li><a href="{% url 'homepage' %}">Inicio</a></li>
-            <li><a href="{% url 'conversas' %}">Mensagens</a></li>
-            <li><a href="{% url 'notificacoes' %}">Notificações</a></li>
-            <li>
-              <a href="{% url 'perfil' %}">
-                <img src="{% static 'img/perfil.png' %}" width="30px" alt="Perfil" />
-              </a>
-            </li>
-          </ul>
-        </nav>
       </div>
+
+    <div class="caixa">
+        <div class="conteudo">
+            <section class="avatar">
+                <div class="team-logo">RioBotz</div>
+                <h1>Rio Botz</h1>
+                <p>Equipe de competição · Robótica</p>
+                <button type="button" class="btn btn-danger">Seguindo</button>
+            </section>
+ 
+    <div class="filtro">
+      <button type="button" class="btn btn-primary">Publicações</button>
+      <button type="button" class="btn btn-primary">Vagas e PS</button>
+      <button type="button" class="btn btn-primary">Feedbacks</button>
+    </div>
+ 
+    <div class="feed">
+ 
+        <div class="card">
+          <img src="{% static 'img/RioBotzPost.png' %}" class="card-img-top"/>
+
+          <div class="card-body">
+            <p class="card-text">Processo seletivo 26.2 aberto</p>
+          </div>
+
+          <div class="card-footer bg-white">
+            <button class="btn btn-outline-primary"><i class="bi bi-heart-fill"></i></button>
+            <button class="btn btn-outline-primary"><i class="bi bi-chat-right-fill"></i></button>
+            <button class="btn btn-outline-primary"><i class="bi bi-bookmark-fill"></i></button>
+          </div>
+    </div>
+ 
+    <div class="feed">
+ 
+        <div class="card">
+          <img src="{% static 'img/RioBotzPost.png' %}" class="card-img-top"/>
+
+          <div class="card-body">
+            <p class="card-text">Nosso robô chegou às semifinais da Winter Challenge. Obrigado a todos que torceram!</p>
+          </div>
+
+          <div class="card-footer bg-white">
+            <button class="btn btn-outline-primary"><i class="bi bi-heart-fill"></i></button>
+            <button class="btn btn-outline-primary"><i class="bi bi-chat-right-fill"></i></button>
+            <button class="btn btn-outline-primary"><i class="bi bi-bookmark-fill"></i></button>
+          </div>
     </div>
 
-    <!-- Conteúdo principal -->
-    <div class="caixa">
-      <div class="conteudo">
+ 
+      </div>
 
-        <!-- Cabeçalho do perfil -->
-        <section class="avatar">
-          <div class="team-logo">RioBotz</div>
-          <h1>Rio Botz</h1>
-          <p>Equipe de competição · Robótica</p>
-          <button type="button" class="btn btn-danger">Seguindo</button>
-        </section>
-
-        <!-- Filtros -->
-        <div class="filtro">
-          <button type="button" class="btn btn-primary">Publicações</button>
-          <button type="button" class="btn btn-primary">Vagas e PS</button>
-          <button type="button" class="btn btn-primary">Feedbacks</button>
-        </div>
-
-        <!-- Feed -->
-        <div class="feed">
-
-          <!-- Post 1 -->
-          <div class="card">
-            <img src="{% static 'img/RioBotzPost.png' %}" class="card-img-top" alt="Processo seletivo RioBotz" />
-
-            <div class="card-body">
-              <p class="card-text">Processo seletivo 26.2 aberto</p>
-            </div>
-
-            <div class="card-footer bg-white">
-              <button class="btn btn-outline-primary"><i class="bi bi-heart-fill"></i></button>
-              <button class="btn btn-outline-primary"><i class="bi bi-chat-right-fill"></i></button>
-              <button class="btn btn-outline-primary"><i class="bi bi-bookmark-fill"></i></button>
-            </div>
-          </div>
-
-          <!-- Post 2 -->
-          <div class="card">
-            <div class="card-body">
-              <p class="card-text">Nosso robô chegou às semifinais da Winter Challenge. Obrigado a todos que torceram!</p>
-            </div>
-
-            <div class="card-footer bg-white">
-              <button class="btn btn-outline-primary"><i class="bi bi-heart-fill"></i></button>
-              <button class="btn btn-outline-primary"><i class="bi bi-chat-right-fill"></i></button>
-              <button class="btn btn-outline-primary"><i class="bi bi-bookmark-fill"></i></button>
-            </div>
-          </div>
-
-        </div><!-- /feed -->
-
-      </div><!-- /conteudo -->
-    </div><!-- /caixa -->
-
-  </body>
+    </body>
 </html>
