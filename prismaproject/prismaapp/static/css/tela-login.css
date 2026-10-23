@@ -1,36 +1,31 @@
-:root {
-    --navy: #0F2A4D;
-    --laranja: #C1592C;
-    --cinzinha: #8A93A3;
-    --branco: #E9EBEF;
-}
-* {
-    box-sizing: border-box;
-}
+
 body {
     margin: 0;
-    background-color: var(--navy);
+    background-color: #f7ebdb;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
 }
+
 .caixa {
-    position: relative;
-    background-color: var(--branco);
-    width: 360px;
-    padding: 80px 30px;
+    background-color: #fcd8a883;
+    width: 600px;
+    padding: 120px 40px;
     border-radius: 20px;
     text-align: center;
 }
+
 img {
     display: block;
     margin: 0 auto;
 }
+
 h1 {
-    color: var(--navy);
+    color: #0F2A4D;
     margin: 10px 0 5px;
 }
+
 p {
     color: var(--cinzinha);
     font-size: 14px;
@@ -49,12 +44,14 @@ p {
 form {
     text-align: left;
 }
+
 label {
     display: block;
-    color: var(--navy);
+    color: #0F2A4D;
     font-size: 14px;
     margin-bottom: 6px;
 }
+
 input {
     display: block;
     width: 100%;
@@ -64,6 +61,7 @@ input {
     font-size: 14px;
     margin-bottom: 16px;
 }
+
 input:focus {
     border-color: var(--laranja);
     outline: none;
@@ -77,6 +75,7 @@ input:focus {
     text-decoration: none;
     margin-bottom: 24px;
 }
+
 .esqueceu:hover {
     color: var(--laranja);
 }
@@ -89,6 +88,7 @@ button {
     font-size: 15px;
     cursor: pointer;
 }
+
 .entrar {
     background-color: var(--laranja);
     color: var(--branco);
