@@ -65,6 +65,9 @@ def cadastro_organizacao(request):
         
     return render(request, 'cadastro-organizacao.html', {'erro': erro})
 
+def perfil_organizacao(request):
+    return render(request, 'perfil_organizacao.html')
+    
 def esqueci_senha(request):
     return render(request, 'esqueci-senha.html')
 
