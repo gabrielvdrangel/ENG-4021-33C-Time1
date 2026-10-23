@@ -1,0 +1,107 @@
+
+/*=======================================Caracteristicas padroes da pagina=======================================*/
+
+body{
+    background-color: #faebd7;
+    font-family: 'poppins', sans-serif;
+}
+
+/*=======================================Classes do navegador=======================================*/
+
+.navbar{
+    display: flex;
+    align-items: right;
+    padding: 20px;
+    border-bottom: 1px solid #A9A9A9; 
+}
+
+nav{
+    flex: 1;
+    text-align: right;
+}
+
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(170, 57, 16);
+}
+
+.container{
+    max-width: 1300px;
+    margin: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/*=========================================================================================================*/
+
+.caixa {
+  color: #000;
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
+  gap: 14px;
+  background-color: #fff;
+  border: 1px solid #A9A9A9;
+  width: 600px;
+  max-width: 100%;
+  min-height: 650px;
+  margin: 30px auto 0;
+}
+
+.conteudo {
+  flex: 1;
+  min-width: 0;
+  align-self: stretch;
+  padding: 24px 16px;
+}
+
+.avatar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.team-logo {
+  width: 72px;
+  height: 72px;
+  border-radius: 10px;
+  background: #13294b;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  font-style: italic;
+}
+
+/* ===== Abas ===== */
+.filtro {
+  display: flex;
+  justify-content: space-around;
+  gap: 6px;
+  margin-top: 24px;
+  padding-bottom: 8px;
+}
+
+.card{
+    margin: 10px;
+}
+
+/* ===== Publicações ===== */
+.feed {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 12px;
+}
