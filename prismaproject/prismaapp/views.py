@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import usuario, oportunidade
 
 def prazos(request):
@@ -44,7 +44,25 @@ def escolhe_cadastro(request):
     return render(request, 'escolhe-cadastro.html')
 
 def cadastro_organizacao(request):
-    return render(request, 'cadastro-organizacao.html')
+    erro = None
+    if request.method == 'POST':
+        nome = request.POST.get('nome','')
+        email = request.POST.get('email','')
+        senha = request.POST.get('senha','')
+
+        if not nome or not email or not senha:
+            erro = "Todos os campos são obrigatórios."
+        elif usuario.objects.filter(email=email).exists():
+            erro = "Este email já está em uso."
+        else:
+            usuario.objects.create(
+                nome=nome,
+                email=email,
+                senha=senha
+                )
+            return redirect('homepage_org')
+        
+    return render(request, 'cadastro-organizacao.html', {'erro': erro})
 
 def esqueci_senha(request):
     return render(request, 'esqueci-senha.html')
