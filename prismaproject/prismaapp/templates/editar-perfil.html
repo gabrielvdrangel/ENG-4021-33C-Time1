@@ -9,61 +9,51 @@
 </head>
 <body>
 
+    <form method="post" action="{% url 'editar_perfil' %}">
+    {% csrf_token %}
 
-    <div class="conteudo">
-        <div class="titulo-editar">
-            <a href="{% url 'perfil' %}" class="voltar">&lt;</a>
-            <h2>Editar perfil</h2>
-        </div>
-
-        <div class="centro">
-            <div class="avatar-vazio">&#9786;</div>
-            <a href="#" class="editar-foto">Editar foto de perfil &#9998;</a>
-        </div>
-
-        <div class="formulario">
-            <div class="campo">
-                <label>Nome</label>
-                <input type="text" value="Beatriz">
+        <div class="conteudo">
+            <div class="titulo-editar">
+                <a href="{% url 'perfil' %}" class="voltar">&lt;</a>
+                <h2>Editar perfil</h2>
             </div>
 
-            <div class="campo">
-                <label>Sobrenome</label>
-                <input type="text" value="Lima">
+            <div class="centro">
+                <div class="avatar-vazio">&#9786;</div>
+                <a href="#" class="editar-foto">Editar foto de perfil &#9998;</a>
             </div>
 
-            <div class="campo">
-                <label class="label-laranja">Data de nascimento</label>
-                <input type="date" value="2004-03-14">
+            <div class="formulario">
+                
+                <div class="campo">
+                    <label>Nome</label>
+                    <input type="text" name="nome" value="{{ usuario.nome }}">
+                </div>
+
+                <div class="campo">
+                    <label class="label-laranja">Data de nascimento</label>
+                    <input type="date" value="2004-03-14">
+                </div>
+
+                <div class="campo">
+                    <label>Curso</label>
+                    <input type="text" name="curso" value="{{ usuario.curso }}">
+                </div>
+
+                <div class="campo">
+                    <label>Período</label>
+                    <input type="number" name="periodo" value="{{ usuario.periodo }}">
+                        
+                </div>
             </div>
 
-            <div class="campo">
-                <label>Curso</label>
-                <input type="text" value="Engenharia de Computação">
-            </div>
-
-            <div class="campo">
-                <label>Período</label>
-                <select>
-                    <option>1º período</option>
-                    <option>2º período</option>
-                    <option>3º período</option>
-                    <option>4º período</option>
-                    <option selected>5º período</option>
-                    <option>6º período</option>
-                    <option>7º período</option>
-                    <option>8º período</option>
-                    <option>9º período</option>
-                    <option>10º período</option>
-                </select>
+            <div class="botoes">
+                <a href="{% url 'perfil' %}" class="botao-cancelar">Cancelar</a>
+                <button type="submit" class="botao-aplicar">Aplicar mudanças</button>
             </div>
         </div>
-
-        <div class="botoes">
-            <a href="{% url 'perfil' %}" class="botao-cancelar">Cancelar</a>
-            <a href="{% url 'perfil' %}" class="botao-aplicar">Aplicar mudanças</a>
-        </div>
-    </div>
+    
+    </form>
 
 </body>
 </html>

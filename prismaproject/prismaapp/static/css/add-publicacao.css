@@ -1,0 +1,117 @@
+body{
+    background-color: #f7ebdb;
+    font-family: 'poppins', sans-serif;
+}
+
+.navbar{
+    display: flex;
+    align-items: right;
+    padding: 20px;
+    border-bottom: 1px solid #A9A9A9; 
+}
+
+.container{
+    max-width: 1300px;
+    margin: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+a{
+    text-decoration: none;
+    color: #C1592C;
+}
+
+nav{
+    flex: 1;
+    text-align: right;
+}
+
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.conteudo-pub{
+    max-width: 560px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+.voltar{
+    display: inline-block;
+    margin-bottom: 15px;
+    color: #0F2A4D;
+    font-weight: 600;
+}
+
+.card-pub{
+    background-color: #fff;
+    border-radius: 20px;
+    border: 1px solid #e6e8ec;
+    padding: 24px;
+}
+
+.card-pub-topo{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 16px;
+}
+
+.card-pub-topo h4{
+    margin: 0;
+    color: #0F2A4D;
+    font-weight: 700;
+}
+
+.preview{
+    position: relative;
+}
+
+.preview-img{
+    width: 100%;
+    border-radius: 12px;
+    display: block;
+}
+
+.btn-remover{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: none;
+    background: #fff;
+}
+
+.card-pub textarea{
+    min-height: 100px;
+    resize: vertical;
+}
+
+.contador{
+    display: block;
+    text-align: right;
+    margin-bottom: 14px;
+}
+
+.acoes{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-compartilhar{
+    background-color: #C1592C;
+    border: none;
+    color: #fff;
+    border-radius: 25px;
+    padding: 10px 28px;
+    font-weight: 700;
+}

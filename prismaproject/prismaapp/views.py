@@ -1,3 +1,4 @@
+from django.shortcuts import render, redirect
 from django.shortcuts import redirect, render
 from .models import usuario, oportunidade
 
@@ -68,8 +69,53 @@ def esqueci_senha(request):
     return render(request, 'esqueci-senha.html')
 
 def editar_perfil(request):
+    user = usuario.objects.first()
+    if request.method == 'POST':
+        user.nome = request.POST['nome']
+        user.curso = request.POST['curso']
+        user.periodo = request.POST['periodo']
+        user.save()
+        return redirect('perfil')
     return render(request, 'editar-perfil.html')
 
 def cadastro_aluno(request):
+    if request.method == 'POST':
+        nome = request.POST['nome']
+        login = request.POST['login']
+        senha = request.POST['senha']
+        email = request.POST['email']
+        curso = request.POST['curso']
+        periodo = request.POST['periodo']
+
+        if not login.isdigit():
+            return render(request, 'cadastro-aluno.html', {'erro': 'Matrícula deve conter apenas números.'})
+
+        if usuario.objects.filter(login=login).exists():
+            return render(request, 'cadastro-aluno.html', {'erro': 'Matrícula já cadastrada.'})
+
+        if usuario.objects.filter(email=email).exists():
+            return render(request, 'cadastro-aluno.html', {'erro': 'Email já cadastrado.'})
+
+        usuario.objects.create(
+            nome=nome,
+            login=int(login),
+            senha=senha,
+            email=email,
+            curso=curso,
+            periodo=periodo
+        )
+        return redirect('homepage')
+
     return render(request,'cadastro-aluno.html')
+
+def add_publicacao(request):
+    if request.method == 'POST':
+        oportunidade.objects.create(
+            Nome=request.POST['Nome'],
+            Tipo=request.POST['Tipo'],
+            descricao=request.POST['descricao'],
+            limite_inscricao=request.POST['limite_inscricao'],
+        )
+        return redirect('homepage_org')
+    return render(request, 'tela_add-publicacao.html')
 
