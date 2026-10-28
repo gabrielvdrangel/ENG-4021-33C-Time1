@@ -55,14 +55,14 @@
       <div class="card">
 
         <div class="card-header d-flex align-items-center bg-white">
-            <img src="{% static 'img/RioBotzPefil.png' %}"  class="avatar me-2"/>
+            <img src="{{ post.image_url }}"  class="avatar me-2"/>
             <div>
-              <a href="{% url 'tela_perfil_org' %}"><strong>{{ post.Nome }}</strong></a><br/>
+              <a><strong>{{ post.Nome }}</strong></a><br/>
               <small>{{ post.data_publicacao }}</small>
             </div>
           </div>
 
-          <img src="{% static 'img/RioBotzPost.png' %}" class="card-img-top"/>
+          <img src="{{ post.image_url }}" class="card-img-top"/>
 
           <div class="card-body">
             <p class="card-text">{{ post.descricao }}<br><br> finaliza em {{ post.limite_inscricao }}</p>
