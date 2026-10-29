@@ -1,16 +1,21 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-class usuario(models.Model):
-    nome = models.CharField(max_length=100)
-    login = models.IntegerField(unique=True, null=True, blank=True)
-    senha = models.CharField(max_length=100)
-    email = models.EmailField(unique=True)
-    curso = models.CharField(max_length=100,null=True, blank=True)
-    periodo = models.IntegerField(null=True, blank=True)
 
-class oportunidade(models.Model):
-    Nome = models.CharField(max_length=100)
-    Tipo = models.CharField(max_length=100)
+class Usuario(AbstractUser):
+    email = models.EmailField(unique=True)
+    matricula = models.IntegerField(unique=True)
+    curso = models.CharField(max_length=100, null=True, blank=True)
+    periodo = models.IntegerField(  null=True, blank=True)
+
+class Oportunidade(models.Model):
+    usuario = models.ForeignKey(
+        Usuario,
+        on_delete=models.CASCADE,
+        related_name="oportunidades",
+    )
+    nome = models.CharField(max_length=100)
+    tipo = models.CharField(max_length=100)
     descricao = models.TextField()
     limite_inscricao = models.DateTimeField()
     data_publicacao = models.DateTimeField(auto_now_add=True)
