@@ -3,9 +3,6 @@ from django.db import models
 
 
 class Usuario(AbstractUser):
-    email = models.EmailField(unique=True)
-    curso = models.CharField(max_length=100,null=True, blank=True)
-    periodo = models.IntegerField(null=True, blank=True)
     image_url = models.URLField(max_length=500)
     matricula = models.IntegerField(unique=True)
     curso = models.CharField(max_length=100, null=True, blank=True)
