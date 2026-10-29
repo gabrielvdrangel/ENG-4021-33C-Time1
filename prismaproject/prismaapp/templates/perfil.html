@@ -14,9 +14,13 @@
         <a href="{% url 'homepage' %}" class="voltar">&lt;</a>
 
         <div class="centro">
-            <img src="{{ usuario.image_url }}"  class="avatar"/>
-            <h2 class="nome">{{usuario.nome}}</h2>
-            <p class="curso">{{usuario.curso}}</p>
+            <img src="{% if usuario.imagem_url %}{{ usuario.imagem_url }}{% else %}{% static 'img/avatar.png' %}{% endif %}" class="avatar"/>
+            <h2 class="nome">{{ usuario.first_name|default:usuario.username }}</h2>
+            {% if usuario.curso %}
+                <p class="curso">{{ usuario.curso }}</p>
+            {% else %}
+                <p class="curso">Organização</p>
+            {% endif %}
 
             <a href="{% url 'editar_perfil' %}" class="botao-editar">Editar perfil</a>
         </div>
