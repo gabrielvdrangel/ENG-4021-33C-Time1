@@ -77,9 +77,10 @@ def editar_perfil(request):
         user.nome = request.POST['nome']
         user.curso = request.POST['curso']
         user.periodo = request.POST['periodo']
+        user.image_url = request.POST.get('image_url', '')
         user.save()
         return redirect('perfil')
-    return render(request, 'editar-perfil.html')
+    return render(request, 'editar-perfil.html', {'usuario': user})
 
 def cadastro_aluno(request):
     if request.method == 'POST':

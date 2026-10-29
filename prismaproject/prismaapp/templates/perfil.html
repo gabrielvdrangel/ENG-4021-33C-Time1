@@ -14,7 +14,7 @@
         <a href="{% url 'homepage' %}" class="voltar">&lt;</a>
 
         <div class="centro">
-            <div class="avatar">H</div>
+            <img src="{{ usuario.image_url }}"  class="avatar"/>
             <h2 class="nome">{{usuario.nome}}</h2>
             <p class="curso">{{usuario.curso}}</p>
 
