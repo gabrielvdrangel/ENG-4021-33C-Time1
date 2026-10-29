@@ -16,17 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from prismaapp import views
 from prismaapp.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('prazos/', prazos, name='prazos'),
     path('notificacoes/', notificacoes, name='notificacoes'),
-    path('login/', login, name='login'),
     path('salvos/', salvos, name='salvos'),
     path('realizados/', realizados, name='realizados'),
     path('perfil/', perfil, name='perfil'),
-    path('homepage/', homepage, name='homepage'),
+    path("homepage/", views.homepage, name="homepage"),
     path('homepage-org/', homepage_org, name='homepage_org'),
     path('candidaturas/', candidaturas, name='candidaturas'),
     path('chat/', chat, name='chat'),
@@ -39,6 +39,7 @@ urlpatterns = [
     path('perfil/editar/', editar_perfil, name='editar_perfil'),
     path('cadastro-aluno/', cadastro_aluno, name='cadastro_aluno'),
     path('add-publicacao/', add_publicacao, name='add_publicacao'),
+    path("login/", views.login_user, name="login"),
+    path('logout/', logout_user, name='logout'),
 ]
-
 

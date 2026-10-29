@@ -13,20 +13,23 @@
         <img src="{% static 'img/logoprisma2.png' %}" alt="Logotipo da marca Prisma, com a palavra Prisma em letras estilizadas em azul e roxo, em um fundo transparente, exibido acima do formulário de login em uma página de entrada do ambiente digital da organização" width="100px">
         <h1>Prisma</h1>
         <p>Ambiente de oportunidades online</p>
-         <form action="{% url 'homepage' %}" method="get">
+         <form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
 
-            <label for="matricula">Matrícula</label>
-            <input type="text" id="matricula" name="matricula" placeholder="7 dígitos numéricos">
+    {% if erro %}
+        <p class="erro">{{ erro }}</p>
+    {% endif %}
 
-            <label for="senha">Senha</label>
-            <input id="senha" name="senha" placeholder="Digite sua senha">
+    <label for="matricula">Matrícula</label>
+    <input type="text" id="matricula" name="username" placeholder="7 dígitos numéricos" required>
 
-            <a href="{% url 'esqueci_senha' %}" class="esqueceu">Esqueceu a senha ou o login?</a>
+    <label for="senha">Senha</label>
+    <input type="password" id="senha" name="password" placeholder="Digite sua senha" required>
 
-            <button type="submit" class="entrar">Entrar</button>
+    <a href="{% url 'esqueci_senha' %}" class="esqueceu">Esqueceu a senha ou o login?</a>
 
-        </form>
-
+    <button type="submit" class="entrar">Entrar</button>
+</form>
     </div>
 </body>
 </html>

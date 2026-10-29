@@ -128,3 +128,4 @@ MAILERS = {
 }
 
 AUTH_USER_MODEL = "prismaapp.usuario"
+LOGIN_URL = "login"
