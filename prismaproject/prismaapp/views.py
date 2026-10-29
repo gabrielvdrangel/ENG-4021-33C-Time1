@@ -66,7 +66,8 @@ def cadastro_organizacao(request):
     return render(request, 'cadastro-organizacao.html', {'erro': erro})
 
 def tela_perfil_org(request):
-    return render(request, 'tela_perfil_org.html')
+    oportunidades=Oportunidade.object.all()
+    return render(request, 'tela_perfil_org.html',context={"oportunidades": oportunidades})
     
 def esqueci_senha(request):
     return render(request, 'esqueci-senha.html')
