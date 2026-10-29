@@ -7,15 +7,15 @@ from .models import Oportunidade, Usuario
 
 def login_user(request):
     if request.method == "POST":
-        user = authenticate(
-            request,
-            username=request.POST["username"],
-            password=request.POST["password"],
-        )
+        email = request.POST.get("email", "").strip()
+        senha = request.POST.get("password", "")
+        usuario = Usuario.objects.filter(email__iexact=email).first() if email else None
+        user = authenticate(request, username=usuario.username, password=senha) if usuario else None
+
         if user is not None:
             login(request, user)
-            return redirect("homepage")
-        return render(request, "tela_login.html", {"erro": "Usuário ou senha inválidos."})
+            return redirect("homepage_org" if user.matricula is None else "homepage")
+        return render(request, "tela_login.html", {"erro": "E-mail ou senha inválidos."})
     return render(request, "tela_login.html")
 
 
@@ -96,13 +96,12 @@ def cadastro_organizacao(request):
         elif Usuario.objects.filter(email=email).exists():
             erro = "Este email já está em uso."
         else:
-            user = Usuario.objects.create_user(
+            Usuario.objects.create_user(
                 username=email,
                 email=email,
                 password=senha,
                 first_name=nome,
             )
-            login(request, user)
             return redirect("login")
 
     return render(request, "cadastro-organizacao.html", {"erro": erro})
@@ -147,7 +146,7 @@ def cadastro_aluno(request):
         if Usuario.objects.filter(email=email).exists():
             return render(request, "cadastro-aluno.html", {"erro": "Email já cadastrado."})
 
-        user = Usuario.objects.create_user(
+        Usuario.objects.create_user(
             username=matricula,
             password=senha,
             email=email,
@@ -156,7 +155,6 @@ def cadastro_aluno(request):
             curso=curso,
             periodo=periodo,
         )
-        login(request, user)
         return redirect("login")
 
     return render(request, "cadastro-aluno.html")
