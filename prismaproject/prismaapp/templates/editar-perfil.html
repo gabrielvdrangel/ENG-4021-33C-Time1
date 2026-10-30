@@ -19,7 +19,7 @@
             </div>
 
             <div class="centro">
-                <img src="{{ usuario.image_url }}"  class="avatar"/><br>
+                <img src="{% if usuario.imagem_url %}{{ usuario.imagem_url }}{% else %}{% static 'img/avatar.png' %}{% endif %}" class="avatar"/><br>
                 <a href="#" class="editar-foto">Editar foto de perfil &#9998;</a>
             </div>
 
@@ -27,7 +27,7 @@
                 
                 <div class="campo">
                     <label>Nome</label>
-                    <input type="text" name="nome" value="{{ usuario.nome }}">
+                    <input type="text" name="nome" value="{{ usuario.first_name }}">
                 </div>
 
                 <div class="campo">

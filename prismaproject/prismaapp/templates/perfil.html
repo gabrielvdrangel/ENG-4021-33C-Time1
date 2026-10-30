@@ -21,9 +21,6 @@
             {% else %}
                 <p class="curso">Organização</p>
             {% endif %}
-            <img src="{{ usuario.imagem_url }}" class="avatar"/>
-            <h2 class="nome">{{ usuario.first_name }}</h2>
-            <p class="curso">{{usuario.curso}}</p>
 
             <a href="{% url 'editar_perfil' %}" class="botao-editar">Editar perfil</a>
         </div>

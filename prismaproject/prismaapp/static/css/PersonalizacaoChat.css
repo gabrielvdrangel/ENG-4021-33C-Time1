@@ -113,3 +113,53 @@ a{
 .textomensagem{
     font-size: 12px;
 }
+
+.voltar {
+    display: inline-block;
+    margin-bottom: 12px;
+    font-size: 22px;
+    color: #0F2A4D;
+    text-decoration: none;
+}
+
+/*=======================================Responsividade=======================================*/
+
+@media (max-width: 768px){
+    .navbar{
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 12px;
+    }
+
+    nav{
+        text-align: center;
+    }
+
+    nav ul{
+        margin: 0;
+        padding: 0;
+    }
+
+    nav ul li{
+        margin: 0 8px;
+    }
+
+    .blocoprincipal{
+        margin: 15px auto;
+        padding: 0 10px;
+    }
+
+    .caixa{
+        width: 100%;
+        height: calc(100vh - 160px);
+        min-height: 450px;
+    }
+
+    .mensagem{
+        width: auto;
+        max-width: 85%;
+        height: auto;
+    }
+}
+

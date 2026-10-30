@@ -51,7 +51,7 @@ def perfil(request):
 
 @login_required
 def homepage(request):
-    oportunidades = Oportunidade.objects.all()
+    oportunidades = Oportunidade.objects.select_related("usuario")
     return render(request, "tela_homepage.html", context={"oportunidades": oportunidades})
 
 
