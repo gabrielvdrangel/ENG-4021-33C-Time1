@@ -64,7 +64,7 @@
         <div class="card-header d-flex align-items-center bg-white">
             {% if post.imagem_url %}<img src="{{ post.imagem_url }}" class="avatar me-2"/>{% endif %}
             <div>
-              <a><strong>{{ post.nome }}</strong></a><br/>
+              <a href="{% url 'tela_perfil_org' %}"><strong>{{ post.nome }}</strong></a><br/>
               <small>{{ post.data_publicacao }}</small>
             </div>
           </div>

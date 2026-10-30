@@ -127,8 +127,9 @@ def editar_perfil(request):
     user = request.user
     if request.method == "POST":
         user.first_name = request.POST["nome"]
-        user.curso = request.POST["curso"]
-        user.periodo = request.POST["periodo"]
+        user.curso = request.POST["curso"] or None
+        user.periodo = request.POST["periodo"] or None
+        user.imagem_url = request.POST["imagem_url"] or None
         user.save()
         return redirect("perfil")
     return render(request, "editar-perfil.html", {"usuario": user})
