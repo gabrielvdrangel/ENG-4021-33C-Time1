@@ -14,6 +14,13 @@
         <a href="{% url 'homepage' %}" class="voltar">&lt;</a>
 
         <div class="centro">
+            <img src="{% if usuario.imagem_url %}{{ usuario.imagem_url }}{% else %}{% static 'img/avatar.png' %}{% endif %}" class="avatar"/>
+            <h2 class="nome">{{ usuario.first_name|default:usuario.username }}</h2>
+            {% if usuario.curso %}
+                <p class="curso">{{ usuario.curso }}</p>
+            {% else %}
+                <p class="curso">Organização</p>
+            {% endif %}
             <img src="{{ usuario.imagem_url }}" class="avatar"/>
             <h2 class="nome">{{ usuario.first_name }}</h2>
             <p class="curso">{{usuario.curso}}</p>
