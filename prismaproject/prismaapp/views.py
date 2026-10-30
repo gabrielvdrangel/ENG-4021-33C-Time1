@@ -171,5 +171,29 @@ def add_publicacao(request):
             limite_inscricao=request.POST["limite_inscricao"],
             imagem_url=request.POST.get("imagem_url") or None,
         )
+        return redirect('homepage_org')
+    return render(request, 'tela_add-publicacao.html')
+
+@login_required
+def editar_perfil(request):
+    usuario= request.user
+    if request.method== "POST":
+        usuario.first_name = request.POST["nome"]
+        usuario.curso = request.POST["período"] or None
+        usuario.imagem_url = request.POST.get("imagem_url") or None
+        usuario.save()
+        return redirect ("perfil")
+    return render (request, "editar-perfil.html", {"usuario": usuario})
+
+def adicionar_oportunidade(request):
+    if request.method == "POST":
+        Oportunidade.objects.create(
+            usuario=request.user,
+            nome= request.POST["nome"],
+            tipo= request.POST["tipo"],
+            descricao= request.POST["descricao"],
+            limite_inscricao=request.POST["limite_inscricao"],
+        )
+    return redirect("perfil")
         return redirect("homepage_org")
     return render(request, "tela_add-publicacao.html")

@@ -19,7 +19,7 @@
             </div>
 
             <div class="centro">
-                <img src="{{ usuario.image_url }}"  class="avatar"/><br>
+                <img src="{{ usuario.imagem_url }}"  class="avatar"/><br>
                 <a href="#" class="editar-foto">Editar foto de perfil &#9998;</a>
             </div>
 
@@ -27,7 +27,7 @@
                 
                 <div class="campo">
                     <label>Nome</label>
-                    <input type="text" name="nome" value="{{ usuario.nome }}">
+                    <input type="text" name="nome" value="{{ usuario.first_name }}">
                 </div>
 
                 <div class="campo">
@@ -44,6 +44,10 @@
                     <label>Período</label>
                     <input type="number" name="periodo" value="{{ usuario.periodo }}">
                         
+                </div>
+                <div class="campo">
+                    <label>URL da foto de perfil</label>
+                    <input type="url" name="imagem_url" value="{{ usuario.imagem_url|default:'' }}">
                 </div>
             </div>
 
