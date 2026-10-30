@@ -21,6 +21,9 @@
             {% else %}
                 <p class="curso">Organização</p>
             {% endif %}
+            <img src="{{ usuario.imagem_url }}" class="avatar"/>
+            <h2 class="nome">{{ usuario.first_name }}</h2>
+            <p class="curso">{{usuario.curso}}</p>
 
             <a href="{% url 'editar_perfil' %}" class="botao-editar">Editar perfil</a>
         </div>
@@ -44,7 +47,7 @@
     </a>
 </div>
 
-        <a href="{% url 'entrar_cadastrar' %}" class="sair-centro">Sair da conta</a>
+        <a href="{% url 'logout' %}" class="sair-centro">Sair da conta</a>
     </div>
 
 </body>
