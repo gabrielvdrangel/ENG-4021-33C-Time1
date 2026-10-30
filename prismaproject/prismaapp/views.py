@@ -113,7 +113,13 @@ def tela_perfil_org(request):
     return render(request, 'tela_perfil_org.html',context={"oportunidades": oportunidades})
     
 def esqueci_senha(request):
-    return render(request, "esqueci-senha.html")
+    mensagem = None
+    if request.method == "POST":
+        if Usuario.objects.filter(email=request.POST["email"]).exists():
+            mensagem = "Foi enviado um email para a conta."
+        else:
+            mensagem = "Conta inexistente."
+    return render(request, "esqueci-senha.html", {"mensagem": mensagem})
 
 
 @login_required

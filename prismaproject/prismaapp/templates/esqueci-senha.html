@@ -11,18 +11,26 @@
 <body>
 
 <div class="caixa">
-        <img src="{% static 'img/logoprisma2.png' %}" width="100px">
-        <h1>Prisma</h1>
-        <p>Ambiente de oportunidades online</p>
-        <form>
+  <img src="{% static 'img/logoprisma2.png' %}" width="100px">
+  <h1>Prisma</h1>
+  <p>Ambiente de oportunidades online</p>
 
-          <label for="exampleFormControlInput1" class="rotulo">Insira seu email</label>
-  
-          <div class="form-group">
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email ">
-          </div>
-        </form>
-    <a href="{% url 'login' %}" class="btn btn-outline-primary">Enviar</a>
+  <form method="post">
+    {% csrf_token %}
+
+    <label for="email" class="rotulo">Insira seu email</label>
+
+    <div class="form-group">
+      <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+    </div>
+
+    {% if mensagem %}
+      <p>{{ mensagem }}</p>
+    {% endif %}
+
+    <button type="submit" class="btn btn-outline-primary">Enviar</button>
+  </form>
 </div>
+
 </body>
 </html>
