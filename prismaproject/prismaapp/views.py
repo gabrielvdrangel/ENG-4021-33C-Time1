@@ -14,7 +14,7 @@ def login_user(request):
 
         if user is not None:
             login(request, user)
-            return redirect("homepage_org" if user.matricula is None else "homepage")
+            return redirect("homepage")
         return render(request, "tela_login.html", {"erro": "E-mail ou senha inválidos."})
     return render(request, "tela_login.html")
 
@@ -53,12 +53,6 @@ def perfil(request):
 def homepage(request):
     oportunidades = Oportunidade.objects.select_related("usuario")
     return render(request, "tela_homepage.html", context={"oportunidades": oportunidades})
-
-
-@login_required
-def homepage_org(request):
-    oportunidades = Oportunidade.objects.all()
-    return render(request, "tela_homepage-org.html", context={"oportunidades": oportunidades})
 
 
 @login_required
@@ -178,5 +172,5 @@ def add_publicacao(request):
             limite_inscricao=request.POST["limite_inscricao"],
             imagem_url=request.POST.get("imagem_url") or None,
         )
-        return redirect("homepage_org")
+        return redirect("homepage")
     return render(request, "tela_add-publicacao.html")
