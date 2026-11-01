@@ -173,7 +173,7 @@ def add_publicacao(request):
         Oportunidade.objects.create(
             usuario=request.user,
             nome=request.POST["Nome"],
-            tipo=request.POST["Tipo"],
+            tipo=request.POST["tipo"],
             descricao=request.POST["descricao"],
             limite_inscricao=request.POST["limite_inscricao"],
             imagem_url=request.POST.get("imagem_url") or None,

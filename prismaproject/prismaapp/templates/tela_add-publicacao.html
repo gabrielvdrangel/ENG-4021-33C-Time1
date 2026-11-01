@@ -45,8 +45,14 @@
                maxlength="100" placeholder="Nome da oportunidade" required>
 
         <label for="tipo">Tipo</label>
-        <input type="text" id="tipo" name="Tipo" class="form-control"
-               maxlength="100" placeholder="Ex.: Estágio, Projeto, Evento" required>
+        <select id="tipo" name="tipo" class="form-control" required>
+          <option value="">Selecione o tipo</option>
+          <option value="evento">Evento</option>
+          <option value="monitoria">Monitoria</option>
+          <option value="iniciacao_cientifica">Iniciação científica</option>
+          <option value="estagio">Estágio</option>
+          <option value="outro">Outro</option>
+        </select>
 
         <label for="descricao">Descrição</label>
         <textarea id="descricao" name="descricao" class="form-control"
