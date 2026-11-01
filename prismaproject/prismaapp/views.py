@@ -121,6 +121,8 @@ def esqueci_senha(request):
             mensagem = "Conta inexistente."
     return render(request, "esqueci-senha.html", {"mensagem": mensagem})
 
+def redefinir_email(request):
+    return render(request, "tela_redefinir_email.html")
 
 @login_required
 def editar_perfil(request):

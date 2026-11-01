@@ -27,7 +27,7 @@
     {% if mensagem %}
       <p>{{ mensagem }}</p>
     {% endif %}
-
+    <a href="{% url 'redefinir_email' %}" class="btn btn-link">Redefinir Email</a><br>
     <button type="submit" class="btn btn-outline-primary">Enviar</button>
   </form>
 </div>
