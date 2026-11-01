@@ -7,6 +7,7 @@ class Usuario(AbstractUser):
     matricula = models.IntegerField(unique=True, null=True, blank=True)
     curso = models.CharField(max_length=100, null=True, blank=True)
     periodo = models.IntegerField(null=True, blank=True)
+    seguindo = models.ManyToManyField("self", symmetrical=False, related_name="seguidores", blank=True)
     imagem_url = models.URLField(max_length=500, null=True, blank=True)
 
 class Oportunidade(models.Model):
