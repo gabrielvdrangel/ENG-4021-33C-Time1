@@ -45,6 +45,15 @@
             <i class="bi bi-search"></i>
             </button>
           </div>
+        <form method="get" class="d-flex">
+          <select name="filtrado" class="form-select form-select-sm" onchange="this.form.submit()">
+            <option value="">Todos</option>
+            <option value="evento" {% if request.GET.filtrado == "evento" %}selected{% endif %}>Evento</option>
+            <option value="monitoria" {% if request.GET.filtrado == "monitoria" %}selected{% endif %}>Monitoria</option>
+            <option value="iniciacao_cientifica" {% if request.GET.filtrado == "iniciacao_cientifica" %}selected{% endif %}>Iniciação científica</option>
+            <option value="estagio" {% if request.GET.filtrado == "estagio" %}selected{% endif %}>Estágio</option>
+          </select>
+        </form>
         {% if user.matricula is None %}
             <a href="{% url 'add_publicacao' %}" class="btn btn-info">Adicionar</a>
         {% endif %}
@@ -56,30 +65,31 @@
     <div class="feed">
 
       {% for post in oportunidades %}
-      <div class="card">
+        {% if not request.GET.filtrado or post.tipo == request.GET.filtrado %}
+        <div class="card">
 
-        <div class="card-header d-flex align-items-center bg-white">
-            {% if post.usuario.imagem_url %}<img src="{{ post.usuario.imagem_url }}" class="avatar me-2"/>{% endif %}
+          <div class="card-header d-flex align-items-center bg-white">
+              {% if post.usuario.imagem_url %}<img src="{{ post.usuario.imagem_url }}" class="avatar me-2"/>{% else %}<img src="https://previews.123rf.com/images/hugok1000/hugok10001905/hugok1000190500198/123291745-default-profile-avatar-illustration-in-blue-and-white-no-person.jpg" class="avatar me-2"/>{% endif %}
 
-            <div>
-              <a href="{% url 'tela_perfil_org' %}"><strong>{{ post.nome }}</strong></a><br/>
-              <small>{{ post.data_publicacao }}</small>
+              <div>
+                <a href="{% url 'tela_perfil_org' %}"><strong>{{ post.nome }}</strong></a><br/>
+                <small>{{ post.data_publicacao }}</small>
+              </div>
             </div>
-          </div>
 
-          {% if post.imagem_url %}<img src="{{ post.imagem_url }}" class="card-img-top"/>{% endif %}
+            {% if post.imagem_url %}<img src="{{ post.imagem_url }}" class="card-img-top"/>{% endif %}
 
-          <div class="card-body">
-            <p class="card-text">{{ post.descricao }}<br><br> finaliza em {{ post.limite_inscricao }}</p>
-          </div>
+            <div class="card-body">
+              <p class="card-text">{{ post.descricao }}<br><br> finaliza em {{ post.limite_inscricao }}</p>
+            </div>
 
-          <div class="card-footer bg-white">
-            <button class="btn btn-outline-primary"><i class="bi bi-heart-fill"></i></button>
-            <button class="btn btn-outline-primary"><i class="bi bi-chat-right-fill"></i></button>
-            <button class="btn btn-outline-primary"><i class="bi bi-bookmark-fill"></i></button>
-          </div>
-      </div>
-      
+            <div class="card-footer bg-white">
+              <button class="btn btn-outline-primary"><i class="bi bi-heart-fill"></i></button>
+              <button class="btn btn-outline-primary"><i class="bi bi-chat-right-fill"></i></button>
+              <button class="btn btn-outline-primary"><i class="bi bi-bookmark-fill"></i></button>
+            </div>
+        </div>
+        {% endif %}
       {% endfor %}
 
     </div>
