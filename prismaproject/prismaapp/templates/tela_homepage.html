@@ -45,7 +45,9 @@
             <i class="bi bi-search"></i>
             </button>
           </div>
-
+        {% if user.matricula is None %}
+            <a href="{% url 'add_publicacao' %}" class="btn btn-info">Adicionar</a>
+        {% endif %}
         </div>
         </div>
 
@@ -87,4 +89,3 @@
 
   </body>
 </html>
-
