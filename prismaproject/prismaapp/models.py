@@ -8,6 +8,7 @@ class Usuario(AbstractUser):
     curso = models.CharField(max_length=100, null=True, blank=True)
     periodo = models.IntegerField(null=True, blank=True)
     seguindo = models.ManyToManyField("self", symmetrical=False, related_name="seguidores", blank=True)
+    salvos = models.ManyToManyField( "Oportunidade", related_name="salvo_por",blank=True)
     imagem_url = models.URLField(max_length=500, null=True, blank=True)
 
 class Oportunidade(models.Model):
@@ -16,6 +17,7 @@ class Oportunidade(models.Model):
         on_delete=models.CASCADE,
         related_name="oportunidades",
     )
+    curtidas = models.IntegerField(default=0)
     nome = models.CharField(max_length=100)
     tipo = models.CharField(max_length=100)
     descricao = models.TextField()
