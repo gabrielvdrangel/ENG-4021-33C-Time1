@@ -40,5 +40,6 @@ urlpatterns = [
     path('add-publicacao/', add_publicacao, name='add_publicacao'),
     path("login/", views.login_user, name="login"),
     path('logout/', logout_user, name='logout'),
+    path("redefinir-email/", views.redefinir_email, name="redefinir_email"),
 ]
 
