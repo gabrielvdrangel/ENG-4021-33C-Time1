@@ -16,7 +16,14 @@ class Oportunidade(models.Model):
         related_name="oportunidades",
     )
     nome = models.CharField(max_length=100)
-    tipo = models.CharField(max_length=100)
+    TIPO_CHOICES = [
+        ("evento", "Evento"),
+        ("monitoria", "Monitoria"),
+        ("iniciacao_cientifica", "Iniciação científica"),
+        ("estagio", "Estágio"),
+        ("outro", "Outro"),
+    ]
+    tipo = models.CharField(max_length=100, choices=TIPO_CHOICES)
     descricao = models.TextField()
     limite_inscricao = models.DateTimeField()
     data_publicacao = models.DateTimeField(auto_now_add=True)
