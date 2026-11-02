@@ -102,9 +102,10 @@ def cadastro_organizacao(request):
 
 
 @login_required
-def tela_perfil_org(request):
-    oportunidades=Oportunidade.objects.all()
-    return render(request, 'tela_perfil_org.html',context={"oportunidades": oportunidades})
+def tela_perfil_org(request, username):
+    org = Usuario.objects.filter(username=username).first()
+    oportunidades=Oportunidade.objects.filter(usuario=org).all()
+    return render(request, 'tela_perfil_org.html',context={"org": org, "oportunidades": oportunidades})
     
 def esqueci_senha(request):
     mensagem = None
