@@ -93,11 +93,11 @@ def cadastro_organizacao(request):
 
         if not nome or not email or not senha:
             erro = "Todos os campos são obrigatórios."
-        elif Usuario.objects.filter(email=email).exists():
-            erro = "Este email já está em uso."
+        elif Usuario.objects.filter(email=email).exists() or Usuario.objects.filter(username=nome).exists():
+            erro = "Este email ou nome de usuário já está em uso."
         else:
             Usuario.objects.create_user(
-                username=email,
+                username=nome,
                 email=email,
                 password=senha,
                 first_name=nome,
@@ -122,7 +122,25 @@ def esqueci_senha(request):
     return render(request, "esqueci-senha.html", {"mensagem": mensagem})
 
 def redefinir_email(request):
-    return render(request, "tela_redefinir_email.html")
+    mensagem = None
+
+    if request.method == "POST":
+        username = request.POST.get("username", "").strip()
+        novo_email = request.POST.get("novo_email", "").strip()
+        senha = request.POST.get("senha", "")
+
+        user = authenticate(request, username=username, password=senha)
+
+        if user is None:
+            mensagem = "Usuário ou senha inválidos."
+        elif Usuario.objects.filter(email__iexact=novo_email).exists():
+            mensagem = "Este email já está em uso."
+        else:
+            user.email = novo_email
+            user.save()
+            mensagem = "Email atualizado com sucesso."
+
+    return render(request, "tela_redefinir_email.html", {"mensagem": mensagem})
 
 @login_required
 def editar_perfil(request):
@@ -156,7 +174,7 @@ def cadastro_aluno(request):
             return render(request, "cadastro-aluno.html", {"erro": "Email já cadastrado."})
 
         Usuario.objects.create_user(
-            username=matricula,
+            username=nome,
             password=senha,
             email=email,
             first_name=nome,

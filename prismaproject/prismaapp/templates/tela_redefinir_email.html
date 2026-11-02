@@ -15,12 +15,31 @@
   <h1>Prisma</h1>
   <p>Ambiente de oportunidades online</p>
 
-  <form method="post">
+   <form method="post">
     {% csrf_token %}
 
-    
+    <label for="username" class="rotulo">Usuário</label>
+    <div class="form-group">
+      <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+    </div>
+
+    <label for="novo_email" class="rotulo">Novo email</label>
+    <div class="form-group">
+      <input type="email" class="form-control" id="novo_email" name="novo_email" placeholder="Novo email" required>
+    </div>
+
+    <label for="senha" class="rotulo">Senha</label>
+    <div class="form-group">
+      <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required>
+    </div>
+
+    {% if mensagem %}
+      <p>{{ mensagem }}</p>
+    {% endif %}
+
     <button type="submit" class="btn btn-outline-primary">Atualizar email</button>
   </form>
+</div>
 
 </body>
 </html>
