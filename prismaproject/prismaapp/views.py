@@ -140,10 +140,10 @@ def redefinir_email(request):
 def editar_perfil(request):
     user = request.user
     if request.method == "POST":
-        user.first_name = request.POST["nome"]
-        user.curso = request.POST["curso"] or None
-        user.periodo = request.POST["periodo"] or None
-        user.imagem_url = request.POST["imagem_url"] or None
+        user.first_name = request.POST.get("nome", user.first_name)
+        user.curso = request.POST.get("curso") or None
+        user.periodo = request.POST.get("periodo") or None
+        user.imagem_url = request.POST.get("imagem_url") or None
         user.save()
         return redirect("perfil")
     return render(request, "editar-perfil.html", {"usuario": user})
@@ -186,7 +186,6 @@ def add_publicacao(request):
     if request.method == "POST":
         Oportunidade.objects.create(
             usuario=request.user,
-            nome=request.POST["Nome"],
             tipo=request.POST["tipo"],
             descricao=request.POST["descricao"],
             limite_inscricao=request.POST["limite_inscricao"],

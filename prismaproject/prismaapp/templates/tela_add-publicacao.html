@@ -37,12 +37,8 @@
 
         <div class="card-pub-topo">
           <h4>Adicionar Oportunidade</h4>
-          <small>Publicando como <strong>Rio Botz</strong></small>
+          <small>Publicando como <strong>{{ user.first_name }}</strong></small>
         </div>
-
-        <label for="nome">Nome</label>
-        <input type="text" id="nome" name="Nome" class="form-control"
-               maxlength="100" placeholder="Nome da oportunidade" required>
 
         <label for="tipo">Tipo</label>
         <select id="tipo" name="tipo" class="form-control" required>

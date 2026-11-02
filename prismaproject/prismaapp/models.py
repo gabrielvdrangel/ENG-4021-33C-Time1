@@ -18,7 +18,6 @@ class Oportunidade(models.Model):
         related_name="oportunidades",
     )
     curtidas = models.IntegerField(default=0)
-    nome = models.CharField(max_length=100)
     TIPO_CHOICES = [
         ("evento", "Evento"),
         ("monitoria", "Monitoria"),

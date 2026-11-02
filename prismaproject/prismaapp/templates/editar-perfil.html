@@ -33,7 +33,7 @@
                 {% if usuario.curso is not None and usuario.periodo is not None %}
                     <div class="campo">
                         <label>Curso</label>
-                        <input type="text" name="curso" value="{{ usuario.curso }}">
+                        <input type="text" name="curso" value="{{ usuario.curso|default:'' }}">
                     </div>
                 
 
