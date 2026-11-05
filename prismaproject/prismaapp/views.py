@@ -203,4 +203,4 @@ def tela_feedbacks(request):
         {"autor": "João Lima", "data": "28/10/2026",
          "comentario": "Ótima organização, só faltou mais tempo."},
     ]
-    return render(request, "tela_feedbacks.html", {"feedbacks": feedbacks})
+    return render(request, "tela_feedback.html", {"feedbacks": feedbacks})
