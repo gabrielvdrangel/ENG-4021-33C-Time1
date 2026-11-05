@@ -34,23 +34,23 @@
     <div class="caixa">
         <div class="conteudo">
             <section class="avatar">
-                <div class="team-logo">Pegasus</div>
-                <h1>Pegaus FSAE</h1>
-                <p>Equipe de competição · Automobilística</p>
+                <div class="team-logo">
+                {% if org.imagem_url %}
+                <img src="{{ org.imagem_url }}" alt="{{ org.first_name }}">
+                {% else %}
+                <img src="https://previews.123rf.com/images/hugok1000/hugok10001905/hugok1000190500198/123291745-default-profile-avatar-illustration-in-blue-and-white-no-person.jpg" alt="{{ org.first_name }}">{% endif %}</div>
+                <h1>{{ org.first_name }}</h1>
                 <button type="button" class="btn btn-danger">Seguindo</button>
             </section>
  
     <div class="filtro">
-      <button type="button" class="btn btn-primary">Publicações</button>
-      <button type="button" class="btn btn-primary">Vagas e PS</button>
+
       <button type="button" class="btn btn-primary">Feedbacks</button>
     </div>
  
     <div class="feed">
       {% for post in oportunidades %}
-        {% if post.nome == "Pegasus FSAE" %}
           <div class="card">
-            <p class="card-title">{{ post.nome }}</p>
             <img src="{{ post.imagem_url }}" class="card-img-top"/>
         <div class="card-body">
             <p class="card-text">{{ post.descricao }}</p>
@@ -62,7 +62,11 @@
               <button class="btn btn-outline-primary"><i class="bi bi-bookmark-fill"></i></button>
             </div>
           </div>
-        {% endif %}
+      {% empty %}
+        <p>Nenhuma publicação ainda.</p>
       {% endfor %}
+    </div>
+        </div>
+    </div>
   </body>
 </html>
