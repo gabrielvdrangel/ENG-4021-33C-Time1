@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
+from django.shortcuts import render
 
 from .models import Oportunidade, Usuario
 
@@ -194,3 +195,12 @@ def add_publicacao(request):
         )
         return redirect("homepage")
     return render(request, "tela_add-publicacao.html")
+
+def tela_feedbacks(request):
+    feedbacks = [
+        {"autor": "Maria Souza", "data": "02/11/2026",
+         "comentario": "Experiência incrível, aprendi muito!"},
+        {"autor": "João Lima", "data": "28/10/2026",
+         "comentario": "Ótima organização, só faltou mais tempo."},
+    ]
+    return render(request, "tela_feedbacks.html", {"feedbacks": feedbacks})
