@@ -22,8 +22,10 @@
                 <p class="curso">Organização</p>
             {% endif %}
 
+            <a href="{% url 'perfil_aluno' %}" class="botao-editar">Ver perfil</a>
             <a href="{% url 'editar_perfil' %}" class="botao-editar">Editar perfil</a>
         </div>
+
 
         <div class="grade-cards">
     <a href="{% url 'salvos' %}" class="card">
