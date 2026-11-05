@@ -41,5 +41,6 @@ urlpatterns = [
     path("login/", views.login_user, name="login"),
     path('logout/', logout_user, name='logout'),
     path("redefinir-email/", views.redefinir_email, name="redefinir_email"),
+    path("feedbacks/", views.tela_feedbacks, name="tela_feedbacks"),
 ]
 
