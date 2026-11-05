@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from django.shortcuts import render
+from django.core.mail import send_mail
 
 from .models import Oportunidade, Usuario
 
@@ -110,8 +111,17 @@ def tela_perfil_org(request, username):
     
 def esqueci_senha(request):
     mensagem = None
+    
     if request.method == "POST":
-        if Usuario.objects.filter(email=request.POST["email"]).exists():
+        email = request.POST["email"]
+
+        if Usuario.objects.filter(email=email).exists():
+            send_mail(
+                subject="Prisma - Redefinição de senha",
+                message="Olá!, Recebemos um pedido para redefinir a senha da sua conta no Prisma.",
+                from_email=None,
+                recipient_list=[email],
+            )
             mensagem = "Foi enviado um email para a conta."
         else:
             mensagem = "Conta inexistente."
