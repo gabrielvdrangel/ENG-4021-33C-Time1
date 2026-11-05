@@ -207,14 +207,14 @@ def add_publicacao(request):
     return render(request, "tela_add-publicacao.html")
 
 
-def tela_feedbacks(request):
+def tela_feedbacks(request,username):
     feedbacks = [
         {"autor": "Maria Souza", "data": "02/11/2026",
          "comentario": "Experiência incrível, aprendi muito!"},
         {"autor": "João Lima", "data": "28/10/2026",
          "comentario": "Ótima organização, só faltou mais tempo."},
     ]
-    return render(request, "tela_feedback.html", {"feedbacks": feedbacks})
+    return render(request, "tela_feedback.html", {"feedbacks": feedbacks,"username": username})
 
 
 
