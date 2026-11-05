@@ -206,6 +206,7 @@ def add_publicacao(request):
         return redirect("homepage")
     return render(request, "tela_add-publicacao.html")
 
+
 def tela_feedbacks(request):
     feedbacks = [
         {"autor": "Maria Souza", "data": "02/11/2026",
@@ -214,3 +215,8 @@ def tela_feedbacks(request):
          "comentario": "Ótima organização, só faltou mais tempo."},
     ]
     return render(request, "tela_feedback.html", {"feedbacks": feedbacks})
+
+
+
+def perfil_aluno(request):
+    return render(request, "perfil_aluno.html", {"aluno": request.user})

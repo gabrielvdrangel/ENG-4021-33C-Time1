@@ -42,5 +42,6 @@ urlpatterns = [
     path('logout/', logout_user, name='logout'),
     path("redefinir-email/", views.redefinir_email, name="redefinir_email"),
     path("feedbacks/", views.tela_feedbacks, name="tela_feedbacks"),
+    path("perfil-aluno/", views.perfil_aluno, name="perfil_aluno"),
 ]
 
