@@ -11,3 +11,13 @@ h1
 .data { color: #888; font-size: 14px; }
 .estrelas { color: #f5a623; font-size: 20px; margin: 8px 0; }
 .vazio { text-align: center; color: #888; }
+
+.voltar{
+    display: block;
+    max-width: 720px;
+    box-sizing: border-box;
+    padding: 0 16px;
+    margin: 24px auto 0;
+    font-size: 14px;
+    font-weight: 500;
+}

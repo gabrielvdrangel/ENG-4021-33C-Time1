@@ -8,6 +8,9 @@
   <link rel="stylesheet" href="{% static 'css/feedbacks.css' %}">
 </head>
 <body>
+
+  <a href="{% url 'homepage' %}" class="voltar">Voltar</a>
+  
   <main class="container">
     <h1>Feedbacks da oportunidade</h1>
     <p class="subtitulo">{{ feedbacks|length }} comentário(s) recebido(s)</p>
