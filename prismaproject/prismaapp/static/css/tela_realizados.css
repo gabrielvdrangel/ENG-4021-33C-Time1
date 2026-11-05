@@ -8,7 +8,9 @@
   margin: 0;
 }
 .caixa{
-    width: 550px;
+    width: 100%;
+    max-width: 550px;
+    box-sizing: border-box;
     min-height: 100px;
     display: flex;
     flex-direction: column;
@@ -131,7 +133,43 @@ body{
 
 #subtitulo{
     display: flex;
-    gap: 24px;
+    flex-wrap: wrap;
+    gap: 12px 24px;
     margin-bottom: 20px;
     margin-top: 20px;
+}
+
+
+/*=======================================Responsividade da navbar=======================================*/
+
+.navbar img[width="200px"],
+.navbar img[width="100px"]{
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px){
+    .navbar{
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 12px;
+    }
+
+    nav{
+        text-align: center;
+    }
+
+    nav ul{
+        margin: 0;
+        padding: 0;
+    }
+
+    nav ul li{
+        margin: 0 8px;
+    }
+
+    .navbar .logo{
+        justify-content: center;
+    }
 }

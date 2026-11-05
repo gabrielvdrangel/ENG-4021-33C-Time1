@@ -124,6 +124,11 @@ a{
 
 /*=======================================Responsividade=======================================*/
 
+.navbar img[width="200px"]{
+    max-width: 100%;
+    height: auto;
+}
+
 @media (max-width: 768px){
     .navbar{
         flex-direction: column;

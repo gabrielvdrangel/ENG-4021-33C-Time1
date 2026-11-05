@@ -111,3 +111,49 @@ a{
   gap: 18px;
   margin-top: 12px;
 }
+
+/*=======================================Responsividade da navbar=======================================*/
+
+.navbar img[width="200px"],
+.navbar img[width="100px"]{
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px){
+    .navbar{
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 12px;
+    }
+
+    nav{
+        text-align: center;
+    }
+
+    nav ul{
+        margin: 0;
+        padding: 0;
+    }
+
+    nav ul li{
+        margin: 0 8px;
+    }
+
+    .caixa{
+        max-width: calc(100% - 20px);
+    }
+
+    .conteudo{
+        padding: 20px 12px;
+    }
+
+    .filtro{
+        flex-wrap: wrap;
+    }
+
+    .caixa{
+        min-height: 0;
+    }
+}

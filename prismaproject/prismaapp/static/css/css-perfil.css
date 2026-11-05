@@ -14,15 +14,6 @@ a {
     text-decoration: none;
 }
 
-.menu-lateral {
-    width: 250px;
-    height: 100vh;
-    background-color: white;
-    border-right: 1px solid #e5e5e5;
-    padding: 25px 16px;
-    position: fixed;
-}
-
 .logo {
     margin-bottom: 40px;
     margin-left: 10px;
@@ -58,19 +49,6 @@ a {
 .ativo {
     background-color: #fbe3d6;
     color: #c4572e;
-}
-
-.usuario-rodape {
-    position: absolute;
-    bottom: 60px;
-    left: 16px;
-    right: 16px;
-    border: 1px solid #e5e5e5;
-    border-radius: 10px;
-    padding: 12px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
 }
 
 .bolinha-pequena {

@@ -9,7 +9,9 @@ body{
 
 .caixa {
     background-color: #fcd8a883;
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
     padding: 120px 40px;
     border-radius: 20px;
     text-align: center;
@@ -37,4 +39,10 @@ a {
     text-decoration: none;
     margin-bottom: 14px;
 }
+
+@media (max-width: 600px) {
+    .caixa { padding: 40px 20px; }
+    p { margin-bottom: 24px; }
+}
+
 
