@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.shortcuts import redirect, render
 from .models import usuario, oportunidade
 
+
 def prazos(request):
     return render(request, 'tela_prazos.html')
 
@@ -144,3 +145,5 @@ def adicionar_oportunidade(request):
             limite_inscricao=request.POST["limite_inscricao"],
         )
     return redirect("perfil")
+def feedbacks_perfil(request):
+    return render(request, 'feedbacks_perfil.html')
