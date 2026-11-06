@@ -204,13 +204,14 @@ def add_publicacao(request):
             limite_inscricao=request.POST["limite_inscricao"],
             imagem_url=request.POST.get("imagem_url") or None,
         )
-    return redirect("perfil")
-def feedbacks_perfil(request):
-    return render(request, 'feedbacks_perfil.html')
         return redirect("homepage")
     return render(request, "tela_add-publicacao.html")
 
+@login_required
+def feedbacks_perfil(request):
+    return render(request, 'feedbacks_perfil.html')
 
+@login_required
 def tela_feedbacks(request,username):
     feedbacks = [
         {"autor": "Maria Souza", "data": "02/11/2026",
@@ -222,5 +223,6 @@ def tela_feedbacks(request,username):
 
 
 
+@login_required
 def perfil_aluno(request):
     return render(request, "perfil_aluno.html", {"aluno": request.user})
