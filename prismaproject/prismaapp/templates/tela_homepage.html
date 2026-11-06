@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Prisma</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
@@ -43,7 +45,18 @@
             <i class="bi bi-search"></i>
             </button>
           </div>
-
+        <form method="get" class="d-flex">
+          <select name="filtrado" class="form-select form-select-sm" onchange="this.form.submit()">
+            <option value="">Todos</option>
+            <option value="evento" {% if request.GET.filtrado == "evento" %}selected{% endif %}>Evento</option>
+            <option value="monitoria" {% if request.GET.filtrado == "monitoria" %}selected{% endif %}>Monitoria</option>
+            <option value="iniciacao_cientifica" {% if request.GET.filtrado == "iniciacao_cientifica" %}selected{% endif %}>Iniciação científica</option>
+            <option value="estagio" {% if request.GET.filtrado == "estagio" %}selected{% endif %}>Estágio</option>
+          </select>
+        </form>
+        {% if user.matricula is None %}
+            <a href="{% url 'add_publicacao' %}" class="btn btn-info">Adicionar</a>
+        {% endif %}
         </div>
         </div>
 
@@ -52,29 +65,31 @@
     <div class="feed">
 
       {% for post in oportunidades %}
-      <div class="card">
+        {% if not request.GET.filtrado or post.tipo == request.GET.filtrado %}
+        <div class="card">
 
-        <div class="card-header d-flex align-items-center bg-white">
-            <img src="{{ post.image_url }}"  class="avatar me-2"/>
-            <div>
-              <a><strong>{{ post.Nome }}</strong></a><br/>
-              <small>{{ post.data_publicacao }}</small>
+          <div class="card-header d-flex align-items-center bg-white">
+              {% if post.usuario.imagem_url %}<img src="{{ post.usuario.imagem_url }}" class="avatar me-2"/>{% else %}<img src="https://previews.123rf.com/images/hugok1000/hugok10001905/hugok1000190500198/123291745-default-profile-avatar-illustration-in-blue-and-white-no-person.jpg" class="avatar me-2"/>{% endif %}
+
+              <div>
+                <a href="{% url 'tela_perfil_org' post.usuario.username %}"><strong>{{ post.usuario.first_name }}</strong></a><br/>
+                <small>{{ post.data_publicacao }}</small>
+              </div>
             </div>
-          </div>
 
-          <img src="{{ post.image_url }}" class="card-img-top"/>
+            {% if post.imagem_url %}<img src="{{ post.imagem_url }}" class="card-img-top"/>{% endif %}
 
-          <div class="card-body">
-            <p class="card-text">{{ post.descricao }}<br><br> finaliza em {{ post.limite_inscricao }}</p>
-          </div>
+            <div class="card-body">
+              <p class="card-text">{{ post.descricao }}<br><br> finaliza em {{ post.limite_inscricao }}</p>
+            </div>
 
-          <div class="card-footer bg-white">
-            <button class="btn btn-outline-primary"><i class="bi bi-heart-fill"></i></button>
-            <button class="btn btn-outline-primary"><i class="bi bi-chat-right-fill"></i></button>
-            <button class="btn btn-outline-primary"><i class="bi bi-bookmark-fill"></i></button>
-          </div>
-      </div>
-      
+            <div class="card-footer bg-white">
+              <button class="btn btn-outline-primary"><i class="bi bi-heart-fill"></i></button>
+              <button class="btn btn-outline-primary"><i class="bi bi-chat-right-fill"></i></button>
+              <button class="btn btn-outline-primary"><i class="bi bi-bookmark-fill"></i></button>
+            </div>
+        </div>
+        {% endif %}
       {% endfor %}
 
     </div>
@@ -84,4 +99,3 @@
 
   </body>
 </html>
-

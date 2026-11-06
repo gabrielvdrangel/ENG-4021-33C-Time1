@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Feedbacks</title>
+  <link rel="stylesheet" href="{% static 'css/feedbacks.css' %}">
+</head>
+<body>
+
+  <a href="{% url 'tela_perfil_org' username=username %}" class="voltar">Voltar</a>
+  
+  <main class="container">
+    <h1>Feedbacks da oportunidade</h1>
+    <p class="subtitulo">{{ feedbacks|length }} comentário(s) recebido(s)</p>
+
+    {% for f in feedbacks %}
+      <article class="card">
+        <header class="card-topo">
+          <strong>{{ f.autor }}</strong>
+          <span class="data">{{ f.data }}</span>
+        </header>
+        
+        <p>{{ f.comentario }}</p>
+      </article>
+    {% empty %}
+      <p class="vazio">Ainda não há feedbacks.</p>
+    {% endfor %}
+  </main>
+</body>
+</html>

@@ -93,3 +93,42 @@ a{
     object-fit: cover;
     flex-shrink: 0;
 }
+
+/*=======================================Responsividade da navbar=======================================*/
+
+.navbar img[width="200px"],
+.navbar img[width="100px"]{
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px){
+    .navbar{
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 12px;
+    }
+
+    nav{
+        text-align: center;
+    }
+
+    nav ul{
+        margin: 0;
+        padding: 0;
+    }
+
+    nav ul li{
+        margin: 0 8px;
+    }
+
+    .topo{
+        padding: 15px 10px 0;
+    }
+
+    .blocoprincipal{
+        margin: 15px auto;
+        padding: 0 10px;
+    }
+}

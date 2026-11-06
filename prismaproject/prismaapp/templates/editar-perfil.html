@@ -19,7 +19,7 @@
             </div>
 
             <div class="centro">
-                <img src="{{ usuario.imagem_url }}"  class="avatar"/><br>
+                <img src="{% if usuario.imagem_url %}{{ usuario.imagem_url }}{% else %}{% static 'img/avatar.png' %}{% endif %}" class="avatar"/><br>
                 <a href="#" class="editar-foto">Editar foto de perfil &#9998;</a>
             </div>
 
@@ -30,22 +30,19 @@
                     <input type="text" name="nome" value="{{ usuario.first_name }}">
                 </div>
 
-                <div class="campo">
-                    <label class="label-laranja">Data de nascimento</label>
-                    <input type="date" value="2004-03-14">
-                </div>
+                {% if usuario.curso is not None and usuario.periodo is not None %}
+                    <div class="campo">
+                        <label>Curso</label>
+                        <input type="text" name="curso" value="{{ usuario.curso|default:'' }}">
+                    </div>
+                
 
-                <div class="campo">
-                    <label>Curso</label>
-                    <input type="text" name="curso" value="{{ usuario.curso }}">
-                </div>
-
-                <div class="campo">
-                    <label>Período</label>
-                    <input type="number" name="periodo" value="{{ usuario.periodo }}">
-                        
-                </div>
-                <div class="campo">
+                    <div class="campo">
+                        <label>Período</label>
+                        <input type="number" name="periodo" value="{{ usuario.periodo|default:'' }}">
+                    </div>
+                {% endif %}
+                 <div class="campo">
                     <label>URL da foto de perfil</label>
                     <input type="url" name="imagem_url" value="{{ usuario.imagem_url|default:'' }}">
                 </div>

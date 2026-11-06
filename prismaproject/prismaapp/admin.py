@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import usuario, oportunidade
+from django.contrib.auth.admin import UserAdmin
 
-admin.site.register(usuario)
-admin.site.register(oportunidade)
+from .models import Oportunidade, Usuario
+
+admin.site.register(Usuario, UserAdmin)
+admin.site.register(Oportunidade)

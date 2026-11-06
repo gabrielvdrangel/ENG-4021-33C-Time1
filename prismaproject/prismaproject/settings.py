@@ -127,4 +127,7 @@ MAILERS = {
     },
 }
 
+DEFAULT_FROM_EMAIL = "Prisma <prisma@gmail.com>"
+
 AUTH_USER_MODEL = "prismaapp.usuario"
+LOGIN_URL = "login"
