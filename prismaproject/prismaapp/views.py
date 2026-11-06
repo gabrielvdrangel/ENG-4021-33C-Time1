@@ -4,6 +4,7 @@ from django.shortcuts import redirect, render
 from django.shortcuts import render
 from django.core.mail import send_mail
 
+
 from .models import Oportunidade, Usuario
 
 
@@ -203,6 +204,9 @@ def add_publicacao(request):
             limite_inscricao=request.POST["limite_inscricao"],
             imagem_url=request.POST.get("imagem_url") or None,
         )
+    return redirect("perfil")
+def feedbacks_perfil(request):
+    return render(request, 'feedbacks_perfil.html')
         return redirect("homepage")
     return render(request, "tela_add-publicacao.html")
 

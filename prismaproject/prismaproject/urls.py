@@ -38,6 +38,7 @@ urlpatterns = [
     path('perfil/editar/', editar_perfil, name='editar_perfil'),
     path('cadastro-aluno/', cadastro_aluno, name='cadastro_aluno'),
     path('add-publicacao/', add_publicacao, name='add_publicacao'),
+    path('feedbacks-perfil/', views.feedbacks_perfil, name='feedbacks_perfil'),
     path("login/", views.login_user, name="login"),
     path('logout/', logout_user, name='logout'),
     path("redefinir-email/", views.redefinir_email, name="redefinir_email"),

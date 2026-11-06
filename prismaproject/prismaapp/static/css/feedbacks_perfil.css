@@ -1,0 +1,114 @@
+
+.feedbacks-container {
+    width: 100%;
+    margin-top: 30px;
+    font-family: Arial, sans-serif;
+}
+
+.feedbacks-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.feedbacks-header h2 {
+    font-size: 22px;
+    color: #263445;
+    margin: 0 0 7px;
+}
+
+.feedbacks-header p {
+    font-size: 14px;
+    color: #777;
+    margin: 0;
+}
+
+.feedbacks-count {
+    background-color: #eaf1f8;
+    color: #355879;
+    padding: 7px 13px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+.feedbacks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.feedback-card {
+    background-color: #fff;
+    border: 1px solid #e5e9ef;
+    border-radius: 12px;
+    padding: 20px;
+    transition: box-shadow 0.2s ease;
+}
+
+.feedback-card:hover {
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+}
+
+.feedback-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.feedback-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: #e4edf6;
+    color: #355879;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.feedback-author {
+    flex: 1;
+}
+
+.feedback-author h3 {
+    color: #263445;
+    font-size: 15px;
+    margin: 0 0 4px;
+}
+
+.feedback-author span {
+    color: #888;
+    font-size: 12px;
+}
+
+.feedback-date {
+    color: #999;
+    font-size: 12px;
+}
+
+.feedback-text {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .feedbacks-header {
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .feedbacks-card {
+        padding: 15px;
+    }
+
+    .feedback-date {
+        font-size: 11px;
+    }
+}
