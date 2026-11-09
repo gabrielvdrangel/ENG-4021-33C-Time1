@@ -231,8 +231,9 @@ def tela_feedbacks(request,username):
 
 
 @login_required
-def perfil_aluno(request):
-    return render(request, "perfil_aluno.html", {"aluno": request.user})
+def perfil_aluno(request, username):
+    aluno = Usuario.objects.filter(username=username).first()
+    return render(request, "perfil_aluno.html", {"aluno": aluno})
 
 @login_required
 def alternar_seguir(request, username):
