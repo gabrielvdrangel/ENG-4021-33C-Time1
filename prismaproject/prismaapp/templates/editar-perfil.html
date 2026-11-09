@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <form method="post" action="{% url 'editar_perfil' %}">
+    <form method="post" action="{% url 'editar_perfil' %}" enctype="multipart/form-data">
     {% csrf_token %}
 
         <div class="conteudo">
@@ -19,8 +19,7 @@
             </div>
 
             <div class="centro">
-                <img src="{% if usuario.imagem_url %}{{ usuario.imagem_url }}{% else %}{% static 'img/perfil.png' %}{% endif %}" class="avatar"/><br>
-                <a href="#" class="editar-foto">Editar foto de perfil &#9998;</a>
+                <img src="{% if usuario.imagem %}{{ usuario.imagem.url }}{% else %}{% static 'img/perfil.png' %}{% endif %}" class="avatar"/><br>
             </div>
 
             <div class="formulario">
@@ -43,8 +42,8 @@
                     </div>
                 {% endif %}
                  <div class="campo">
-                    <label>URL da foto de perfil</label>
-                    <input type="url" name="imagem_url" value="{{ usuario.imagem_url|default:'' }}">
+                    <label>Foto de perfil</label>
+                    <input type="file" name="imagem" accept="image/*">
                 </div>
             </div>
 

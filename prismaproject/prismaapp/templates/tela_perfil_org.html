@@ -35,8 +35,8 @@
         <div class="conteudo">
             <section class="avatar">
                 <div class="team-logo">
-                {% if org.imagem_url %}
-                <img src="{{ org.imagem_url }}" alt="{{ org.first_name }}">
+                {% if org.imagem %}
+                <img src="{{ org.imagem.url }}" alt="{{ org.first_name }}">
                 {% else %}
                 <img src="https://previews.123rf.com/images/hugok1000/hugok10001905/hugok1000190500198/123291745-default-profile-avatar-illustration-in-blue-and-white-no-person.jpg" alt="{{ org.first_name }}">{% endif %}</div>
                 <h1>{{ org.first_name }}</h1>
@@ -62,7 +62,7 @@
     <div class="feed">
       {% for post in oportunidades %}
           <div class="card">
-            <img src="{{ post.imagem_url }}" class="card-img-top"/>
+            {% if post.imagem %}<img src="{{ post.imagem.url }}" class="card-img-top"/>{% endif %}
         <div class="card-body">
             <p class="card-text">{{ post.descricao }}</p>
             </div>

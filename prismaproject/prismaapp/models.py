@@ -10,7 +10,7 @@ class Usuario(AbstractUser):
     periodo = models.IntegerField(null=True, blank=True)
     seguindo = models.ManyToManyField("self", symmetrical=False, related_name="seguidores", blank=True)
     salvos = models.ManyToManyField( "Oportunidade", related_name="salvo_por",blank=True)
-    imagem_url = models.URLField(max_length=500, null=True, blank=True)
+    imagem = models.ImageField(upload_to='usuarios/', max_length=500, null=True, blank=True)
 
 class Oportunidade(models.Model):
     code = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
@@ -31,5 +31,5 @@ class Oportunidade(models.Model):
     descricao = models.TextField()
     limite_inscricao = models.DateTimeField()
     data_publicacao = models.DateTimeField(auto_now_add=True)
-    imagem_url = models.URLField(max_length=500, null=True, blank=True)
+    imagem = models.ImageField(upload_to='oportunidades/', max_length=500, null=True, blank=True)
 

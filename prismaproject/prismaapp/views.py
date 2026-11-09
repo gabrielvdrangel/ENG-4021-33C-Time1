@@ -161,7 +161,9 @@ def editar_perfil(request):
         user.first_name = request.POST.get("nome", user.first_name)
         user.curso = request.POST.get("curso") or None
         user.periodo = request.POST.get("periodo") or None
-        user.imagem_url = request.POST.get("imagem_url") or None
+        imagem = request.FILES.get("imagem")
+        if imagem:
+            user.imagem = imagem
         user.save()
         return redirect("perfil")
     return render(request, "editar-perfil.html", {"usuario": user})
@@ -207,7 +209,7 @@ def add_publicacao(request):
             tipo=request.POST["tipo"],
             descricao=request.POST["descricao"],
             limite_inscricao=request.POST["limite_inscricao"],
-            imagem_url=request.POST.get("imagem_url") or None,
+            imagem=request.FILES.get("imagem") or None,
         )
         return redirect("homepage")
     return render(request, "tela_add-publicacao.html")
