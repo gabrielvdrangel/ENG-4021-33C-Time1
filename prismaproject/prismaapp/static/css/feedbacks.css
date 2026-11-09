@@ -1,18 +1,75 @@
-body 
-{ font-family: Arial, sans-serif; background: #f4f4f8; margin: 0; }
-.container { max-width: 720px; margin: 0 auto; padding: 24px 16px; }
+body {
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    background: var(--bege);
+    color: var(--preto);
+    margin: 0;
+}
 
-h1 
-{ margin-bottom: 4px; }
-.subtitulo { color: #666; margin-bottom: 24px; }
-.card { background: #fff; border-radius: 12px; padding: 16px;
-        margin-bottom: 16px; box-shadow: 0 2px 6px rgba(0,0,0,.08); }
-.card-topo { display: flex; justify-content: space-between; }
-.data { color: #888; font-size: 14px; }
-.estrelas { color: #f5a623; font-size: 20px; margin: 8px 0; }
-.vazio { text-align: center; color: #888; }
+.container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 24px 16px 40px;
+}
 
-.voltar{
+h1 {
+    margin-bottom: 4px;
+    color: var(--navy);
+    font-weight: 700;
+}
+
+.subtitulo {
+    color: var(--cinza-texto);
+    margin-bottom: 24px;
+}
+
+.card {
+    background: var(--branco);
+    border: 1px solid var(--cinza-claro);
+    border-top: 4px solid var(--navy);
+    border-radius: var(--raio);
+    padding: 16px 18px;
+    margin-bottom: 16px;
+    box-shadow: var(--sombra);
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(15, 42, 77, 0.14);
+}
+
+.card-topo {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.card-topo strong {
+    color: var(--navy);
+}
+
+.card p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.data {
+    color: var(--cinza);
+    font-size: 14px;
+}
+
+.estrelas {
+    color: var(--laranja);
+    font-size: 20px;
+    margin: 8px 0;
+}
+
+.vazio {
+    text-align: center;
+    color: var(--cinza-texto);
+}
+
+.voltar {
     display: block;
     max-width: 720px;
     box-sizing: border-box;
@@ -20,4 +77,10 @@ h1
     margin: 24px auto 0;
     font-size: 14px;
     font-weight: 500;
+    color: var(--navy);
+    text-decoration: none;
+}
+
+.voltar:hover {
+    color: var(--laranja);
 }

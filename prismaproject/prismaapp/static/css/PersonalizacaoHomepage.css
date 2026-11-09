@@ -1,81 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/*=======================================Paleta (mesma das telas de autenticação)=======================================*/
+:root{
+    --navy: #0F2A4D;
+    --navy-claro: #1A3F70;
+    --azul-suave: #EAF0F8;
+    --azul-borda: #D3DEEE;
+    --laranja: #C2592B;
+    --laranja-escuro: #A84A22;
+    --bege: #F5EFE6;
+    --cinza: #8A94A6;
+    --cinza-texto: #5B6B85;
+    --cinza-claro: #E4E1DB;
+    --branco: #FFFFFF;
+    --preto: #1B1B1F;
+}
+
 /*=======================================Caracteristicas padroes da pagina=======================================*/
 
 body{
-    background-color: #faebd7;
-    font-family: 'poppins', sans-serif;
+    background-color: var(--bege);
+    color: var(--preto);
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
 }
 
-/*=========================================ajuste dos botoes importados======================================*/
-
-.botoes{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 15px 20px;
-}
-
-
-/*==========================================Bloco principal da pagina========================================*/
-.feed{
-    max-width: 600px;
-    margin: 30px auto;
-}
-
-/*===========================================Ajuste do formato da foto de perfil=======================================*/
-.avatar{
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-}
-
-/*===========================================Ajuste do tamanho dos icones importados=======================================*/
 i{
     font-size: 15px;
 }
 
-/*===========================================Ajuste da barra de pesquisa importada=======================================*/
+/*=======================================Botões (sobrescrevem o Bootstrap)=======================================*/
 
-.busca{
-    max-width: 400px;
+.botoes .btn,
+.card .btn{
+    border-radius: 999px;
+    font-weight: 500;
+    letter-spacing: .2px;
+    box-shadow: 0 1px 2px rgba(15, 42, 77, 0.12);
+    transition: transform .15s ease, box-shadow .15s ease,
+                background-color .15s, color .15s, border-color .15s;
 }
 
-/*===========================================Bloco que incui os botoes e a barra de pesquisa=======================================*/
+.botoes .btn:hover,
+.card .btn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(15, 42, 77, 0.18);
+}
+
+.botoes .btn:active,
+.card .btn:active{
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(15, 42, 77, 0.12);
+}
+
+.botoes .btn:focus-visible,
+.card .btn:focus-visible{
+    box-shadow: 0 0 0 .2rem rgba(194, 89, 43, 0.3);
+}
+
+.btn-primary{
+    --bs-btn-bg: var(--laranja);
+    --bs-btn-border-color: var(--laranja);
+    --bs-btn-hover-bg: var(--laranja-escuro);
+    --bs-btn-hover-border-color: var(--laranja-escuro);
+    --bs-btn-active-bg: var(--laranja-escuro);
+    --bs-btn-active-border-color: var(--laranja-escuro);
+    --bs-btn-color: var(--branco);
+    --bs-btn-hover-color: var(--branco);
+    --bs-btn-active-color: var(--branco);
+}
+
+.btn-outline-primary{
+    --bs-btn-color: var(--laranja);
+    --bs-btn-border-color: var(--laranja);
+    --bs-btn-hover-bg: var(--laranja);
+    --bs-btn-hover-border-color: var(--laranja);
+    --bs-btn-hover-color: var(--branco);
+    --bs-btn-active-bg: var(--laranja-escuro);
+    --bs-btn-active-border-color: var(--laranja-escuro);
+    --bs-btn-active-color: var(--branco);
+}
+
+.btn-adicionar{
+    background-color: var(--navy);
+    border: 1px solid var(--navy);
+    color: var(--branco);
+    font-weight: 600;
+}
+
+.btn-adicionar:hover{
+    background-color: var(--navy-claro);
+    border-color: var(--navy-claro);
+    color: var(--branco);
+}
+
+/*=======================================Barra de filtros=======================================*/
+
 .filtro{
     display: flex;
-    justify-content: center;   
-    padding: 20px 20px;
+    justify-content: center;
+    padding: 20px;
 }
 
-/*==============================================================================*/
+.botoes{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 16px;
+}
+
+.botoes form{
+    margin: 0;
+}
+
+.botoes .btn{
+    padding: 7px 18px;
+}
+
+.form-select{
+    border-radius: 999px;
+    padding-left: 16px;
+    border-color: var(--cinza-claro);
+    background-color: var(--branco);
+    color: var(--navy);
+    box-shadow: 0 1px 2px rgba(15, 42, 77, 0.08);
+    cursor: pointer;
+}
+
+.form-select:focus{
+    border-color: var(--laranja);
+    box-shadow: 0 0 0 .2rem rgba(194, 89, 43, 0.2);
+}
+
+/*==========================================Feed========================================*/
+
+.feed{
+    max-width: 600px;
+    margin: 10px auto 40px;
+    padding: 0 10px;
+}
 
 .card{
-    margin: 10px;
+    margin: 0 0 22px;
+    background-color: var(--branco);
+    border: 1px solid var(--cinza-claro);
+    border-top: 4px solid var(--navy);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(15, 42, 77, 0.07);
+}
+
+.card-header{
+    background-color: var(--azul-suave) !important;
+    border-bottom: 1px solid var(--azul-borda);
+    padding: 14px 16px;
+}
+
+.card-header a{
+    color: var(--navy);
+    text-decoration: none;
+}
+
+.card-header a:hover{
+    color: var(--laranja);
+}
+
+.card-header small{
+    color: var(--cinza-texto);
+}
+
+.card-img-top{
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+}
+
+.card-body{
+    padding: 16px;
+}
+
+.card-text{
+    color: var(--preto);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.card-footer{
+    background-color: var(--branco) !important;
+    border-top: 1px solid var(--cinza-claro);
+    display: flex;
+    gap: 8px;
+    padding: 12px 16px;
+}
+
+/* Ações do card (curtir, comentar, salvar): círculos azuis */
+.card-footer .btn{
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-footer .btn i{
+    font-size: 16px;
+}
+
+.card-footer form{
+    margin-left: auto;
+}
+
+.card-footer .btn-outline-primary{
+    --bs-btn-color: var(--navy);
+    --bs-btn-border-color: var(--navy);
+    --bs-btn-hover-bg: var(--navy);
+    --bs-btn-hover-border-color: var(--navy);
+    --bs-btn-active-bg: var(--navy);
+    --bs-btn-active-border-color: var(--navy);
+}
+
+.card-footer .btn-primary{
+    --bs-btn-bg: var(--navy);
+    --bs-btn-border-color: var(--navy);
+    --bs-btn-hover-bg: var(--navy-claro);
+    --bs-btn-hover-border-color: var(--navy-claro);
+    --bs-btn-active-bg: var(--navy-claro);
+    --bs-btn-active-border-color: var(--navy-claro);
+}
+
+.avatar{
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--laranja);
 }
 
 /*=======================================Responsividade=======================================*/
 
 @media (max-width: 768px){
-    .botoes{
-        flex-wrap: wrap;
-        padding: 10px;
-    }
-
-    .busca{
-        max-width: 100%;
-        flex: 1 1 100%;
-    }
-
     .filtro{
         padding: 10px;
     }
 
+    .botoes{
+        width: 100%;
+        padding: 10px;
+    }
+
     .feed{
-        margin: 15px auto;
-        padding: 0 5px;
+        margin: 10px auto 30px;
+        padding: 0 8px;
     }
 
     .card-img-top{
         max-height: 300px;
-        object-fit: cover;
     }
+}
+
+/* Fundo único das telas internas (mesmo bege das demais telas) */
+html,
+body{
+    background-color: #F5EFE6 !important;
 }

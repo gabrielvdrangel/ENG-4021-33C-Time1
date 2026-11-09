@@ -1,0 +1,185 @@
+/* =====================================================================
+   Componentes no estilo da homepage para telas que usam Bootstrap.
+   Carregar depois de tema.css e do Bootstrap, antes do CSS da tela.
+   Não altera o menu (base.html / base.css).
+   ===================================================================== */
+
+body{
+    background-color: var(--bege);
+    color: var(--preto);
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+}
+
+/*=======================================Botões (sobrescrevem o Bootstrap)=======================================*/
+
+.btn{
+    border-radius: 999px;
+    font-weight: 500;
+    letter-spacing: .2px;
+    box-shadow: 0 1px 2px rgba(15, 42, 77, 0.12);
+    transition: transform .15s ease, box-shadow .15s ease,
+                background-color .15s, color .15s, border-color .15s;
+}
+
+.btn:hover{
+    transform: translateY(-2px);
+    box-shadow: var(--sombra-forte);
+}
+
+.btn:active{
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(15, 42, 77, 0.12);
+}
+
+.btn:focus-visible{
+    box-shadow: 0 0 0 .2rem rgba(194, 89, 43, 0.3);
+}
+
+/* "danger" do Bootstrap vira o laranja da marca (ex.: Seguir / Seguindo) */
+.btn-primary,
+.btn-danger{
+    --bs-btn-bg: var(--laranja);
+    --bs-btn-border-color: var(--laranja);
+    --bs-btn-hover-bg: var(--laranja-escuro);
+    --bs-btn-hover-border-color: var(--laranja-escuro);
+    --bs-btn-active-bg: var(--laranja-escuro);
+    --bs-btn-active-border-color: var(--laranja-escuro);
+    --bs-btn-color: var(--branco);
+    --bs-btn-hover-color: var(--branco);
+    --bs-btn-active-color: var(--branco);
+}
+
+.btn-outline-primary,
+.btn-outline-danger{
+    --bs-btn-color: var(--laranja);
+    --bs-btn-border-color: var(--laranja);
+    --bs-btn-hover-bg: var(--laranja);
+    --bs-btn-hover-border-color: var(--laranja);
+    --bs-btn-hover-color: var(--branco);
+    --bs-btn-active-bg: var(--laranja-escuro);
+    --bs-btn-active-border-color: var(--laranja-escuro);
+    --bs-btn-active-color: var(--branco);
+}
+
+/*=======================================Formulários=======================================*/
+
+.form-control,
+.form-select{
+    border-radius: 12px;
+    border-color: var(--cinza-claro);
+    color: var(--preto);
+}
+
+.form-select{
+    color: var(--navy);
+}
+
+.form-control:focus,
+.form-select:focus{
+    border-color: var(--laranja);
+    box-shadow: 0 0 0 .2rem rgba(194, 89, 43, 0.2);
+}
+
+/*=======================================Card de publicação=======================================*/
+
+.card{
+    background-color: var(--branco);
+    border: 1px solid var(--cinza-claro);
+    border-top: 4px solid var(--navy);
+    border-radius: var(--raio);
+    overflow: hidden;
+    box-shadow: var(--sombra);
+}
+
+.card-header{
+    background-color: var(--azul-suave) !important;
+    border-bottom: 1px solid var(--azul-borda);
+    padding: 14px 16px;
+}
+
+.card-header a{
+    color: var(--navy);
+    text-decoration: none;
+}
+
+.card-header a:hover{
+    color: var(--laranja);
+}
+
+.card-header small{
+    color: var(--cinza-texto);
+}
+
+.card-header .avatar{
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--laranja);
+}
+
+.card-img-top{
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+}
+
+.card-body{
+    padding: 16px;
+}
+
+.card-text{
+    color: var(--preto);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.card-footer{
+    background-color: var(--branco) !important;
+    border-top: 1px solid var(--cinza-claro);
+    display: flex;
+    gap: 8px;
+    padding: 12px 16px;
+}
+
+/* Ações do card (curtir, comentar, salvar): círculos azuis */
+.card-footer .btn{
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-footer .btn i{
+    font-size: 16px;
+}
+
+.card-footer form{
+    margin-left: auto;
+}
+
+.card-footer .btn-outline-primary{
+    --bs-btn-color: var(--navy);
+    --bs-btn-border-color: var(--navy);
+    --bs-btn-hover-bg: var(--navy);
+    --bs-btn-hover-border-color: var(--navy);
+    --bs-btn-active-bg: var(--navy);
+    --bs-btn-active-border-color: var(--navy);
+}
+
+.card-footer .btn-primary{
+    --bs-btn-bg: var(--navy);
+    --bs-btn-border-color: var(--navy);
+    --bs-btn-hover-bg: var(--navy-claro);
+    --bs-btn-hover-border-color: var(--navy-claro);
+    --bs-btn-active-bg: var(--navy-claro);
+    --bs-btn-active-border-color: var(--navy-claro);
+}
+
+@media (max-width: 768px){
+    .card-img-top{
+        max-height: 300px;
+    }
+}

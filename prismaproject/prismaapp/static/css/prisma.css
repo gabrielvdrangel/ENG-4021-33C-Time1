@@ -15,7 +15,7 @@
     --verde: #1E9150;
 
     /* Neutros */
-    --fundo: #F5F6F8;
+    --fundo: #F5EFE6;
     --branco: #FFFFFF;
     --borda: #E5E9EF;
     --texto: #1C2024;
@@ -37,7 +37,7 @@ html { -webkit-text-size-adjust: 100%; }
 
 body {
     margin: 0;
-    background-color: var(--fundo);
+    background-color: #F5EFE6;
     color: var(--texto);
     font-family: 'Poppins', 'Roboto', sans-serif;
     font-weight: 400;

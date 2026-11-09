@@ -1,72 +1,53 @@
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+/*=== Salvos: complementa listas.css ===*/
 
-.logo h2 {
-  margin: 0;
-}
+/* Cartão do usuário no topo */
 .caixa{
-    width: 100%;
-    max-width: 550px;
-    box-sizing: border-box;
-    min-height: 100px;
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    border-radius: 15px;
-    gap: 2px;
-    padding: 1px 6px;
-    background-color: rgb(253, 249, 240);
-    border: 1px solid #000000;
-    margin-bottom: 10px;
+    text-align: center;
+    border-left: 1px solid var(--cinza-claro);
+    border-top: 4px solid var(--navy);
+    margin-bottom: 24px;
+    padding: 24px 18px;
 }
 
-.link-sair{
-    color: #D64545;
-    font-weight: 700;
-    text-decoration: none;
+.caixa:hover{
+    transform: none;
+    box-shadow: var(--sombra);
+    border-left-color: var(--cinza-claro);
 }
 
-.link-abas{
-    color: rgb(83, 74, 71);
-    font-weight: 700;
-    text-decoration: none;
-
+.caixa h3{
+    margin: 8px 0 0;
+    color: var(--navy);
+    font-weight: 600;
 }
 
-.logo{
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.caixa p{
+    margin: 0;
+    color: var(--cinza-texto);
+    font-weight: 400;
 }
 
-.logo span{
-  font-size: 32px;
-  font-weight: 700;
+.foto-perfil{
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--laranja);
 }
 
-.conteudo{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 30px;
-  padding: 30px;
+/* Posts salvos */
+.posts{
+    width: 100%;
+    max-width: 600px;
+    margin-top: 12px;
 }
 
-body{
-    background-color: #f7ebdb;
-    font-family: 'poppins', sans-serif;
+.posts .card{
+    margin: 0 0 22px;
 }
 
-.color{
-  color: #0F2A4D;
-}
-
-#abas{
-  display: flex;
-  flex-wrap: wrap;
-    gap: 12px 24px;
-  margin-bottom: 20px;
+.posts > p{
+    text-align: center;
+    color: var(--cinza-texto);
 }
