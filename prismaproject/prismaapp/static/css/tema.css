@@ -1,0 +1,32 @@
+/* =====================================================================
+   PRISMA - Tema das telas internas (mesma paleta da homepage)
+   Apenas fonte e variáveis de cor.
+   ===================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root{
+    --navy: #0F2A4D;
+    --navy-claro: #1A3F70;
+    --azul-suave: #EAF0F8;
+    --azul-borda: #D3DEEE;
+    --laranja: #C2592B;
+    --laranja-escuro: #A84A22;
+    --laranja-claro: #FBE3D6;
+    --bege: #F5EFE6;
+    --cinza: #8A94A6;
+    --cinza-texto: #5B6B85;
+    --cinza-claro: #E4E1DB;
+    --branco: #FFFFFF;
+    --preto: #1B1B1F;
+    --perigo: #D64545;
+
+    --raio: 16px;
+    --sombra: 0 2px 10px rgba(15, 42, 77, 0.07);
+    --sombra-forte: 0 6px 14px rgba(15, 42, 77, 0.18);
+}
+
+/* Fundo único das telas internas (mesmo bege da homepage) */
+html,
+body{
+    background-color: #F5EFE6 !important;
+}

@@ -1,31 +1,30 @@
-
 body {
-    background-color: #f5f7fa;
+    background-color: var(--bege);
+    color: var(--preto);
     margin: 0;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
 }
 
 .feedbacks-container {
     width: 100%;
-    max-width: 900px;
+    max-width: 700px;
     margin: 0 auto;
-    padding: 30px 16px;
+    padding: 30px 16px 40px;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
 }
 
 .voltar {
     display: inline-block;
     margin-bottom: 18px;
     padding: 6px 4px;
-    color: #355879;
+    color: var(--navy);
     font-size: 14px;
     font-weight: 500;
     text-decoration: none;
 }
 
 .voltar:hover {
-    color: #263445;
-    text-decoration: underline;
+    color: var(--laranja);
 }
 
 .feedbacks-header {
@@ -39,23 +38,25 @@ body {
 
 .feedbacks-header h2 {
     font-size: 22px;
-    color: #263445;
-    margin: 0 0 7px;
+    font-weight: 700;
+    color: var(--navy);
+    margin: 0 0 6px;
 }
 
 .feedbacks-header p {
     font-size: 14px;
-    color: #777;
+    color: var(--cinza-texto);
     margin: 0;
 }
 
 .feedbacks-count {
     white-space: nowrap;
-    background-color: #eaf1f8;
-    color: #355879;
-    padding: 7px 13px;
-    border-radius: 20px;
+    background-color: var(--laranja-claro);
+    color: var(--laranja-escuro);
+    padding: 7px 16px;
+    border-radius: 999px;
     font-size: 13px;
+    font-weight: 600;
 }
 
 .feedbacks-list {
@@ -65,15 +66,18 @@ body {
 }
 
 .feedback-card {
-    background-color: #fff;
-    border: 1px solid #e5e9ef;
-    border-radius: 12px;
+    background-color: var(--branco);
+    border: 1px solid var(--cinza-claro);
+    border-top: 4px solid var(--navy);
+    border-radius: var(--raio);
+    box-shadow: var(--sombra);
     padding: 20px;
-    transition: box-shadow 0.2s ease;
+    transition: transform .15s ease, box-shadow .15s ease;
 }
 
 .feedback-card:hover {
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(15, 42, 77, 0.14);
 }
 
 .feedback-top {
@@ -87,13 +91,14 @@ body {
     width: 42px;
     height: 42px;
     border-radius: 50%;
-    background-color: #e4edf6;
-    color: #355879;
+    background-color: var(--azul-suave);
+    border: 2px solid var(--laranja);
+    color: var(--navy);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 14px;
-    font-weight: bold;
+    font-weight: 700;
     flex-shrink: 0;
 }
 
@@ -103,23 +108,24 @@ body {
 }
 
 .feedback-author h3 {
-    color: #263445;
+    color: var(--navy);
     font-size: 15px;
+    font-weight: 600;
     margin: 0 0 4px;
 }
 
 .feedback-author span {
-    color: #888;
+    color: var(--cinza-texto);
     font-size: 12px;
 }
 
 .feedback-date {
-    color: #999;
+    color: var(--cinza);
     font-size: 12px;
 }
 
 .feedback-text {
-    color: #555;
+    color: var(--preto);
     font-size: 14px;
     line-height: 1.7;
     margin: 0;

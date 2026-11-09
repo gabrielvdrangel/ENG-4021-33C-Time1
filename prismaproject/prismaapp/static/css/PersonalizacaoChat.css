@@ -1,16 +1,10 @@
-/*=======================================Caracteristicas padroes da pagina=======================================*/
-
-body{
-    background-color: #faebd7;
-    font-family: 'poppins', sans-serif;
-}
-
 /*=========================================Caixa principal da conversa======================================*/
 
-.blocoprincipal{     
-    margin: 30px auto;        
+.blocoprincipal{
+    margin: 30px auto;
     display: flex;
-    justify-content: center;           
+    justify-content: center;
+    padding: 0 10px;
 }
 
 .caixa{
@@ -19,71 +13,108 @@ body{
     flex-direction: column;
     width: 600px;
     height: 650px;
-    border-radius: 15px;
-    padding: 12px 16px; 
-    background-color: #fff;
-    border: 1px #A9A9A9;
+    border-radius: var(--raio);
+    padding: 12px 16px;
+    background-color: var(--branco);
+    border: 1px solid var(--cinza-claro);
+    border-top: 4px solid var(--navy);
+    box-shadow: var(--sombra);
+    box-sizing: border-box;
 }
 
 /*========================================Barra de envio da mensagem=========================================*/
 
 .area_interacao{
-    border-top: 1px solid #A9A9A9;
-    padding: 15px;
+    border-top: 1px solid var(--cinza-claro);
+    padding: 15px 0 0;
     position: absolute;
     bottom: 12px;
     left: 16px;
     right: 16px;
 }
 
-/*===========================================Elementos do cabeçalho da mensagem=================================================================*/
+.area_interacao .form-control{
+    border-radius: 999px;
+    padding-left: 18px;
+}
+
+.area_interacao .btn{
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/*===========================================Cabeçalho da conversa=================================================================*/
 
 .perfil{
     display: flex;
-    padding: 20px;
-    border-bottom: 1px solid #A9A9A9; 
-    padding-left: 10px;
-    padding-right: 10px;
+    align-items: center;
+    padding: 12px 10px 16px;
+    border-bottom: 1px solid var(--cinza-claro);
 }
 
 .avatar{
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--laranja);
 }
 
 .info{
-    padding-left: 20px;
+    padding-left: 16px;
     display: flex;
     flex-direction: column;
 }
 
-/*===========================================Elementos da mensagem=================================================================*/
+.info strong{
+    color: var(--navy);
+}
+
+.info small{
+    color: var(--cinza-texto);
+}
+
+/*===========================================Mensagem=================================================================*/
 
 .mensagem{
-    color: white;
+    color: var(--branco);
     margin-top: 20px;
-    gap: 10px;
     width: 300px;
-    height: 70px;
-    align-items: center;
-    justify-content: left;
-    border-radius: 15px;
+    max-width: 85%;
+    border-radius: 18px 18px 18px 4px;
     padding: 12px 16px;
-    background-color: rgb(170, 57, 16);
-    border: 1px #000000;
+    background-color: var(--laranja);
+    box-shadow: 0 1px 3px rgba(15, 42, 77, 0.15);
 }
 
 .textomensagem{
-    font-size: 12px;
+    font-size: 13px;
+    margin: 0;
+    line-height: 1.5;
 }
 
 .voltar {
-    display: inline-block;
-    margin-bottom: 12px;
-    font-size: 22px;
-    color: #0F2A4D;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    margin-bottom: 4px;
+    border-radius: 50%;
+    font-size: 20px;
+    color: var(--navy);
     text-decoration: none;
+    transition: background-color .15s, color .15s;
+}
+
+.voltar:hover{
+    background-color: var(--azul-suave);
+    color: var(--laranja);
 }
 
 /*=======================================Responsividade=======================================*/
@@ -91,18 +122,11 @@ body{
 @media (max-width: 768px){
     .blocoprincipal{
         margin: 15px auto;
-        padding: 0 10px;
     }
 
     .caixa{
         width: 100%;
         height: calc(100vh - 160px);
         min-height: 450px;
-    }
-
-    .mensagem{
-        width: auto;
-        max-width: 85%;
-        height: auto;
     }
 }

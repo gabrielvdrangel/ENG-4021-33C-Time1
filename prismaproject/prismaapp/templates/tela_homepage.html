@@ -42,7 +42,7 @@
           </select>
         </form>
         {% if user.matricula is None %}
-            <a href="{% url 'add_publicacao' %}" class="btn btn-info">Adicionar</a>
+            <a href="{% url 'add_publicacao' %}" class="btn btn-sm btn-adicionar">Adicionar</a>
         {% endif %}
         </div>
         </div>
@@ -82,9 +82,9 @@
               <button type="submit" class="btn btn-outline-primary"><i class="bi bi-bookmark"></i></button>
             {% endif %}
             </form>
-        {% endif %}
             </div>
         </div>
+        {% endif %}
         {% endif %}
       {% endfor %}
 

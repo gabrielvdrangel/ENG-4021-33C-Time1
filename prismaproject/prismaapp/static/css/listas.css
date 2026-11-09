@@ -1,0 +1,175 @@
+/*=====================================================================
+  Telas de lista: Candidaturas, Prazos, Realizados (e base do Salvos)
+  =====================================================================*/
+
+.conteudo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 15px 40px;
+}
+
+.color{
+    color: var(--navy);
+    font-weight: 700;
+}
+
+h2.color{
+    align-self: center;
+    margin: 0 0 4px;
+}
+
+/*=== Abas (filtros) em formato de pílula ===*/
+#abas{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: 16px 0 22px;
+}
+
+#abas a,
+#abas span{
+    padding: 6px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--cinza-claro);
+    background-color: var(--branco);
+    color: var(--cinza-texto);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    box-shadow: 0 1px 2px rgba(15, 42, 77, 0.08);
+    transition: transform .15s ease, background-color .15s, color .15s, border-color .15s;
+}
+
+#abas a:hover{
+    transform: translateY(-2px);
+    border-color: var(--laranja);
+    color: var(--laranja);
+}
+
+/* aba ativa */
+#abas a.color{
+    background-color: var(--navy);
+    border-color: var(--navy);
+    color: var(--branco);
+}
+
+#abas a.color:hover{
+    color: var(--branco);
+}
+
+/*=== Datas (Prazos) e subtítulo (Realizados) ===*/
+.datas{
+    align-self: center;
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+    margin: 6px 0 12px;
+    padding-left: 12px;
+    border-left: 4px solid var(--laranja);
+    color: var(--navy);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+#subtitulo{
+    border-left: none;
+    padding-left: 0;
+    text-align: center;
+    font-weight: 400;
+    color: var(--cinza-texto);
+}
+
+/*=== Cartões ===*/
+.caixa{
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+    background-color: var(--branco);
+    border: 1px solid var(--cinza-claro);
+    border-left: 4px solid var(--navy);
+    border-radius: var(--raio);
+    box-shadow: var(--sombra);
+    color: var(--cinza-texto);
+    font-size: 14px;
+    transition: transform .15s ease, box-shadow .15s ease, border-left-color .15s;
+}
+
+.caixa:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(15, 42, 77, 0.14);
+    border-left-color: var(--laranja);
+}
+
+.caixa p{
+    margin: 0;
+    color: var(--navy);
+    font-weight: 600;
+}
+
+.caixa-texto h3{
+    margin: 0;
+    font-size: 17px;
+}
+
+.logo-caixa{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 4px;
+}
+
+.logo-caixa img{
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 1px solid var(--cinza-claro);
+}
+
+.caixa a{
+    color: var(--cinza-texto);
+    text-decoration: none;
+}
+
+/* ações dentro do cartão */
+.link-sair{
+    margin-top: 6px;
+    color: var(--perigo);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.link-sair:hover{
+    text-decoration: underline;
+}
+
+.caixa .link-abas{
+    margin-top: 6px;
+    padding: 4px 14px;
+    border-radius: 999px;
+    background-color: var(--laranja-claro);
+    color: var(--laranja-escuro);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color .15s, color .15s;
+}
+
+.caixa .link-abas:hover{
+    background-color: var(--laranja);
+    color: var(--branco);
+}
+
+@media (max-width: 600px){
+    .conteudo{
+        padding: 16px 10px 30px;
+    }
+}

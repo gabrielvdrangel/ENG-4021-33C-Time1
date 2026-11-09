@@ -6,13 +6,13 @@ body {
   display: flex;
   align-items: center;  
   justify-content: center;  
-  background-color: #faebd7;
-  font-family: 'poppins', sans-serif;
+  background-color: #F5EFE6;
+  font-family: 'Poppins', sans-serif;
 
 }
 
 .caixa {
-    background-color: #fcd8a883;
+    background-color: #ffffff;
     width: 100%;
     max-width: 600px;
     box-sizing: border-box;
