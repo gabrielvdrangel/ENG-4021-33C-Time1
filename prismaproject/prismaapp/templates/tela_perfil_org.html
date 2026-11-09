@@ -40,7 +40,18 @@
                 {% else %}
                 <img src="https://previews.123rf.com/images/hugok1000/hugok10001905/hugok1000190500198/123291745-default-profile-avatar-illustration-in-blue-and-white-no-person.jpg" alt="{{ org.first_name }}">{% endif %}</div>
                 <h1>{{ org.first_name }}</h1>
-                <button type="button" class="btn btn-danger">Seguindo</button>
+
+                {% if request.user != org %}
+                  <form method="post" action="{% url 'alternar_seguir' username=org.username %}">
+                  {% csrf_token %}
+                  {% if org in request.user.seguindo.all %}
+                    <button type="submit" class="btn btn-outline-danger">Seguindo</button>
+                  {% else %}
+                    <button type="submit" class="btn btn-danger">Seguir</button>
+                  {% endif %}
+                  </form>
+                {% endif %}
+
             </section>
  
     <div class="filtro">

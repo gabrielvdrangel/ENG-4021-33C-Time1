@@ -36,15 +36,24 @@
       <div class="filtro">
         <div class="botoes">
 
-            <button type="button" class="btn btn-outline-primary">Seguindo</button>
-            <button type="button" class="btn btn-outline-primary">Sugestões</button>
+           <form method="get">
+            {% if request.GET.seguindo %}
+              <button type="submit" class="btn btn-primary btn-sm">Seguindo</button>
+            {% else %}
+              <button type="submit" name="seguindo" value="1" class="btn btn-outline-primary btn-sm">Seguindo</button>
+            {% endif %}
+          </form>
+        
+        <form method="get" class="d-flex">
+        <select name="org" class="form-select form-select-sm" onchange="this.form.submit()">
+        <option value="">Todas as organizações</option>
+        {% for usuario in usuarios %}
+        <option value="{{ usuario.username }}" {% if request.GET.org == usuario.username %}selected{% endif %}>{{ usuario.first_name }}</option>
+        {% endfor %}
+        </select>
+        </form>
 
-          <div class="input-group input-group-sm busca">
-            <input type="search" class="form-control" placeholder="Pesquisar no Prisma..." aria-label="Pesquisar" />
-            <button type="button" class="btn btn-outline-primary" aria-label="Buscar">
-            <i class="bi bi-search"></i>
-            </button>
-          </div>
+          
         <form method="get" class="d-flex">
           <select name="filtrado" class="form-select form-select-sm" onchange="this.form.submit()">
             <option value="">Todos</option>
@@ -66,6 +75,7 @@
 
       {% for post in oportunidades %}
         {% if not request.GET.filtrado or post.tipo == request.GET.filtrado %}
+        {% if not request.GET.org or post.usuario.username == request.GET.org %}
         <div class="card">
 
           <div class="card-header d-flex align-items-center bg-white">
@@ -89,6 +99,7 @@
               <button class="btn btn-outline-primary"><i class="bi bi-bookmark-fill"></i></button>
             </div>
         </div>
+        {% endif %}
         {% endif %}
       {% endfor %}
 

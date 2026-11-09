@@ -55,7 +55,12 @@ def perfil(request):
 @login_required
 def homepage(request):
     oportunidades = Oportunidade.objects.select_related("usuario")
-    return render(request, "tela_homepage.html", context={"oportunidades": oportunidades})
+    usuarios = Usuario.objects.filter(curso__isnull=True, is_superuser=False, is_staff=False)
+
+    if request.GET.get("seguindo"):
+        oportunidades = oportunidades.filter(usuario__in=request.user.seguindo.all())
+
+    return render(request, "tela_homepage.html", context={"oportunidades": oportunidades, "usuarios": usuarios})
 
 
 @login_required
@@ -226,3 +231,15 @@ def tela_feedbacks(request,username):
 @login_required
 def perfil_aluno(request):
     return render(request, "perfil_aluno.html", {"aluno": request.user})
+
+@login_required
+def alternar_seguir(request, username):
+    alvo = Usuario.objects.filter(username=username).first()
+
+    if request.method == "POST" and alvo and alvo != request.user:
+        if request.user.seguindo.filter(pk=alvo.pk).exists():
+            request.user.seguindo.remove(alvo)
+        else:
+            request.user.seguindo.add(alvo)
+
+    return redirect("tela_perfil_org", username=username)
