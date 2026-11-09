@@ -1,37 +1,15 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Prisma</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-    <link rel="stylesheet" href="{% static 'css/PersonalizacaoHomepage.css' %}" />
-    
-  </head>
 
+{% block title %}Início - Prisma{% endblock %}
 
-  <body>
+{% block extra_css %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+<link rel="stylesheet" href="{% static 'css/PersonalizacaoHomepage.css' %}" />
+{% endblock %}
 
-      <div class="container">
-        <div class="navbar"> 
-            <div>
-                <img src="{% static 'img/logoprisma2.png' %}" width="200px">
-            </div>
-            <nav>
-              <ul>
-                <li><a href="{% url 'homepage' %}">Inicio</a></li>
-                <li><a href="{% url 'conversas' %}">Mensagens</a></li>
-                <li><a href="{% url 'notificacoes' %}">Notificações</a></li>
-                <li><a href="{% url 'perfil' %}"><img src="{% static 'img/perfil.png' %}" width="30px"></a></li>
-              </ul>
-            </nav>
-    
-    
- 
-        </div>
-      </div>
+{% block content %}
 
       <div class="filtro">
         <div class="botoes">
@@ -79,7 +57,7 @@
         <div class="card">
 
           <div class="card-header d-flex align-items-center bg-white">
-              {% if post.usuario.imagem_url %}<img src="{{ post.usuario.imagem_url }}" class="avatar me-2"/>{% else %}<img src="https://previews.123rf.com/images/hugok1000/hugok10001905/hugok1000190500198/123291745-default-profile-avatar-illustration-in-blue-and-white-no-person.jpg" class="avatar me-2"/>{% endif %}
+              {% if post.usuario.imagem %}<img src="{{ post.usuario.imagem.url }}" class="avatar me-2"/>{% else %}<img src="https://previews.123rf.com/images/hugok1000/hugok10001905/hugok1000190500198/123291745-default-profile-avatar-illustration-in-blue-and-white-no-person.jpg" class="avatar me-2"/>{% endif %}
 
               <div>
                 <a href="{% url 'tela_perfil_org' post.usuario.username %}"><strong>{{ post.usuario.first_name }}</strong></a><br/>
@@ -87,7 +65,7 @@
               </div>
             </div>
 
-            {% if post.imagem_url %}<img src="{{ post.imagem_url }}" class="card-img-top"/>{% endif %}
+            {% if post.imagem %}<img src="{{ post.imagem.url }}" class="card-img-top"/>{% endif %}
 
             <div class="card-body">
               <p class="card-text">{{ post.descricao }}<br><br> finaliza em {{ post.limite_inscricao }}</p>
@@ -115,5 +93,4 @@
 
 
 
-  </body>
-</html>
+{% endblock %}

@@ -1,36 +1,19 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prisma</title>
-    <link rel="stylesheet" href="{% static 'css/tela_salvos.css' %}">
 
-</head>
-<body>
-  
-<div class="container">
-        <div class="navbar"> 
-            <div class="logo">
-                <img src="{% static 'img/logo.svg' %}" width="100px">
-                <span class="color">Prisma</span>
-            </div>
-            <nav>
-              <ul>
-                <li><a href="{% url 'homepage' %}">Inicio</a></li>
-                <li><a href="{% url 'conversas' %}">Mensagens</a></li>
-                <li><a href="{% url 'notificacoes' %}">Notificações</a></li>
-                <li><a href="{% url 'perfil' %}"><img src="{% static 'img/perfil.png' %}" width="30px"></a></li>
-              </ul>
-            </nav>
-        </div>
+{% block title %}Salvos - Prisma{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/tela_salvos.css' %}">
+{% endblock %}
+
+{% block content %}
 
 <div class="conteudo">
 
     <div class = "caixa">
-        {% if user.profile_picture %}
-            <img src="{{ user.profile_picture.url }}" alt="Foto de perfil" class="foto-perfil">
+        {% if user.imagem %}
+            <img src="{{ user.imagem.url }}" alt="Foto de perfil" class="foto-perfil">
         {% else %}
             <img src="{% static 'img/perfil.png' %}" alt="Foto de perfil" class="foto-perfil">
         {% endif %}
@@ -45,7 +28,7 @@
             <div class="card">
 
           <div class="card-header d-flex align-items-center bg-white">
-              {% if post.usuario.imagem_url %}<img src="{{ post.usuario.imagem_url }}" class="avatar me-2"/>{% else %}<img src="https://previews.123rf.com/images/hugok1000/hugok10001905/hugok1000190500198/123291745-default-profile-avatar-illustration-in-blue-and-white-no-person.jpg" class="avatar me-2"/>{% endif %}
+              {% if post.usuario.imagem %}<img src="{{ post.usuario.imagem.url }}" class="avatar me-2"/>{% else %}<img src="https://previews.123rf.com/images/hugok1000/hugok10001905/hugok1000190500198/123291745-default-profile-avatar-illustration-in-blue-and-white-no-person.jpg" class="avatar me-2"/>{% endif %}
 
               <div>
                 <a href="{% url 'tela_perfil_org' post.usuario.username %}"><strong>{{ post.usuario.first_name }}</strong></a><br/>
@@ -53,7 +36,7 @@
               </div>
             </div>
 
-            {% if post.imagem_url %}<img src="{{ post.imagem_url }}" class="card-img-top"/>{% endif %}
+            {% if post.imagem %}<img src="{{ post.imagem.url }}" class="card-img-top"/>{% endif %}
 
             <div class="card-body">
               <p class="card-text">{{ post.descricao }}<br><br> finaliza em {{ post.limite_inscricao }}</p>
@@ -65,9 +48,4 @@
         {% endfor %}
     </div>
 </div>
-
-
-</body>
-</html>
-
-
+{% endblock %}
