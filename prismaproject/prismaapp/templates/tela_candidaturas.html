@@ -16,8 +16,8 @@
     <h2 class="color">Candidaturas</h2>
     
     <div class = "caixa">
-        <p>Beatriz Lima</p>
-        <span>Estudante de Engenharia de Software</span>
+        <p>{{ user.first_name|default:user.username }}</p>
+        {% if user.curso %}<span>{{ user.curso }}</span>{% endif %}
         <a href="{% url 'logout' %}" class="link-sair">Sair da conta</a>
     </div>
 
