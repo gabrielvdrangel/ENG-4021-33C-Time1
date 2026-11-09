@@ -32,7 +32,7 @@
 
       <a href="{% url 'homepage' %}" class="voltar">&lt;</a>
 
-      <form method="post" class="card-pub">
+      <form method="post" class="card-pub" enctype="multipart/form-data">
         {% csrf_token %}
 
         <div class="card-pub-topo">
@@ -58,9 +58,8 @@
         <input type="datetime-local" id="limite_inscricao" name="limite_inscricao"
                class="form-control" required>
         
-        <label for="imagem_url">URL da imagem (opcional)</label>
-        <input type="url" id="imagem_url" name="imagem_url" class="form-control"
-               maxlength="500" placeholder="https://exemplo.com/imagem.png">
+        <label for="imagem">Imagem (opcional)</label>
+        <input type="file" id="imagem" name="imagem" class="form-control" accept="image/*">
 
         <hr>
         <div class="acoes">

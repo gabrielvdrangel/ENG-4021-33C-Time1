@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path
 from prismaapp import views
 from prismaapp.views import *
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -48,3 +50,5 @@ urlpatterns = [
     path('oportunidade/<uuid:code>/salvar/', views.alternar_salvo, name='alternar_salvo'),
 ]
 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
