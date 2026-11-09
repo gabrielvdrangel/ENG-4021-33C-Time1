@@ -1,7 +1,7 @@
 
 body {
     margin: 0;
-    background-color: #f7ebdb;
+    background-color: #F5F6F8;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,7 +10,7 @@ body {
 }
 
 .caixa {
-    background-color: #fcd8a883;
+    background-color: #ffffff;
     width: 100%;
     max-width: 600px;
     box-sizing: border-box;

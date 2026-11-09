@@ -1,0 +1,294 @@
+/* =====================================================================
+   PRISMA - Design system compartilhado
+   Usado nas telas de autenticação (entrar, cadastrar, esqueci senha, etc.),
+   carregado por último para padronizar cores, fonte, botões e formulários.
+   ===================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    /* Marca */
+    --navy: #0F2A4D;
+    --navy-soft: #1B3A66;
+    --laranja: #C2592B;
+    --laranja-escuro: #A84A22;
+    --laranja-claro: #FBE3D6;
+    --verde: #1E9150;
+
+    /* Neutros */
+    --fundo: #F5F6F8;
+    --branco: #FFFFFF;
+    --borda: #E5E9EF;
+    --texto: #1C2024;
+    --cinzinha: #8A94A6;
+    --cinza-texto: #6B7280;
+
+    /* Feedback */
+    --perigo: #D64545;
+    --perigo-claro: #FBE3E3;
+
+    /* Forma */
+    --raio: 14px;
+    --raio-pill: 999px;
+    --sombra: 0 1px 2px rgba(15, 42, 77, .05), 0 4px 14px rgba(15, 42, 77, .06);
+}
+
+/* ---------- Base ---------- */
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+    margin: 0;
+    background-color: var(--fundo);
+    color: var(--texto);
+    font-family: 'Poppins', 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    color: var(--navy);
+    font-weight: 700;
+}
+
+a { color: var(--laranja); text-decoration: none; }
+a:hover { color: var(--laranja-escuro); }
+
+:focus-visible { outline: 2px solid var(--laranja); outline-offset: 2px; }
+
+/* ---------- Botões (sobrescreve o Bootstrap) ---------- */
+.btn {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    border-radius: 12px;
+    transition: background-color .15s, color .15s, border-color .15s;
+}
+
+.btn-primary,
+.btn-info {
+    --bs-btn-bg: var(--laranja);
+    --bs-btn-border-color: var(--laranja);
+    --bs-btn-color: #fff;
+    --bs-btn-hover-bg: var(--laranja-escuro);
+    --bs-btn-hover-border-color: var(--laranja-escuro);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-active-bg: var(--laranja-escuro);
+    --bs-btn-active-border-color: var(--laranja-escuro);
+    --bs-btn-active-color: #fff;
+    --bs-btn-focus-shadow-rgb: 194, 89, 43;
+}
+
+.btn-outline-primary {
+    --bs-btn-color: var(--navy);
+    --bs-btn-border-color: var(--navy);
+    --bs-btn-hover-bg: var(--navy);
+    --bs-btn-hover-border-color: var(--navy);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-active-bg: var(--navy);
+    --bs-btn-active-border-color: var(--navy);
+    --bs-btn-active-color: #fff;
+    --bs-btn-focus-shadow-rgb: 15, 42, 77;
+}
+
+.btn-danger {
+    --bs-btn-bg: var(--laranja);
+    --bs-btn-border-color: var(--laranja);
+    --bs-btn-hover-bg: var(--laranja-escuro);
+    --bs-btn-hover-border-color: var(--laranja-escuro);
+    --bs-btn-active-bg: var(--laranja-escuro);
+    --bs-btn-active-border-color: var(--laranja-escuro);
+}
+
+.btn-outline-danger {
+    --bs-btn-color: var(--laranja);
+    --bs-btn-border-color: var(--laranja);
+    --bs-btn-hover-bg: var(--laranja);
+    --bs-btn-hover-border-color: var(--laranja);
+    --bs-btn-active-bg: var(--laranja);
+    --bs-btn-active-border-color: var(--laranja);
+}
+
+.btn-link { color: var(--cinza-texto); font-weight: 500; text-decoration: none; }
+.btn-link:hover { color: var(--laranja); }
+
+/* ---------- Formulários ---------- */
+.form-control,
+.form-select {
+    font-family: 'Poppins', sans-serif;
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    padding: 11px 14px;
+    background-color: var(--branco);
+    color: var(--texto);
+}
+.form-control::placeholder { color: var(--cinzinha); }
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--laranja);
+    box-shadow: 0 0 0 .2rem rgba(194, 89, 43, .15);
+}
+.form-select-sm { padding: 7px 32px 7px 12px; border-radius: 999px; font-size: 14px; }
+
+/* ---------- Telas de autenticação (body.pr-auth) ---------- */
+body.pr-auth {
+    background-color: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 24px 16px;
+    box-sizing: border-box;
+}
+
+.pr-auth .caixa {
+    position: relative;
+    background: var(--branco);
+    width: 100%;
+    max-width: 450px;
+    box-sizing: border-box;
+    padding: 56px 40px;
+    border: 1px solid var(--borda);
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(15, 42, 77, .10);
+    text-align: center;
+    color: var(--texto);
+}
+
+.pr-auth .caixa img { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+
+.pr-auth h1,
+.pr-auth h2 {
+    color: var(--navy);
+    font-size: 28px;
+    font-weight: 700;
+    margin: 6px 0 4px;
+}
+
+.pr-auth .caixa > p,
+.pr-auth form > p:not(.erro) {
+    color: var(--cinzinha);
+    font-size: 14px;
+    margin: 0 0 32px;
+}
+
+.pr-auth .rotulo,
+.pr-auth label {
+    display: block;
+    text-align: left;
+    color: var(--navy);
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0 0 6px;
+}
+
+.pr-auth input:not([type="submit"]) {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 14px;
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: var(--texto);
+    margin-bottom: 16px;
+    background: var(--branco);
+}
+.pr-auth .form-group { margin-bottom: 4px; }
+.pr-auth .form-group input { margin-bottom: 12px; }
+.pr-auth input:focus { border-color: var(--laranja); outline: none; box-shadow: 0 0 0 .2rem rgba(194, 89, 43, .15); }
+
+.pr-auth form { text-align: left; }
+
+/* Botões das telas de auth: principal = laranja cheio, secundário = contorno */
+.pr-auth a.btn,
+.pr-auth button.btn,
+.pr-auth button.entrar {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 0 12px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.pr-auth button.entrar,
+.pr-auth .btn-entrar,
+.pr-auth form button.btn,
+.pr-auth a.btn.principal {
+    background: var(--laranja);
+    border: 1px solid var(--laranja);
+    color: #fff;
+}
+.pr-auth button.entrar:hover,
+.pr-auth .btn-entrar:hover,
+.pr-auth form button.btn:hover { background: var(--laranja-escuro); border-color: var(--laranja-escuro); color: #fff; }
+
+.pr-auth a.btn.btn-outline-primary,
+.pr-auth .btn-cadastrar {
+    background: transparent;
+    border: 1px solid var(--navy);
+    color: var(--navy);
+}
+.pr-auth a.btn.btn-outline-primary:hover,
+.pr-auth .btn-cadastrar:hover { background: var(--navy); color: #fff; }
+
+.pr-auth a.btn.btn-link {
+    border: none;
+    background: none;
+    color: var(--cinza-texto);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 4px;
+    text-align: right;
+    margin-bottom: 18px;
+}
+.pr-auth a.btn.btn-link:hover { color: var(--laranja); }
+
+.pr-auth .esqueceu {
+    display: block;
+    text-align: right;
+    color: var(--cinza-texto);
+    font-size: 13px;
+    margin: -6px 0 22px;
+}
+.pr-auth .esqueceu:hover { color: var(--laranja); }
+
+.pr-auth .erro,
+.pr-auth .text-danger {
+    background: var(--perigo-claro);
+    color: var(--perigo) !important;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 13px;
+    margin: 0 0 16px;
+    text-align: left;
+}
+.pr-auth .alert-danger {
+    background: var(--perigo-claro);
+    border: none;
+    color: var(--perigo);
+    border-radius: 10px;
+    font-size: 13px;
+    text-align: left;
+}
+
+.pr-auth a.voltar {
+    position: absolute;
+    top: 18px;
+    left: 22px;
+    font-size: 22px;
+    color: var(--navy);
+    width: auto;
+    margin: 0;
+    padding: 0;
+}
+.pr-auth a.voltar:hover { color: var(--laranja); }
+
+@media (max-width: 600px) {
+    .pr-auth .caixa { padding: 40px 22px; border-radius: 20px; }
+}
