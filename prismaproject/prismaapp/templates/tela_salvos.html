@@ -29,49 +29,42 @@
 <div class="conteudo">
 
     <div class = "caixa">
-        <p>Beatriz Lima</p>
-        <span>Estudante de Engenharia de Software</span>
-        <a href="{% url 'logout' %}" class="link-sair">Sair da conta</a>
+        {% if user.profile_picture %}
+            <img src="{{ user.profile_picture.url }}" alt="Foto de perfil" class="foto-perfil">
+        {% else %}
+            <img src="{% static 'img/perfil.png' %}" alt="Foto de perfil" class="foto-perfil">
+        {% endif %}
+        <h3>{{ user.first_name }}</h3>
+        <p>{{ user.curso }}</p>
     </div>
 
     <h2 class="color">Salvos</h2>
 
-    <div id="abas">
-        <span class="link-abas">Salvos</span> 
-        <a href="{% url 'prazos' %}" class="link-abas">Prazos</a>
-        <a href="{% url 'candidaturas' %}" class="link-abas">Candidaturas</a>
-        <a href="{% url 'realizados' %}" class="link-abas">Realizados</a>
-    </div>
+    <div class="posts">
+        {% for post in user.salvos.all %}
+            <div class="card">
 
-    <div class="caixa">
-        <h3 class="color">Estágio - Eng. Produção</h3>
-        <span>Empresa Alfa - Rio de Janeiro</span>
-        <span> 5 dias </span>
-    </div>
+          <div class="card-header d-flex align-items-center bg-white">
+              {% if post.usuario.imagem_url %}<img src="{{ post.usuario.imagem_url }}" class="avatar me-2"/>{% else %}<img src="https://previews.123rf.com/images/hugok1000/hugok10001905/hugok1000190500198/123291745-default-profile-avatar-illustration-in-blue-and-white-no-person.jpg" class="avatar me-2"/>{% endif %}
 
-    <div class ="caixa">
-        <h3 class="color">Monitoria de Cálculo</h3>
-        <span>PUC-Rio</span>
-        <span> 3 dias </span>
-    </div>
+              <div>
+                <a href="{% url 'tela_perfil_org' post.usuario.username %}"><strong>{{ post.usuario.first_name }}</strong></a><br/>
+                <small>{{ post.data_publicacao }}</small>
+              </div>
+            </div>
 
-    <div class="caixa">
-        <h3 class="color">IC em Visão Computacional</h3>
-        <span>Depto. de Informática</span>
-        <span> 12 dias </span>
-    </div>
+            {% if post.imagem_url %}<img src="{{ post.imagem_url }}" class="card-img-top"/>{% endif %}
 
-    <div class="caixa">
-        <h3 class="color">Processo seletivo</h3>
-        <span>Empresa Júnior</span>
-        <span> Encerrada </span>
+            <div class="card-body">
+              <p class="card-text">{{ post.descricao }}<br><br> finaliza em {{ post.limite_inscricao }}</p>
+            </div>
+            </div>
+        
+        {% empty %}
+            <p>Você não salvou nenhum post ainda.</p>
+        {% endfor %}
     </div>
-
-    <div class="caixa">
-        <h3 class="color">Monitoria — Física I</h3>
-        <span>Depto. Física</span>
-        <span> Encerrada </span>
-    </div>
+</div>
 
 
 </body>
