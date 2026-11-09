@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+import uuid
 
 
 class Usuario(AbstractUser):
@@ -12,6 +13,7 @@ class Usuario(AbstractUser):
     imagem_url = models.URLField(max_length=500, null=True, blank=True)
 
 class Oportunidade(models.Model):
+    code = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
     usuario = models.ForeignKey(
         Usuario,
         on_delete=models.CASCADE,

@@ -237,9 +237,21 @@ def alternar_seguir(request, username):
     alvo = Usuario.objects.filter(username=username).first()
 
     if request.method == "POST" and alvo and alvo != request.user:
-        if request.user.seguindo.filter(pk=alvo.pk).exists():
+        if alvo in request.user.seguindo.all():
             request.user.seguindo.remove(alvo)
         else:
             request.user.seguindo.add(alvo)
 
     return redirect("tela_perfil_org", username=username)
+
+@login_required
+def alternar_salvo(request, code):
+    alvo = Oportunidade.objects.filter(code=code).first()
+
+    if request.method == "POST" and alvo and alvo.usuario != request.user:
+        if alvo in request.user.salvos.all():
+            request.user.salvos.remove(alvo)
+        else:
+            request.user.salvos.add(alvo)
+
+    return redirect("homepage")
