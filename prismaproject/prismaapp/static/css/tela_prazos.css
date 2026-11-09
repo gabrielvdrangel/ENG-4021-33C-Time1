@@ -23,25 +23,6 @@
     margin-bottom: 10px;
 }
 
-.navbar{
-    display: flex;
-    align-items: right;
-    padding: 20px;
-    border-bottom: 1px solid #A9A9A9; 
-}
-
-.container{
-    max-width: 1300px;
-    margin: auto;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-a{
-    text-decoration: none;
-    color: #C1592C;
-}
-
 .link-sair{
     color: #D64545;
     font-weight: 700;
@@ -53,21 +34,6 @@ a{
     font-weight: 700;
     text-decoration: none;
 
-}
-
-nav{
-    flex: 1;
-    text-align: right;
-}
-
-nav ul{
-    display: inline-block;
-    list-style-type: none;
-}
-
-nav ul li{
-    display: inline-block;
-    margin-right: 20px;
 }
 
 .logo{
@@ -129,40 +95,4 @@ body{
     color: rgb(83, 74, 71);
     font-weight: bold;
     text-decoration: none;
-
-}
-
-
-/*=======================================Responsividade da navbar=======================================*/
-
-.navbar img[width="200px"],
-.navbar img[width="100px"]{
-    max-width: 100%;
-    height: auto;
-}
-
-@media (max-width: 768px){
-    .navbar{
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        padding: 12px;
-    }
-
-    nav{
-        text-align: center;
-    }
-
-    nav ul{
-        margin: 0;
-        padding: 0;
-    }
-
-    nav ul li{
-        margin: 0 8px;
-    }
-
-    .navbar .logo{
-        justify-content: center;
-    }
 }

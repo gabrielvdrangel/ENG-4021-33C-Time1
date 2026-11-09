@@ -22,20 +22,6 @@
     margin-top: 10px;
 }
 
-.navbar{
-    display: flex;
-    align-items: right;
-    padding: 20px;
-    border-bottom: 1px solid #A9A9A9; 
-}
-
-.container{
-    max-width: 1300px;
-    margin: auto;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
 a{
     text-decoration: none;
     color: #C1592C;
@@ -53,21 +39,6 @@ a{
     font-weight: 700;
     text-decoration: none;
 
-}
-
-nav{
-    flex: 1;
-    text-align: right;
-}
-
-nav ul{
-    display: inline-block;
-    list-style-type: none;
-}
-
-nav ul li{
-    display: inline-block;
-    margin-right: 20px;
 }
 
 .logo{
