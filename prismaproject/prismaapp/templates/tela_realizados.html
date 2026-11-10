@@ -13,43 +13,25 @@
 
 <div class="conteudo">
 
-     <span id="subtitulo" class="datas">Seu histórico de oportunidades concluídas. Deixe um feedback para ajudar outros alunos.</span>
+    <span id="subtitulo" class="datas">Seu histórico de oportunidades concluídas. Deixe um feedback para ajudar outros alunos.</span>
 
-     <div class ="caixa">
-        <div class="logo-caixa">
-            <img src="{% static 'img/mat.png' %}">
-            <div class="caixa-texto">
-                <h3 class="color">Monitoria de Cálculo 1</h3>
+    {% for post in oportunidades %}
+        <div class="caixa">
+            <div class="logo-caixa">
+                {% if post.usuario.imagem %}<img src="{{ post.usuario.imagem.url }}">{% endif %}
+                <div class="caixa-texto">
+                    <h3 class="color">{{ post.descricao|truncatechars:60 }}</h3>
+                </div>
             </div>
+            <span>{{ post.usuario.first_name }}</span>
+            <span>{{ post.get_tipo_display }} · encerrada em {{ post.limite_inscricao|date:"d/m/Y" }}</span>
+            <a class="link-abas" href="{% url 'deixar_feedback' post.usuario.username %}">Deixar um Feedback</a>
         </div>
-        <span>PUC-Rio - Depto. de Matemática</span>
-        <span><a href=""> Realizado em 2025.2</a></span>
-        <span class="link-abas"> Deixar um Feedback </span>
-    </div>
-
-    <div class ="caixa">
-        <div class="logo-caixa">
-            <img src="{% static 'img/inf.png' %}">
-            <div class="caixa-texto">
-                <h3 class="color">IC em Visão Computacional</h3>
-            </div>
+    {% empty %}
+        <div class="caixa">
+            <span>Você ainda não tem candidaturas com prazo encerrado.</span>
         </div>
-        <span>Depto. de Informática</span>
-        <span><a href=""> Realizado em 2025.1</a></span>
-        <span class="link-abas"> Deixar um Feedback </span>
-    </div>
-
-    <div class ="caixa">
-        <div class="logo-caixa">
-            <img src="{% static 'img/ej.png' %}">
-            <div class="caixa-texto">
-                <h3 class="color">Empresa Júnior</h3>
-            </div>
-        </div>
-        <span>Trainee de desenvolvimento</span>
-        <span><a href=""> Realizado em 2024.2</a></span>
-        <span class="link-abas"> Deixar um Feedback </span>
-    </div>
+    {% endfor %}
 
 </div>
 
