@@ -1,11 +1,11 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.shortcuts import render
 from django.core.mail import send_mail
 
 
-from .models import Oportunidade, Usuario
+from .models import Oportunidade, Usuario, Feedback
 
 
 def login_user(request):
@@ -215,26 +215,49 @@ def add_publicacao(request):
         return redirect("homepage")
     return render(request, "tela_add-publicacao.html")
 
+
 @login_required
 def feedbacks_perfil(request):
-    return render(request, 'feedbacks_perfil.html')
+    feedbacks = request.user.feedbacks_enviados.select_related("destinatario", "oportunidade").order_by("-data")
+    return render(request, 'feedbacks_perfil.html', {'feedbacks': feedbacks})
+
+
+@login_required
+def deixar_feedback(request, username):
+    org = get_object_or_404(Usuario, username=username)
+
+    if org == request.user:
+        return redirect("tela_feedbacks", username=username)
+
+    if request.method == "POST":
+        comentario = request.POST.get("comentario", "").strip()
+        if comentario:
+            Feedback.objects.create(
+                autor=request.user,
+                destinatario=org,
+                comentario=comentario,
+            )
+            return redirect("tela_feedbacks", username=username)
+        return render(request, "tela_deixar_feedback.html", {
+            "org": org,
+            "erro": "Escreva um comentário antes de enviar.",
+        })
+
+    return render(request, "tela_deixar_feedback.html", {"org": org})
+
 
 @login_required
 def tela_feedbacks(request,username):
-    feedbacks = [
-        {"autor": "Maria Souza", "data": "02/11/2026",
-         "comentario": "Experiência incrível, aprendi muito!"},
-        {"autor": "João Lima", "data": "28/10/2026",
-         "comentario": "Ótima organização, só faltou mais tempo."},
-    ]
-    return render(request, "tela_feedback.html", {"feedbacks": feedbacks,"username": username})
-
+    org = get_object_or_404(Usuario, username=username)
+    feedbacks = org.feedbacks_recebidos.select_related("autor").order_by("-data")
+    return render(request, "tela_feedback.html", {"feedbacks": feedbacks,"username": username, "org": org})
 
 
 @login_required
 def perfil_aluno(request, username):
     aluno = Usuario.objects.filter(username=username).first()
     return render(request, "perfil_aluno.html", {"aluno": aluno})
+
 
 @login_required
 def alternar_seguir(request, username):
@@ -248,6 +271,7 @@ def alternar_seguir(request, username):
 
     return redirect("tela_perfil_org", username=username)
 
+
 @login_required
 def alternar_salvo(request, code):
     alvo = Oportunidade.objects.filter(code=code).first()
@@ -260,6 +284,7 @@ def alternar_salvo(request, code):
 
     return redirect("homepage")
 
+
 @login_required
 def alternar_candidatura(request, code):
     post = Oportunidade.objects.filter(code=code).first()
@@ -269,6 +294,8 @@ def alternar_candidatura(request, code):
         else:
             post.candidatos.add(request.user)
     return redirect('homepage') 
+
+
 def remover_publicacao(request, code):
     post = Oportunidade.objects.filter(code=code).first()
     if request.method == "POST":
