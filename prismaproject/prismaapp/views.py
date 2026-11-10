@@ -64,8 +64,9 @@ def homepage(request):
 
 
 @login_required
-def candidaturas(request):
-    oportunidade = Oportunidade.objects.all()
+def candidaturas(request, username):
+    usuario = Usuario.objects.filter(username=username).first()
+    oportunidade = Oportunidade.objects.filter(candidatos=usuario)
     return render(request, "tela_candidaturas.html", context={"oportunidades": oportunidade})
 
 
