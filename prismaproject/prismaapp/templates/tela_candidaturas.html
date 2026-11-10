@@ -16,82 +16,32 @@
     <h2 class="color">Candidaturas</h2>
     
     <div class = "caixa">
-        <p>{{ user.first_name|default:user.username }}</p>
-        {% if user.curso %}<span>{{ user.curso }}</span>{% endif %}
-        <a href="{% url 'logout' %}" class="link-sair">Sair da conta</a>
-    </div>
-
-    <div id="abas">
-        <a href="#" class="color">Todos</a> 
-        <a href="#" class="link-abas">Em análise</a>
-        <a href="#" class="link-abas">Finalizados</a>
-        <a href="#" class="link-abas">Arquivados</a>
+        {% if user.imagem %}
+            <img src="{{ user.imagem.url }}" alt="Foto de perfil" class="foto-perfil">
+        {% else %}
+            <img src="{% static 'img/perfil.png' %}" alt="Foto de perfil" class="foto-perfil">
+        {% endif %}
+        <h3>{{ user.first_name }}</h3>
+        <p>{{ user.curso }}</p>
     </div>
 
     <div class ="caixa">
-        <div class="logo-caixa">
-            <img src="{% static 'img/beta.png' %}">
-            <div class="caixa-texto">
-                <h3 class="color">Estágio em Engenharia de Produção</h3>
+        {% for post in oportunidades %}
+        <div class="caixa">
+            <div class="logo-caixa">
+                {% if post.usuario.imagem %}<img src="{{ post.usuario.imagem.url }}">{% endif %}
+                <div class="caixa-texto">
+                    <h3 class="color">{{ post.descricao|truncatechars:60 }}</h3>
+                </div>
             </div>
+            <span>{{ post.usuario.first_name }}</span>
+            <span>{{ post.get_tipo_display }} · inscrições até {{ post.limite_inscricao|date:"d/m/Y" }}</span>
         </div>
-        <span>Beta Consultoria</span>
-        <span> Enviada em 28/08/2024 </span>
-    </div>
-
-    <div class ="caixa">
-        <div class="logo-caixa">
-            <img src="{% static 'img/dei.png' %}">
-            <div class="caixa-texto">
-                <h3 class="color">Monitoria de Introdução à Engenharia</h3>
-            </div>
+        {% empty %}
+        <div class="caixa">
+            <span>Você ainda não se candidatou a nenhuma oportunidade.</span>
         </div>
-        <span>Departamento de Produção</span>
-        <span> Enviada em 25/08/2024 </span>
-    </div>
-
-    <div class ="caixa">
-        <div class="logo-caixa">
-            <img src="{% static 'img/lab.webp' %}">
-            <div class="caixa-texto">
-                <h3 class="color">Projeto de Pesquisa em Gestão de Projetos</h3>
-            </div>
-        </div>
-        <span>Laboratório de Engenharia de Produção</span>
-        <span> Enviada em 20/08/2024 </span>
-    </div>
-
-    <div class ="caixa">
-        <div class="logo-caixa">
-            <img src="{% static 'img/cc.png' %}">
-            <div class="caixa-texto">
-                <h3 class="color">Processo Seletivo - Consulting Club</h3>
-            </div>
-        </div>
-        <span>Consulting Club</span>
-        <span> Enviada em 15/06/2024 </span>
-    </div>
-    
-    <div class ="caixa">
-        <div class="logo-caixa">
-            <img src="{% static 'img/delta.png' %}">
-            <div class="caixa-texto">
-                <h3 class="color">Estágio em Logística</h3>
-            </div>
-        </div>
-        <span>Delta Consulting</span>
-        <span> Enviada em 10/08/2024 </span>
-    </div>
-
-    <div class ="caixa">
-        <div class="logo-caixa">
-            <img src="{% static 'img/fis.png' %}">
-            <div class="caixa-texto">
-                <h3 class="color">Monitoria de Física 1</h3>
-            </div>
-        </div>
-        <span>Departamento de Física</span>
-        <span> Enviada em 05/08/2024 </span>
+        {% endfor %}
     </div>
 </div>
 

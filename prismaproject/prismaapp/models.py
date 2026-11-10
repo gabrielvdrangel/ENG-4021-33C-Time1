@@ -32,4 +32,5 @@ class Oportunidade(models.Model):
     limite_inscricao = models.DateTimeField()
     data_publicacao = models.DateTimeField(auto_now_add=True)
     imagem = models.ImageField(upload_to='oportunidades/', max_length=500, null=True, blank=True)
+    candidatos = models.ManyToManyField('Usuario', related_name='candidaturas', blank=True)
 
