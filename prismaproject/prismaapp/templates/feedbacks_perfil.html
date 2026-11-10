@@ -17,75 +17,38 @@
 
     <div class="feedbacks-header">
         <div>
-            <h2>Feedbacks recebidos</h2>
-            <p>Veja o que as pessoas dizem sobre suas experiências.</p>
+            <h2>Feedbacks enviados</h2>
+            <p>Veja os feedbacks que você deixou nas oportunidades.</p>
         </div>
 
-        <span class="feedbacks-count">3 feedbacks</span>
+        <span class="feedbacks-count">{{ feedbacks|length }} feedback{{ feedbacks|length|pluralize }}</span>
     </div>
 
     <div class="feedbacks-list">
 
-        <!-- Feedback 1 -->
+        {% for f in feedbacks %}
         <article class="feedback-card">
             <div class="feedback-top">
-                <div class="feedback-avatar">MA</div>
+                <div class="feedback-avatar">{{ f.destinatario.username|slice:":2"|upper }}</div>
 
                 <div class="feedback-author">
-                    <h3>Mariana Alves</h3>
-                    <span>Monitora de Cálculo I</span>
+                    <h3>{{ f.destinatario.get_full_name|default:f.destinatario.username }}</h3>
+                    {% if f.oportunidade %}
+                        <span>{{ f.oportunidade.get_tipo_display }}</span>
+                    {% endif %}
                 </div>
 
-                <span class="feedback-date">Out. 2026</span>
+                <span class="feedback-date">{{ f.data|date:"M. Y" }}</span>
             </div>
 
-            <p class="feedback-text">
-                A Pietra demonstrou muita dedicação durante o projeto.
-                Foi organizada, participativa e sempre esteve disposta
-                a colaborar com a equipe.
-            </p>
+            <p class="feedback-text">{{ f.comentario }}</p>
         </article>
-
-        <!-- Feedback 2 -->
-        <article class="feedback-card">
-            <div class="feedback-top">
-                <div class="feedback-avatar">RC</div>
-
-                <div class="feedback-author">
-                    <h3>Rafael Costa</h3>
-                    <span>Projeto de Engenharia</span>
-                </div>
-
-                <span class="feedback-date">Set. 2026</span>
-            </div>
-
-            <p class="feedback-text">
-                Excelente trabalho em equipe! Demonstrou responsabilidade,
-                boa comunicação e iniciativa na resolução dos problemas.
-            </p>
-        </article>
-
-        <!-- Feedback 3 -->
-        <article class="feedback-card">
-            <div class="feedback-top">
-                <div class="feedback-avatar">LS</div>
-
-                <div class="feedback-author">
-                    <h3>Lucas Souza</h3>
-                    <span>Monitor de Programação</span>
-                </div>
-
-                <span class="feedback-date">Ago. 2026</span>
-            </div>
-
-            <p class="feedback-text">
-                Teve bastante interesse em aprender e apresentou
-                evolução ao longo das atividades. Sempre colaborou
-                com os colegas.
-            </p>
-        </article>
+        {% empty %}
+        <p class="text-muted">Você ainda não enviou feedbacks.</p>
+        {% endfor %}
 
     </div>
+
 
 </section>
 </body>
