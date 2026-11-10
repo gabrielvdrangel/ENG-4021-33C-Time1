@@ -12,85 +12,36 @@
 {% block content %}
 
 <div class="conteudo">
-    
+
     <h2 class="color">Prazos</h2>
-    
 
     <div id="abas">
-        <a href="#" class="color">Todos</a> 
-        <a href="#" class="link-abas">Estágios</a>
-        <span class="link-abas">Monitorias</span>
-        <a href="#" class="link-abas">Pesquisa</a>
-        <a href="#" class="link-abas">Extensão</a>
+        <a href="{% url 'prazos' %}" class="{% if not tipo_atual %}color{% else %}link-abas{% endif %}">Todos</a>
+        {% for valor, nome in tipos %}
+            <a href="?tipo={{ valor }}" class="{% if tipo_atual == valor %}color{% else %}link-abas{% endif %}">{{ nome }}</a>
+        {% endfor %}
     </div>
 
-    <span class="datas">Hoje, 4 de setembro</span>
+    {% for post in oportunidades %}
+        {% ifchanged post.limite_inscricao|date:"d/m/Y" %}
+            <span class="datas">{{ post.limite_inscricao|date:"j \d\e F" }}</span>
+        {% endifchanged %}
 
-    <div class ="caixa">
-        <div class="logo-caixa">
-            <img src="{% static 'img/mat.png' %}">
-            <div class="caixa-texto">
-                <h3 class="color">Monitoria de Cálculo 2</h3>
+        <div class="caixa">
+            <div class="logo-caixa">
+                {% if post.usuario.imagem %}<img src="{{ post.usuario.imagem.url }}">{% endif %}
+                <div class="caixa-texto">
+                    <h3 class="color">{{ post.descricao|truncatechars:60 }}</h3>
+                </div>
             </div>
+            <span>{{ post.usuario.first_name }}</span>
+            <span>{{ post.get_tipo_display }} · até {{ post.limite_inscricao|date:"d/m/Y H:i" }}</span>
         </div>
-        <span>Departamento de Matemática</span>
-        <span>Rio de Janeiro - Presencial</span>
-        <span> Bolsa: R$600/mês </span>
-    </div>
-
-    <span class="datas">Amanhã, 5 de setembro</span>
-
-    <div class ="caixa">
-        <div class="logo-caixa">
-            <img src="{% static 'img/alfa.png' %}">
-            <div class="caixa-texto">
-                <h3 class="color">Estágio em Engenharia de Produção</h3>
-            </div>
+    {% empty %}
+        <div class="caixa">
+            <span>Você não tem candidaturas com prazo em aberto.</span>
         </div>
-        <span>Empresa Alfa</span>
-        <span>Rio de Janeiro - Híbrido</span>
-        <span> Bolsa: R$1.800/mês - 6h/dia </span>
-    </div>
-
-    <div class ="caixa">
-        <div class="logo-caixa">
-            <img src="{% static 'img/lab.webp' %}">
-            <div class="caixa-texto">
-                <h3 class="color">Iniciação Científica - CNPq</h3>
-            </div>
-        </div>
-        <span>Laboratório de Produção</span>
-        <span>Rio de Janeiro - Presencial</span>
-        <span> Bolsa: R$1.200/mês </span>
-    </div>
-
-    <span class="datas">7 de setembro</span>
-
-    <div class ="caixa">
-        <div class="logo-caixa">
-            <img src="{% static 'img/cc.png' %}">
-            <div class="caixa-texto">
-                <h3 class="color">Processo Seletivo - Consulting Club</h3>
-            </div>
-        </div>
-        <span>Consulting Club</span>
-        <span>Rio de Janeiro - Presencial</span>
-        <span> Sem Bolsa </span>
-    </div>
-
-    <span class="datas">10 de setembro</span>
-
-    <div class ="caixa">
-        <div class="logo-caixa">
-            <img src="{% static 'img/fis.png' %}">
-            <div class="caixa-texto">
-                <h3 class="color">Monitoria de Física 1</h3>
-            </div>
-        </div>
-        <span>Departamento de Física</span>
-        <span>Rio de Janeiro - Presencial</span>
-        <span> Bolsa: R$500/mês </span>
-    </div>
+    {% endfor %}
 
 </div>
 
