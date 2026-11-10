@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render, get_object_or_404
 from django.shortcuts import render
 from django.core.mail import send_mail
+from django.utils import timezone
 
 
 from .models import Oportunidade, Usuario, Feedback
@@ -29,7 +30,23 @@ def logout_user(request):
 
 @login_required
 def prazos(request):
-    return render(request, "tela_prazos.html")
+    oportunidades = (
+        request.user.candidaturas
+        .filter(limite_inscricao__gte=timezone.now())
+        .select_related("usuario")
+        .order_by("limite_inscricao")
+    )
+
+    tipo = request.GET.get("tipo")
+    if tipo in dict(Oportunidade.TIPO_CHOICES):
+        oportunidades = oportunidades.filter(tipo=tipo)
+
+    return render(request, "tela_prazos.html", context={
+        "oportunidades": oportunidades,
+        "tipos": Oportunidade.TIPO_CHOICES,
+        "tipo_atual": tipo,
+    })
+
 
 
 @login_required
