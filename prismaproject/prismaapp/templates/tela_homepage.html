@@ -63,6 +63,12 @@
                 <a href="{% url 'tela_perfil_org' post.usuario.username %}"><strong>{{ post.usuario.first_name }}</strong></a><br/>
                 <small>{{ post.data_publicacao }}</small>
               </div>
+              {% if post.usuario == user %}
+              <form method="post" action="{% url 'remover_publicacao' post.code %}" class="ms-auto">
+              {% csrf_token %}
+                <button type="submit" class="btn btn-outline-primary btn-sm" title="Remover"><i class="bi bi-trash-fill"></i></button>
+              </form>
+              {% endif %}
             </div>
 
             {% if post.imagem %}<img src="{{ post.imagem.url }}" class="card-img-top"/>{% endif %}
@@ -82,6 +88,7 @@
               <button type="submit" class="btn btn-outline-primary"><i class="bi bi-bookmark"></i></button>
             {% endif %}
             </form>
+
             </div>
         </div>
         {% endif %}
