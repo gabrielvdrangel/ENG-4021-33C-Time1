@@ -13,7 +13,7 @@
 
     <section class="feedbacks-container">
 
-    <a href="{% url 'perfil_aluno' %}" class="voltar">&lt; Voltar</a>
+    <a href="{% url 'perfil_aluno' request.user.username %}" class="voltar">&lt; Voltar</a>
 
     <div class="feedbacks-header">
         <div>
