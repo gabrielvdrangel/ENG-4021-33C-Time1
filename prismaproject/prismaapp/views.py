@@ -61,7 +61,14 @@ def salvos(request):
 
 @login_required
 def realizados(request):
-    return render(request, "tela_realizados.html")
+    oportunidades = (
+        request.user.candidaturas
+        .filter(limite_inscricao__lt=timezone.now())
+        .select_related("usuario")
+        .order_by("-limite_inscricao")
+    )
+    return render(request, "tela_realizados.html", context={"oportunidades": oportunidades})
+
 
 
 @login_required
