@@ -18,7 +18,11 @@
 
     <div class="caixa">
       <section class="topo">
-        <div class="team-logo">{{ aluno.first_name|slice:":1"|upper }}</div>
+        {% if aluno.imagem %}
+          <img src="{{ aluno.imagem.url }}" alt="Foto de {{ aluno.first_name }}" class="team-logo foto">
+        {% else %}
+          <div class="team-logo">{{ aluno.first_name|slice:":1"|upper }}</div>
+        {% endif %}
         <div>
           <h1>{{ aluno.first_name }} {{ aluno.last_name }}</h1>
           <p class="sub">{{ aluno.curso|default:"Curso não informado" }} · {{ aluno.periodo|default_if_none:"-" }}º período</p>

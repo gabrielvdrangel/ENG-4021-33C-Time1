@@ -45,6 +45,11 @@
     flex-shrink: 0;
 }
 
+.team-logo.foto{
+    object-fit: cover;
+    background: var(--branco);
+}
+
 .topo h1{ margin: 0; font-size: 22px; font-weight: 600; color: var(--navy); }
 .sub{ margin: 2px 0 4px; color: var(--cinza-texto); font-size: 13px; }
 .stats{ margin: 0; font-size: 13px; color: var(--cinza-texto); }
