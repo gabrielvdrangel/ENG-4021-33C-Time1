@@ -65,7 +65,8 @@ def homepage(request):
 
 @login_required
 def candidaturas(request):
-    return render(request, "tela_candidaturas.html")
+    oportunidade = Oportunidade.objects.all()
+    return render(request, "tela_candidaturas.html", context={"oportunidades": oportunidade})
 
 
 @login_required
@@ -260,6 +261,14 @@ def alternar_salvo(request, code):
     return redirect("homepage")
 
 @login_required
+def alternar_candidatura(request, code):
+    post = Oportunidade.objects.filter(code=code).first()
+    if request.method == "POST":
+        if request.user in post.candidatos.all():
+            post.candidatos.remove(request.user)
+        else:
+            post.candidatos.add(request.user)
+    return redirect('homepage') 
 def remover_publicacao(request, code):
     post = Oportunidade.objects.filter(code=code).first()
     if request.method == "POST":

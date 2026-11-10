@@ -88,6 +88,16 @@
               <button type="submit" class="btn btn-outline-primary"><i class="bi bi-bookmark"></i></button>
             {% endif %}
             </form>
+            {% if user.matricula is not None %}
+            <form method="post" action="{% url 'alternar_candidatura' post.code %}" class="d-inline">
+            {% csrf_token %}
+            {% if user in post.candidatos.all %}
+              <button type="submit" class="btn btn-primary btn-sm btn-candidatar">Candidatado <i class="bi bi-check-lg"></i></button>
+            {% else %}
+              <button type="submit" class="btn btn-outline-primary btn-sm btn-candidatar">Candidatar-se</button>
+            {% endif %}
+            </form>
+          {% endif %}
 
             </div>
         </div>
