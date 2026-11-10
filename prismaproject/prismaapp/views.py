@@ -269,3 +269,8 @@ def alternar_candidatura(request, code):
         else:
             post.candidatos.add(request.user)
     return redirect('homepage') 
+def remover_publicacao(request, code):
+    post = Oportunidade.objects.filter(code=code).first()
+    if request.method == "POST":
+        post.delete()
+    return redirect('homepage')

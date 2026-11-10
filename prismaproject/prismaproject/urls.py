@@ -49,6 +49,7 @@ urlpatterns = [
     path('seguir/<str:username>/', alternar_seguir, name='alternar_seguir'),
     path('oportunidade/<uuid:code>/salvar/', views.alternar_salvo, name='alternar_salvo'),
     path('candidatar/<uuid:code>/', views.alternar_candidatura, name='alternar_candidatura'),
+    path('remover_publicacao/<uuid:code>/', views.remover_publicacao, name='remover_publicacao')
 ]
 
 if settings.DEBUG:
