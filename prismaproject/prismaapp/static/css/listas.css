@@ -134,6 +134,42 @@ h2.color{
     border: 1px solid var(--cinza-claro);
 }
 
+/* Cartão do aluno no topo (igual ao da tela de salvos) */
+.caixa-aluno{
+    align-items: center;
+    text-align: center;
+    border-left: 1px solid var(--cinza-claro);
+    border-top: 4px solid var(--navy);
+    margin-bottom: 24px;
+    padding: 24px 18px;
+}
+
+.caixa-aluno:hover{
+    transform: none;
+    box-shadow: var(--sombra);
+    border-left-color: var(--cinza-claro);
+}
+
+.caixa-aluno h3{
+    margin: 8px 0 0;
+    color: var(--navy);
+    font-weight: 600;
+}
+
+.caixa-aluno p{
+    margin: 0;
+    color: var(--cinza-texto);
+    font-weight: 400;
+}
+
+.caixa-aluno .foto-perfil{
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--laranja);
+}
+
 .caixa a{
     color: var(--cinza-texto);
     text-decoration: none;

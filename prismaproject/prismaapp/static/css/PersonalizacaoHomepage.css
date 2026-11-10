@@ -269,7 +269,11 @@ body{
 .card-footer .btn.btn-candidatar{
     width: auto;
     height: 40px;
-    padding: 0 18px;
+    padding: 0 20px;
+    font-size: 14px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    gap: 6px;
 }
 
 .card-footer form:has(.btn-candidatar){
