@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Editar publicação</title>
+  <link rel="stylesheet" href="{% static 'prismaapp/css/editar_publicacao.css' %}">
+</head>
+<body>
+  <main class="editar">
+    <h1>Editar publicação</h1>
+
+    <form method="post" class="editar__form">
+      {% csrf_token %}
+
+      <label for="titulo">Título</label>
+      <input type="text" id="titulo" name="titulo" required>
+
+      <label for="descricao">Descrição</label>
+      <textarea id="descricao" name="descricao" rows="5" required></textarea>
+
+      <label for="prazo">Prazo de inscrição</label>
+      <input type="date" id="prazo" name="prazo">
+
+      <div class="editar__acoes">
+        <a href="{% url 'tela_prazos' %}" class="btn btn--sec">Cancelar</a>
+        <button type="submit" class="btn">Salvar alterações</button>
+      </div>
+    </form>
+  </main>
+</body>
+</html>
