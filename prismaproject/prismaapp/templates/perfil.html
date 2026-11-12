@@ -23,7 +23,11 @@
                 <p class="curso">Organização</p>
             {% endif %}
 
-            <a href="{% url 'perfil_aluno' %}" class="botao-editar">Ver perfil</a>
+        {% if usuario.curso is not None and usuario.periodo is not None %}
+            <a href="{% url 'perfil_aluno' usuario.username %}" class="botao-editar">Ver perfil</a>
+        {% else %}
+            <a href="{% url 'tela_perfil_org' usuario.username %}" class="botao-editar">Ver perfil</a>
+        {% endif %}
             <a href="{% url 'editar_perfil' %}" class="botao-editar">Editar perfil</a>
         </div>
 
@@ -33,7 +37,7 @@
         <span class="icone-card">&#9873;</span>
         <p>Salvos</p>
     </a>
-    <a href="{% url 'candidaturas' %}" class="card">
+    <a href="{% url 'candidaturas' usuario.username %}" class="card">
         <span class="icone-card">&#9776;</span>
         <p>Candidaturas</p>
     </a>

@@ -13,13 +13,18 @@
 
 <body class="pr-auth">
 
-  <form method="post" action="{% url 'cadastro_aluno' %}">
-    {% csrf_token %}
-
     <div class="caixa">
-            <img src="{% static 'img/prisma_logo.png' %}" width="100px">
-            <h1>Prisma</h1>
-            <p>Ambiente de oportunidades online</p>
+      <a href="{% url 'escolhe_cadastro' %}" class="voltar">←</a>
+      <img src="{% static 'img/prisma_logo.png' %}" width="100px">
+      <h1>Prisma</h1>
+      <p>Ambiente de oportunidades online</p>
+
+      {% if erro %}
+        <div class="alert alert-danger" role="alert">{{ erro }}</div>
+      {% endif %}
+
+      <form method="post" action="{% url 'cadastro_aluno' %}">
+      {% csrf_token %}
 
       <div class="form-group">
         <input type="text" class="form-control" name = "nome" placeholder="Nome completo" required>
@@ -45,12 +50,9 @@
         <input type="number" class="form-control" name = "periodo" placeholder="Período (número)" required>
       </div>
 
-      {% if erro %}<p class="text-danger">{{ erro }}</p>{% endif %}
-
       <button type="submit" class="btn btn-outline-primary">Criar Conta</button>
 
-  </form>
-
+      </form>
     </div>
 
 </body>

@@ -1,0 +1,5 @@
+from django.shortcuts import render, redirect
+def tela_editar_publicacao(request):
+    if request.method == "POST":
+      return redirect("tela_prazos")
+ return render(request, "tela_editar_publicacao.html")

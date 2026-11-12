@@ -1,11 +1,12 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.shortcuts import render
 from django.core.mail import send_mail
+from django.utils import timezone
 
 
-from .models import Oportunidade, Usuario
+from .models import Oportunidade, Usuario, Feedback
 
 
 def login_user(request):
@@ -29,7 +30,23 @@ def logout_user(request):
 
 @login_required
 def prazos(request):
-    return render(request, "tela_prazos.html")
+    oportunidades = (
+        request.user.candidaturas
+        .filter(limite_inscricao__gte=timezone.now())
+        .select_related("usuario")
+        .order_by("limite_inscricao")
+    )
+
+    tipo = request.GET.get("tipo")
+    if tipo in dict(Oportunidade.TIPO_CHOICES):
+        oportunidades = oportunidades.filter(tipo=tipo)
+
+    return render(request, "tela_prazos.html", context={
+        "oportunidades": oportunidades,
+        "tipos": Oportunidade.TIPO_CHOICES,
+        "tipo_atual": tipo,
+    })
+
 
 
 @login_required
@@ -44,7 +61,14 @@ def salvos(request):
 
 @login_required
 def realizados(request):
-    return render(request, "tela_realizados.html")
+    oportunidades = (
+        request.user.candidaturas
+        .filter(limite_inscricao__lt=timezone.now())
+        .select_related("usuario")
+        .order_by("-limite_inscricao")
+    )
+    return render(request, "tela_realizados.html", context={"oportunidades": oportunidades})
+
 
 
 @login_required
@@ -64,8 +88,10 @@ def homepage(request):
 
 
 @login_required
-def candidaturas(request):
-    return render(request, "tela_candidaturas.html")
+def candidaturas(request, username):
+    usuario = Usuario.objects.filter(username=username).first()
+    oportunidade = Oportunidade.objects.filter(candidatos=usuario)
+    return render(request, "tela_candidaturas.html", context={"oportunidades": oportunidade})
 
 
 @login_required
@@ -214,25 +240,49 @@ def add_publicacao(request):
         return redirect("homepage")
     return render(request, "tela_add-publicacao.html")
 
+
 @login_required
 def feedbacks_perfil(request):
-    return render(request, 'feedbacks_perfil.html')
+    feedbacks = request.user.feedbacks_enviados.select_related("destinatario", "oportunidade").order_by("-data")
+    return render(request, 'feedbacks_perfil.html', {'feedbacks': feedbacks})
+
+
+@login_required
+def deixar_feedback(request, username):
+    org = get_object_or_404(Usuario, username=username)
+
+    if org == request.user:
+        return redirect("tela_feedbacks", username=username)
+
+    if request.method == "POST":
+        comentario = request.POST.get("comentario", "").strip()
+        if comentario:
+            Feedback.objects.create(
+                autor=request.user,
+                destinatario=org,
+                comentario=comentario,
+            )
+            return redirect("tela_feedbacks", username=username)
+        return render(request, "tela_deixar_feedback.html", {
+            "org": org,
+            "erro": "Escreva um comentário antes de enviar.",
+        })
+
+    return render(request, "tela_deixar_feedback.html", {"org": org})
+
 
 @login_required
 def tela_feedbacks(request,username):
-    feedbacks = [
-        {"autor": "Maria Souza", "data": "02/11/2026",
-         "comentario": "Experiência incrível, aprendi muito!"},
-        {"autor": "João Lima", "data": "28/10/2026",
-         "comentario": "Ótima organização, só faltou mais tempo."},
-    ]
-    return render(request, "tela_feedback.html", {"feedbacks": feedbacks,"username": username})
-
+    org = get_object_or_404(Usuario, username=username)
+    feedbacks = org.feedbacks_recebidos.select_related("autor").order_by("-data")
+    return render(request, "tela_feedback.html", {"feedbacks": feedbacks,"username": username, "org": org})
 
 
 @login_required
-def perfil_aluno(request):
-    return render(request, "perfil_aluno.html", {"aluno": request.user})
+def perfil_aluno(request, username):
+    aluno = Usuario.objects.filter(username=username).first()
+    return render(request, "perfil_aluno.html", {"aluno": aluno})
+
 
 @login_required
 def alternar_seguir(request, username):
@@ -246,6 +296,7 @@ def alternar_seguir(request, username):
 
     return redirect("tela_perfil_org", username=username)
 
+
 @login_required
 def alternar_salvo(request, code):
     alvo = Oportunidade.objects.filter(code=code).first()
@@ -257,3 +308,29 @@ def alternar_salvo(request, code):
             request.user.salvos.add(alvo)
 
     return redirect("homepage")
+
+
+@login_required
+def alternar_candidatura(request, code):
+    post = Oportunidade.objects.filter(code=code).first()
+    if request.method == "POST":
+        if request.user in post.candidatos.all():
+            post.candidatos.remove(request.user)
+        else:
+            post.candidatos.add(request.user)
+    return redirect('homepage') 
+
+
+@login_required
+def remover_publicacao(request, code):
+    post = Oportunidade.objects.filter(code=code).first()
+    if request.method == "POST":
+        post.delete()
+    return redirect('homepage')
+
+
+def tela_editar_publicacao(request):
+    if request.method == "POST":
+      return redirect("tela_prazos")
+    return render(request, "tela_editar_publi.html")
+

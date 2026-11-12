@@ -32,4 +32,11 @@ class Oportunidade(models.Model):
     limite_inscricao = models.DateTimeField()
     data_publicacao = models.DateTimeField(auto_now_add=True)
     imagem = models.ImageField(upload_to='oportunidades/', max_length=500, null=True, blank=True)
+    candidatos = models.ManyToManyField('Usuario', related_name='candidaturas', blank=True)
 
+class Feedback(models.Model):
+    autor = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="feedbacks_enviados")
+    destinatario = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="feedbacks_recebidos")
+    oportunidade = models.ForeignKey(Oportunidade, on_delete=models.SET_NULL, null=True, blank=True, related_name="feedbacks")
+    comentario = models.TextField()
+    data = models.DateTimeField(auto_now_add=True)

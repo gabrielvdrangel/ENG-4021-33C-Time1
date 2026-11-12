@@ -29,7 +29,7 @@ urlpatterns = [
     path('realizados/', realizados, name='realizados'),
     path('perfil/', perfil, name='perfil'),
     path("homepage/", views.homepage, name="homepage"),
-    path('candidaturas/', candidaturas, name='candidaturas'),
+    path('candidaturas/<str:username>/', candidaturas, name='candidaturas'),
     path('chat/', chat, name='chat'),
     path('conversas/', conversas, name='conversas'),
     path('', entrar_cadastrar, name='entrar_cadastrar'),
@@ -45,9 +45,13 @@ urlpatterns = [
     path('logout/', logout_user, name='logout'),
     path("redefinir-email/", views.redefinir_email, name="redefinir_email"),
     path("feedbacks/<str:username>/", views.tela_feedbacks, name="tela_feedbacks"),
-    path("perfil-aluno/", views.perfil_aluno, name="perfil_aluno"),
+    path("perfil_aluno/<str:username>/", views.perfil_aluno, name="perfil_aluno"),
     path('seguir/<str:username>/', alternar_seguir, name='alternar_seguir'),
     path('oportunidade/<uuid:code>/salvar/', views.alternar_salvo, name='alternar_salvo'),
+    path('candidatar/<uuid:code>/', views.alternar_candidatura, name='alternar_candidatura'),
+    path('remover_publicacao/<uuid:code>/', views.remover_publicacao, name='remover_publicacao'),
+    path("feedbacks/<str:username>/novo/", views.deixar_feedback, name="deixar_feedback"),
+    path("editar-publicacao/", views.tela_editar_publicacao, name="tela_editar_publicacao"),
 ]
 
 if settings.DEBUG:
