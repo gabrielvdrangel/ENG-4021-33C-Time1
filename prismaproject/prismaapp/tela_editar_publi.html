@@ -15,13 +15,13 @@
       {% csrf_token %}
 
       <label for="titulo">Título</label>
-      <input type="text" id="titulo" name="titulo" required>
+      <input type="text" id="titulo" name="titulo" value="{{ publicacao.titulo }}" required>
 
       <label for="descricao">Descrição</label>
-      <textarea id="descricao" name="descricao" rows="5" required></textarea>
+      <textarea id="descricao" name="descricao" rows="5" required>{{ publicacao.descricao }}</textarea>
 
       <label for="prazo">Prazo de inscrição</label>
-      <input type="date" id="prazo" name="prazo">
+      <input type="date" id="prazo" name="prazo" value="{{ publicacao.prazo|date:'Y-m-d' }}">
 
       <div class="editar__acoes">
         <a href="{% url 'tela_prazos' %}" class="btn btn--sec">Cancelar</a>
