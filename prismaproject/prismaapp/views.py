@@ -296,7 +296,6 @@ def tela_feedbacks(request,username):
 
 
 @login_required
-@login_required
 def perfil_aluno(request, username):
     aluno = get_object_or_404(Usuario, username=username)
 
