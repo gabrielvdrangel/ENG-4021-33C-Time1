@@ -327,3 +327,10 @@ def remover_publicacao(request, code):
     if request.method == "POST":
         post.delete()
     return redirect('homepage')
+
+
+def tela_editar_publicacao(request):
+    if request.method == "POST":
+      return redirect("tela_prazos")
+    return render(request, "tela_editar_publi.html")
+

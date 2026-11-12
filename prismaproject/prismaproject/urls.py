@@ -51,6 +51,7 @@ urlpatterns = [
     path('candidatar/<uuid:code>/', views.alternar_candidatura, name='alternar_candidatura'),
     path('remover_publicacao/<uuid:code>/', views.remover_publicacao, name='remover_publicacao'),
     path("feedbacks/<str:username>/novo/", views.deixar_feedback, name="deixar_feedback"),
+    path("editar-publicacao/", views.tela_editar_publicacao, name="tela_editar_publicacao"),
 ]
 
 if settings.DEBUG:
