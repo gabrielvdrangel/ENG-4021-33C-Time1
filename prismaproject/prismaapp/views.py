@@ -327,3 +327,18 @@ def remover_publicacao(request, code):
     if request.method == "POST":
         post.delete()
     return redirect('homepage')
+
+
+def tela_editar_publicacao(request, pk):
+    publicacao = get_object_or_404(Publicacao, pk=pk)
+
+    if request.method == "POST":
+        publicacao.titulo = request.POST["titulo"]
+        publicacao.descricao = request.POST["descricao"]
+        publicacao.prazo = request.POST["prazo"] or None
+        publicacao.save()
+        return redirect("tela_prazos")
+
+    return render(request, "tela_editar_publicacao.html", {"publicacao": publicacao})
+
+

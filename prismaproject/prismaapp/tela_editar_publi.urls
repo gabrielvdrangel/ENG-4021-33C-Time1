@@ -1,1 +1,0 @@
-path("editar-publicacao/<int:pk>/", views.tela_editar_publicacao, name="tela_editar_publicacao"),

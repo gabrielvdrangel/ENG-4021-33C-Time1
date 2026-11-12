@@ -1,9 +1,0 @@
-editar { max-width: 480px; margin: 0 auto; padding: 24px 16px; font-family: sans-serif; }
-editar h1 { font-size: 1.5rem; margin-bottom: 16px; }
-editar__form { display: flex; flex-direction: column; gap: 8px; }
-editar__form label { font-weight: 600; margin-top: 8px; }
-editar__form input,
-editar__form textarea { padding: 10px; border: 1px solid #ccc; border-radius: 8px; font: inherit; }
-editar__acoes { display: flex; gap: 12px; margin-top: 20px; }
-btn { flex: 1; padding: 12px; border: 0; border-radius: 8px; background: #4f46e5; color: #fff; text-align: center; text-decoration: none; cursor: pointer; font: inherit; }
-btn--sec { background: #e5e7eb; color: #111; }
