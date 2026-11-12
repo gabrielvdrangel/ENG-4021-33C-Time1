@@ -24,7 +24,10 @@
             </div>
 
             <div class="formulario">
-                
+                {% if erro %}
+                    <p class="erro" style="color: #c0392b;">{{ erro }}</p>
+                {% endif %}
+
                 <div class="campo">
                     <label>Nome</label>
                     <input type="text" name="nome" value="{{ usuario.first_name }}">
@@ -33,7 +36,12 @@
                 {% if usuario.curso is not None and usuario.periodo is not None %}
                     <div class="campo">
                         <label>Curso</label>
-                        <input type="text" name="curso" value="{{ usuario.curso|default:'' }}">
+                        <input type="text" name="curso" list="lista-cursos" value="{{ usuario.curso|default:'' }}" placeholder="Digite para pesquisar" autocomplete="off">
+                        <datalist id="lista-cursos">
+                            {% for curso in cursos %}
+                                <option value="{{ curso.nome }}"></option>
+                            {% endfor %}
+                        </datalist>
                     </div>
                 
 

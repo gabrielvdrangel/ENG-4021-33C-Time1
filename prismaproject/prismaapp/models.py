@@ -40,3 +40,30 @@ class Feedback(models.Model):
     oportunidade = models.ForeignKey(Oportunidade, on_delete=models.SET_NULL, null=True, blank=True, related_name="feedbacks")
     comentario = models.TextField()
     data = models.DateTimeField(auto_now_add=True)
+
+class Curso(models.Model):
+    nome = models.CharField(max_length=150, unique=True)
+
+    class Meta:
+        ordering = ["nome"]
+
+    def __str__(self):
+        return self.nome
+
+class Experiencia(models.Model):
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="experiencias")
+    titulo = models.CharField(max_length=150)        # cargo/função, ex.: "Trainee de desenvolvimento"
+    organizacao = models.CharField(max_length=150)   # ex.: "Empresa Júnior"
+    data_inicio = models.DateField()
+    data_fim = models.DateField(null=True, blank=True)  # vazio = em andamento
+    descricao = models.TextField(blank=True)
+
+    class Meta:
+        ordering = ["-data_inicio"]
+
+    @property
+    def atual(self):
+        return self.data_fim is None
+
+    def __str__(self):
+        return f"{self.titulo} - {self.organizacao} ({self.usuario.username})"
