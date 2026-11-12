@@ -53,6 +53,21 @@
               <button class="btn btn-outline-primary"><i class="bi bi-heart-fill"></i></button>
               <button class="btn btn-outline-primary"><i class="bi bi-chat-right-fill"></i></button>
               <button class="btn btn-outline-primary"><i class="bi bi-bookmark-fill"></i></button>
+            
+               {% if post.usuario == user %}
+                <div class="ms-auto d-flex gap-2">
+                  <a href="{% url 'tela_editar_publicacao' post.code %}" class="btn btn-outline-primary btn-sm" title="Editar">
+                    <i class="bi bi-pencil-fill"></i>
+                  </a>
+                  <form method="post" action="{% url 'remover_publicacao' post.code %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-primary btn-sm" title="Remover">
+                      <i class="bi bi-trash-fill"></i>
+                    </button>
+                  </form>
+                </div>
+                {% endif %}
+              </div>
             </div>
           </div>
       {% empty %}

@@ -329,8 +329,18 @@ def remover_publicacao(request, code):
     return redirect('homepage')
 
 
-def tela_editar_publicacao(request):
+@login_required
+def tela_editar_publicacao(request, code):
+    post = get_object_or_404(Oportunidade, code=code, usuario=request.user)
     if request.method == "POST":
-      return redirect("tela_prazos")
-    return render(request, "tela_editar_publi.html")
+        post.descricao = request.POST.get("descricao")
+        limite = request.POST.get("limite_inscricao")
+        if limite:
+            post.limite_inscricao = limite
+        if request.FILES.get("imagem"):
+            post.imagem = request.FILES["imagem"]
+        post.save()
+        return redirect("tela_perfil_org", username=request.user.username)
+    return render(request, "tela_editar_publi.html", {"post": post})
+
 
