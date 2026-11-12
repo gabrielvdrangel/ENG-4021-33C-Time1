@@ -1,12 +1,14 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render, get_object_or_404
 from django.shortcuts import render
 from django.core.mail import send_mail
 from django.utils import timezone
+from datetime import date
 
 
-from .models import Oportunidade, Usuario, Feedback
+from .models import Curso, Experiencia, Oportunidade, Usuario, Feedback
 
 
 def login_user(request):
@@ -184,34 +186,49 @@ def redefinir_email(request):
 def editar_perfil(request):
     user = request.user
     if request.method == "POST":
+        curso = (request.POST.get("curso") or "").strip() or None
+        # Aceita o curso atual (contas antigas com texto livre) ou um curso da lista.
+        if curso and curso != user.curso and not Curso.objects.filter(nome=curso).exists():
+            return render(request, "editar-perfil.html", {
+                "usuario": user,
+                "cursos": Curso.objects.all(),
+                "erro": "Selecione um curso da lista.",
+            })
         user.first_name = request.POST.get("nome", user.first_name)
-        user.curso = request.POST.get("curso") or None
+        user.curso = curso
         user.periodo = request.POST.get("periodo") or None
         imagem = request.FILES.get("imagem")
         if imagem:
             user.imagem = imagem
         user.save()
         return redirect("perfil")
-    return render(request, "editar-perfil.html", {"usuario": user})
+    return render(request, "editar-perfil.html", {"usuario": user, "cursos": Curso.objects.all()})
 
 
 def cadastro_aluno(request):
+    cursos = Curso.objects.all()
     if request.method == "POST":
         nome = request.POST["nome"]
         matricula = request.POST["login"]
         senha = request.POST["senha"]
         email = request.POST["email"]
-        curso = request.POST["curso"]
+        curso = request.POST["curso"].strip()
         periodo = request.POST["periodo"]
 
+        def erro(msg):
+            return render(request, "cadastro-aluno.html", {"erro": msg, "cursos": cursos})
+
         if not matricula.isdigit():
-            return render(request, "cadastro-aluno.html", {"erro": "Matrícula deve conter apenas números."})
+            return erro("Matrícula deve conter apenas números.")
 
         if Usuario.objects.filter(matricula=int(matricula)).exists():
-            return render(request, "cadastro-aluno.html", {"erro": "Matrícula já cadastrada."})
+            return erro("Matrícula já cadastrada.")
 
         if Usuario.objects.filter(email=email).exists():
-            return render(request, "cadastro-aluno.html", {"erro": "Email já cadastrado."})
+            return erro("Email já cadastrado.")
+
+        if not cursos.filter(nome=curso).exists():
+            return erro("Selecione um curso da lista.")
 
         Usuario.objects.create_user(
             username=nome,
@@ -224,7 +241,7 @@ def cadastro_aluno(request):
         )
         return redirect("login")
 
-    return render(request, "cadastro-aluno.html")
+    return render(request, "cadastro-aluno.html", {"cursos": cursos})
 
 
 @login_required
@@ -279,9 +296,59 @@ def tela_feedbacks(request,username):
 
 
 @login_required
+@login_required
 def perfil_aluno(request, username):
-    aluno = Usuario.objects.filter(username=username).first()
-    return render(request, "perfil_aluno.html", {"aluno": aluno})
+    aluno = get_object_or_404(Usuario, username=username)
+
+    return render(request, "perfil_aluno.html", {
+        "aluno": aluno,
+        "total_seguidores": aluno.seguidores.count(),
+        "total_seguindo": aluno.seguindo.count(),
+        "eh_proprio_perfil": aluno == request.user,
+        "ja_segue": request.user.seguindo.filter(pk=aluno.pk).exists(),
+    })
+
+
+@login_required
+def criar_experiencia(request):
+    if request.method != "POST":
+        return redirect("perfil_aluno", username=request.user.username)
+
+    titulo = request.POST.get("titulo", "").strip()
+    organizacao = request.POST.get("organizacao", "").strip()
+    descricao = request.POST.get("descricao", "").strip()
+    try:
+        data_inicio = date.fromisoformat(request.POST.get("data_inicio", ""))
+        data_fim_texto = request.POST.get("data_fim", "")
+        data_fim = date.fromisoformat(data_fim_texto) if data_fim_texto else None
+    except ValueError:
+        data_inicio = data_fim = None
+
+    if not titulo or not organizacao or not data_inicio:
+        messages.error(request, "Preencha cargo, organização e data de início.")
+    elif data_fim and data_fim < data_inicio:
+        messages.error(request, "A data de término não pode ser antes da data de início.")
+    else:
+        Experiencia.objects.create(
+            usuario=request.user,
+            titulo=titulo,
+            organizacao=organizacao,
+            data_inicio=data_inicio,
+            data_fim=data_fim,
+            descricao=descricao,
+        )
+        messages.success(request, "Experiência adicionada.")
+
+    return redirect("perfil_aluno", username=request.user.username)
+
+
+@login_required
+def remover_experiencia(request, id):
+    if request.method == "POST":
+        experiencia = get_object_or_404(Experiencia, id=id, usuario=request.user)
+        experiencia.delete()
+        messages.success(request, "Experiência removida.")
+    return redirect("perfil_aluno", username=request.user.username)
 
 
 @login_required
@@ -294,6 +361,9 @@ def alternar_seguir(request, username):
         else:
             request.user.seguindo.add(alvo)
 
+    # Alunos têm curso; organizações não.
+    if alvo and alvo.curso is not None:
+        return redirect("perfil_aluno", username=username)
     return redirect("tela_perfil_org", username=username)
 
 

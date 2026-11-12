@@ -43,7 +43,12 @@
       </div>
 
       <div class="form-group">
-        <input type="text" class="form-control" name = "curso" placeholder="Curso" required>
+        <input type="text" class="form-control" name="curso" list="lista-cursos" placeholder="Curso (digite para pesquisar)" autocomplete="off" required>
+        <datalist id="lista-cursos">
+          {% for curso in cursos %}
+            <option value="{{ curso.nome }}"></option>
+          {% endfor %}
+        </datalist>
       </div>
       
       <div class="form-group">
