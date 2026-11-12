@@ -27,56 +27,96 @@
           <h1>{{ aluno.first_name }} {{ aluno.last_name }}</h1>
           <p class="sub">{{ aluno.curso|default:"Curso não informado" }} · {{ aluno.periodo|default_if_none:"-" }}º período</p>
           <p class="stats">
-            <b>86</b> seguidores
-            <b>3</b> experiências
+            <b>{{ total_seguidores }}</b> seguidor{{ total_seguidores|pluralize:"es" }}
+            <b>{{ total_seguindo }}</b> seguindo
+            {% with total_exp=aluno.experiencias.count %}<b>{{ total_exp }}</b> experiência{{ total_exp|pluralize }}{% endwith %}
           </p>
         </div>
       </section>
 
       <div class="acoes">
-        <button type="button" class="btn btn-danger">
-          <i class="bi bi-plus-lg"></i> Seguir
-        </button>
-        <a href="{% url 'feedbacks_perfil' %}" class="btn btn-outline-primary">
-          Feedbacks e Recomendações
-        </a>
-        <button type="button" class="btn btn-primary">
-          <i class="bi bi-chat-right"></i> Enviar mensagem
-        </button>
+        {% if eh_proprio_perfil %}
+          <a href="{% url 'editar_perfil' %}" class="btn btn-danger">
+            <i class="bi bi-pencil"></i> Editar perfil
+          </a>
+          <a href="{% url 'feedbacks_perfil' %}" class="btn btn-outline-primary">
+            Meus feedbacks
+          </a>
+        {% else %}
+          <form method="post" action="{% url 'alternar_seguir' username=aluno.username %}" class="d-flex flex-fill">
+            {% csrf_token %}
+            {% if ja_segue %}
+              <button type="submit" class="btn btn-outline-danger flex-fill">
+                <i class="bi bi-check-lg"></i> Seguindo
+              </button>
+            {% else %}
+              <button type="submit" class="btn btn-danger flex-fill">
+                <i class="bi bi-plus-lg"></i> Seguir
+              </button>
+            {% endif %}
+          </form>
+          <a href="{% url 'tela_feedbacks' aluno.username %}" class="btn btn-outline-primary">
+            Feedbacks e Recomendações
+          </a>
+          <a href="{% url 'chat' %}" class="btn btn-primary">
+            <i class="bi bi-chat-right"></i> Enviar mensagem
+          </a>
+        {% endif %}
       </div>
+
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert {% if message.tags == 'error' %}alert-danger{% else %}alert-success{% endif %} mt-3 mb-0 py-2">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
 
       <h2>Experiências</h2>
       <p class="desc">Organizações em que {{ aluno.first_name }} atuou dentro da PUC-Rio.</p>
 
-      <div class="exp">
-        <img src="{% static 'img/EmpresaJuniorPefil.png' %}" alt="Empresa Júnior">
-        <div class="info">
-          <b>Empresa Júnior</b>
-          <span>Trainee de desenvolvimento</span>
-          <small>mar 2025 - atual · 1 ano e 8 meses</small>
-        </div>
-        <span class="tag atual">Atual</span>
-      </div>
+      {% if eh_proprio_perfil %}
+        <details class="nova-exp">
+          <summary class="btn btn-outline-primary btn-sm"><i class="bi bi-plus-lg"></i> Adicionar experiência</summary>
+          <form method="post" action="{% url 'criar_experiencia' %}" class="form-exp">
+            {% csrf_token %}
+            <input type="text" name="titulo" class="form-control" placeholder="Cargo / função (ex.: Trainee de desenvolvimento)" maxlength="150" required>
+            <input type="text" name="organizacao" class="form-control" placeholder="Organização (ex.: Empresa Júnior)" maxlength="150" required>
+            <div class="datas">
+              <label>Início <input type="date" name="data_inicio" class="form-control" required></label>
+              <label>Término <input type="date" name="data_fim" class="form-control"></label>
+            </div>
+            <small class="dica">Deixe o término vazio se a experiência ainda está em andamento.</small>
+            <textarea name="descricao" class="form-control" rows="2" placeholder="Descrição (opcional)"></textarea>
+            <button type="submit" class="btn btn-primary btn-sm">Salvar experiência</button>
+          </form>
+        </details>
+      {% endif %}
 
-      <div class="exp">
-        <img src="{% static 'img/RioBotzPefil.png' %}" alt="Rio Botz">
-        <div class="info">
-          <b>Rio Botz</b>
-          <span>Membro da equipe de eletrônica</span>
-          <small>ago 2024 - dez 2024 · 5 meses</small>
+      {% for exp in aluno.experiencias.all %}
+        <div class="exp">
+          <div class="exp-inicial">{{ exp.organizacao|slice:":1"|upper }}</div>
+          <div class="info">
+            <b>{{ exp.organizacao }}</b>
+            <span>{{ exp.titulo }}</span>
+            <small>{{ exp.data_inicio|date:"m/Y" }} - {% if exp.atual %}atual{% else %}{{ exp.data_fim|date:"m/Y" }}{% endif %}</small>
+            {% if exp.descricao %}<small class="d-block">{{ exp.descricao }}</small>{% endif %}
+          </div>
+          {% if exp.atual %}
+            <span class="tag atual">Atual</span>
+          {% else %}
+            <span class="tag conc">Concluída</span>
+          {% endif %}
+          {% if eh_proprio_perfil %}
+            <form method="post" action="{% url 'remover_experiencia' exp.id %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-sm btn-outline-danger" title="Remover experiência" aria-label="Remover experiência">
+                <i class="bi bi-trash"></i>
+              </button>
+            </form>
+          {% endif %}
         </div>
-        <span class="tag conc">Concluída</span>
-      </div>
-
-      <div class="exp">
-        <img src="{% static 'img/DepartamentoInformatica.png' %}" alt="Departamento de Matemática">
-        <div class="info">
-          <b>Departamento de Matemática</b>
-          <span>Monitora de Cálculo I</span>
-          <small>mar 2024 - jul 2024 · 5 meses</small>
-        </div>
-        <span class="tag conc">Concluída</span>
-      </div>
+      {% empty %}
+        <p class="desc">Nenhuma experiência cadastrada.</p>
+      {% endfor %}
     </div>
 {% endblock %}
     

@@ -103,6 +103,29 @@ h2{ font-size: 17px; font-weight: 600; margin: 28px 0 2px; color: var(--navy); }
     box-shadow: var(--sombra);
 }
 
+.exp-inicial{
+    width: 54px;
+    height: 54px;
+    border-radius: 10px;
+    background: var(--navy);
+    color: var(--branco);
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+/* Formulário de nova experiência */
+.nova-exp{ margin-bottom: 14px; }
+.nova-exp summary{ list-style: none; }
+.nova-exp summary::-webkit-details-marker{ display: none; }
+.form-exp{ display: flex; flex-direction: column; gap: 8px; margin-top: 10px; padding: 12px; border: 1px solid var(--cinza-claro); border-radius: 12px; }
+.form-exp .datas{ display: flex; gap: 8px; flex-wrap: wrap; }
+.form-exp .datas label{ flex: 1; min-width: 140px; font-size: 13px; color: var(--cinza-texto); }
+.form-exp .dica{ color: var(--cinza-texto); font-size: 12px; }
+.form-exp button{ align-self: flex-start; }
+
 .exp img{ width: 54px; height: 54px; border-radius: 10px; object-fit: cover; background: var(--branco); }
 .info{ flex: 1; }
 .info b{ display: block; font-size: 15px; font-weight: 600; color: var(--navy); }
