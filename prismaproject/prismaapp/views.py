@@ -1,5 +1,7 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.http import request
+from django.http import request
 from django.shortcuts import redirect, render, get_object_or_404
 from django.shortcuts import render
 from django.core.mail import send_mail
@@ -328,17 +330,26 @@ def remover_publicacao(request, code):
         post.delete()
     return redirect('homepage')
 
-
-def tela_editar_publicacao(request, pk):
-    publicacao = get_object_or_404(Publicacao, pk=pk)
+@login_required
+def tela_editar_publicacao(request, code):
+    publicacao = get_object_or_404(Oportunidade, code=code, usuario=request.user)
 
     if request.method == "POST":
-        publicacao.titulo = request.POST["titulo"]
+        publicacao.tipo = request.POST["tipo"]
         publicacao.descricao = request.POST["descricao"]
-        publicacao.prazo = request.POST["prazo"] or None
+        publicacao.limite_inscricao = request.POST["limite_inscricao"]
+        if request.FILES.get("imagem"):
+            publicacao.imagem = request.FILES["imagem"]
         publicacao.save()
-        return redirect("tela_prazos")
+        return redirect("tela_perfil_org", username=request.user.username)
 
-    return render(request, "tela_editar_publicacao.html", {"publicacao": publicacao})
+    return render(request, "tela_editar_publicacao.html", {
+        "publicacao": publicacao,
+        "tipos": Oportunidade.TIPO_CHOICES,
+    })
+
+
+
+
 
 
