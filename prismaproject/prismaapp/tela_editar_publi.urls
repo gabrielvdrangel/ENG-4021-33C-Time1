@@ -1,1 +1,0 @@
-path ("editar-publicacao/", views.tela_editar_publicacao, name="tela_editar_publicacao"),
