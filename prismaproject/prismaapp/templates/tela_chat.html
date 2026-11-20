@@ -11,35 +11,48 @@
 <link rel="stylesheet" href="{% static 'css/PersonalizacaoChat.css' %}" />
 {% endblock %}
 
-{% block content %}
     
-    <div class="blocoprincipal">
-      <div class="caixa">
-        <a href="{% url 'conversas' %}" class="voltar" aria-label="Voltar para mensagens">
-          <i class="bi bi-arrow-left"></i>
-        </a>
+   {% block content %}
+<div class="blocoprincipal">
+  <div class="caixa">
 
-        <div class="perfil">
-          <img class="avatar" src="{% static 'img/EmpresaJuniorPefil.png' %}">
-          <div class="info">
-            <strong>Empresa Junior</strong>
-            <small>Organização</small>
-          </div>
-        </div>
+    <a href="{% url 'conversas' %}" class="voltar" aria-label="Voltar para mensagens">
+      <i class="bi bi-arrow-left"></i>
+    </a>
 
-        <div class="mensagem">
-          <p class="textomensagem">Você tem disponibilidade para uma conversa na quinta às 17h?</p>
-        </div>
-
-
-        <div class="area_interacao">
-              <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Digite sua Mensagem" aria-label="Search">
-                <button class="btn btn-outline-primary"> <i class="bi bi-send-fill"></i></button>
-              </form>
-        </div>  
-
+    <div class="perfil">
+      {% if outro.imagem %}
+        <img class="avatar" src="{{ outro.imagem.url }}">
+      {% endif %}
+      <div class="info">
+        <strong>{{ outro.get_full_name|default:outro.username }}</strong>
+        <small>{{ outro.curso|default:"" }}</small>
       </div>
     </div>
+
+    <div class="mensagem">
+      <div class="lista">
+        {% for m in mensagens %}
+        <p class="textomensagem {% if m.remetente == request.user %}enviada{% else %}recebida{% endif %}">{{ m.texto }}</p>
+        {% empty %}
+        <p class="textomensagem vazia">Inicie sua conversa com {{ outro.get_full_name|default:outro.username }}</p>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="area_interacao">
+      <form class="d-flex" method="post">
+        {% csrf_token %}
+        <input class="form-control me-2" type="text" name="texto" placeholder="Digite sua Mensagem"
+               autocomplete="off" required autofocus>
+        <button class="btn btn-outline-primary" type="submit" aria-label="Enviar">
+          <i class="bi bi-send-fill"></i>
+        </button>
+      </form>
+    </div>
+
+  </div>
+</div>
+
 
 {% endblock %}

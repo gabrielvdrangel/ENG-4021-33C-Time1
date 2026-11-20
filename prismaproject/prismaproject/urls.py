@@ -30,8 +30,6 @@ urlpatterns = [
     path('perfil/', perfil, name='perfil'),
     path("homepage/", views.homepage, name="homepage"),
     path('candidaturas/<str:username>/', candidaturas, name='candidaturas'),
-    path('chat/', chat, name='chat'),
-    path('conversas/', conversas, name='conversas'),
     path('', entrar_cadastrar, name='entrar_cadastrar'),
     path('escolhe-cadastro/', escolhe_cadastro, name='escolhe_cadastro'),
     path('cadastro-organizacao/', cadastro_organizacao, name='cadastro_organizacao'),
@@ -54,6 +52,8 @@ urlpatterns = [
     path('remover_publicacao/<uuid:code>/', views.remover_publicacao, name='remover_publicacao'),
     path("feedbacks/<str:username>/novo/", views.deixar_feedback, name="deixar_feedback"),
     path("editar-publicacao/<uuid:code>/", views.tela_editar_publicacao, name="tela_editar_publicacao"),
+    path("conversas/", views.conversas, name="conversas"),
+    path("conversas/<str:username>/", views.chat, name="chat"),
 
 ]
 

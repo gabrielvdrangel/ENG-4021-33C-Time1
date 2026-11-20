@@ -8,9 +8,10 @@ from django.shortcuts import render
 from django.core.mail import send_mail
 from django.utils import timezone
 from datetime import date
+from django.db.models import Q
 
 
-from .models import Curso, Experiencia, Oportunidade, Usuario, Feedback
+from .models import Curso, Experiencia, Oportunidade, Usuario, Feedback, Mensagem
 
 
 def login_user(request):
@@ -99,13 +100,49 @@ def candidaturas(request, username):
 
 
 @login_required
-def chat(request):
-    return render(request, "tela_chat.html")
+def chat(request, username):
+    outro = get_object_or_404(Usuario, username=username)
+    if outro == request.user:
+        return redirect("conversas")
+
+    if request.method == "POST":
+        texto = request.POST.get("texto", "").strip()
+        if texto:
+            Mensagem.objects.create(remetente=request.user, destinatario=outro, texto=texto)
+        return redirect("chat", username=outro.username)
+
+    mensagens = (
+    Mensagem.objects
+    .filter(Q(remetente=request.user, destinatario=outro)
+            | Q(remetente=outro, destinatario=request.user))
+    .select_related("remetente")
+    .order_by("id")
+)
+
+    return render(request, "tela_chat.html", {"outro": outro, "mensagens": mensagens})
 
 
 @login_required
 def conversas(request):
-    return render(request, "tela_conversas.html")
+    msgs = (
+        Mensagem.objects
+        .filter(Q(remetente=request.user) | Q(destinatario=request.user))
+        .select_related("remetente", "destinatario")
+        .order_by("-data")
+    )
+
+    vistos = {}
+    for m in msgs:  # da mais recente para a mais antiga
+        outro = m.destinatario if m.remetente == request.user else m.remetente
+        if outro.pk not in vistos:
+            vistos[outro.pk] = {"usuario": outro, "ultima": m}
+
+    seguindo = request.user.seguindo.filter(is_active=True).order_by("first_name", "username")
+
+    return render(request, "tela_conversas.html", {
+        "conversas": vistos.values(),
+        "seguindo": seguindo,
+    })
 
 
 def entrar_cadastrar(request):

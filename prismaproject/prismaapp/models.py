@@ -67,3 +67,12 @@ class Experiencia(models.Model):
 
     def __str__(self):
         return f"{self.titulo} - {self.organizacao} ({self.usuario.username})"
+
+class Mensagem(models.Model):
+    remetente = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="mensagens_enviadas")
+    destinatario = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="mensagens_recebidas")
+    texto = models.TextField()
+    data = models.DateTimeField(auto_now_add=True)
+    lida = models.BooleanField(default=False)
+
+    
