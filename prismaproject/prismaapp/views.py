@@ -147,21 +147,25 @@ def tela_perfil_org(request, username):
     
 def esqueci_senha(request):
     mensagem = None
-    
-    if request.method == "POST":
-        email = request.POST["email"]
 
-        if Usuario.objects.filter(email=email).exists():
-            send_mail(
-                subject="Prisma - Redefinição de senha",
-                message="Olá!, Recebemos um pedido para redefinir a senha da sua conta no Prisma.",
-                from_email=None,
-                recipient_list=[email],
-            )
-            mensagem = "Foi enviado um email para a conta."
+    if request.method == "POST":
+        email = request.POST.get("email", "").strip()
+        senha = request.POST.get("senha", "")
+        nova_senha = request.POST.get("nova_senha", "")
+
+        usuario = Usuario.objects.filter(email__iexact=email).first()
+        user = authenticate(request, username=usuario.username, password=senha) if usuario else None
+
+        if user is None:
+            mensagem = "Usuário ou senha inválidos."
+        elif not nova_senha:
+            mensagem = "A nova senha não pode ser vazia."
         else:
-            mensagem = "Conta inexistente."
-    return render(request, "esqueci-senha.html", {"mensagem": mensagem})
+            user.set_password(nova_senha)
+            user.save()
+            mensagem = "Senha atualizada com sucesso."
+
+    return render(request, "esqueci-senha.html", {"mensagem": mensagem})  
 
 def redefinir_email(request):
     mensagem = None
