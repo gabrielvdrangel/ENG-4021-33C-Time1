@@ -84,3 +84,66 @@ h1 {
 .voltar:hover {
     color: var(--laranja);
 }
+
+.autor-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: inherit;
+    text-decoration: none;
+}
+
+.autor-foto {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--laranja, #c8562c);
+    flex-shrink: 0;
+}
+
+.card-acoes {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.card-corpo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.card-corpo p {
+  margin: 0;
+  flex: 1;
+}
+
+.btn-msg {
+  flex-shrink: 0;
+}
+
+
+.btn-msg {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  --bs-btn-color: var(--navy);
+  --bs-btn-border-color: var(--navy);
+  --bs-btn-hover-bg: var(--navy);
+  --bs-btn-hover-border-color: var(--navy);
+  --bs-btn-active-bg: var(--navy);
+  --bs-btn-active-border-color: var(--navy);
+}
+
+.btn-msg i {
+  font-size: 16px;
+}
+
+
+
+

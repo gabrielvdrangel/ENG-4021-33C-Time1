@@ -29,17 +29,28 @@
       <article class="card">
         <header class="card-topo">
           <a href="{% url 'perfil_aluno' f.autor.username %}" class="autor-link">
+            <img class="autor-foto"
+                src="{% if f.autor.imagem %}{{ f.autor.imagem.url }}{% else %}{% static 'img/perfil.png' %}{% endif %}"
+                alt="Foto de {{ f.autor.get_full_name|default:f.autor.username }}">
             <strong>{{ f.autor.get_full_name|default:f.autor.username }}</strong>
           </a>
           <span class="data">{{ f.data|date:"d/m/Y" }}</span>
         </header>
 
-        
-        <p>{{ f.comentario }}</p>
+        <div class="card-corpo">
+          <p>{{ f.comentario }}</p>
+
+          {% if f.autor != user and f.autor.matricula %}
+            <a class="btn btn-outline-primary btn-msg" href="{% url 'chat' f.autor.username %}" title="Enviar mensagem" aria-label="Enviar mensagem">
+              <i class="bi bi-chat-right-fill"></i>
+            </a>
+          {% endif %}
+        </div>
       </article>
     {% empty %}
       <p class="vazio">Ainda não há feedbacks.</p>
     {% endfor %}
+
     
   </main>
 </body>
