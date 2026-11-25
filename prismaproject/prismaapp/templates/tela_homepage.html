@@ -78,7 +78,7 @@
             </div>
 
             <div class="card-footer bg-white">
-              <button class="btn btn-outline-primary"><i class="bi bi-heart-fill"></i></button>
+              
               <a class="btn btn-outline-primary" href="{% url 'tela_feedbacks' post.usuario.username %}"><i class="bi bi-chat-right-fill"></i></a>
             <form method="post" action="{% url 'alternar_salvo' post.code %}" class="d-inline">
             {% csrf_token %}
