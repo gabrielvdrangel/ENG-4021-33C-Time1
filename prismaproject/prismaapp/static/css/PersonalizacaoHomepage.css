@@ -279,3 +279,16 @@ body{
 .card-footer form:has(.btn-candidatar){
     margin-left: 0;
 }
+
+.card-footer .btn.btn-comentarios{
+    width: auto;
+    min-width: 40px;
+    padding: 0 14px;
+    gap: 8px;
+}
+
+.card-footer .btn.btn-comentarios .contador{
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+}

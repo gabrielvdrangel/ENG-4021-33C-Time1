@@ -1,0 +1,72 @@
+.post-topo:hover { transform: none; }
+
+.post-imagem {
+    width: 100%;
+    border-radius: 8px;
+    margin: 8px 0;
+}
+
+.post-texto { margin-top: 8px; }
+
+/* campo de novo comentário */
+.novo-comentario {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.novo-comentario .form-control {
+    border-radius: 999px;
+    padding: 10px 16px;
+}
+
+.novo-comentario .btn { border-radius: 999px; }
+
+/* comentário estilo LinkedIn */
+.comentario {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.comentario-balao {
+    flex: 1;
+    background: var(--branco);
+    border: 1px solid var(--cinza-claro);
+    border-radius: 0 12px 12px 12px;
+    padding: 10px 14px;
+}
+
+.comentario-topo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 2px;
+}
+
+.comentario-topo strong { color: var(--navy); }
+
+.comentario-balao p {
+    margin: 0;
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+.tag-autor {
+    background: var(--navy);
+    color: #fff;
+    font-size: 11px;
+    padding: 1px 8px;
+    border-radius: 999px;
+}
+
+.btn-apagar {
+    background: none;
+    border: none;
+    color: var(--cinza);
+    padding: 0 4px;
+}
+
+.btn-apagar:hover { color: var(--laranja); }

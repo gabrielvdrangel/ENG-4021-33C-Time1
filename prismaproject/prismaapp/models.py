@@ -75,4 +75,11 @@ class Mensagem(models.Model):
     data = models.DateTimeField(auto_now_add=True)
     lida = models.BooleanField(default=False)
 
+class Comentario(models.Model):
+    oportunidade = models.ForeignKey(Oportunidade, on_delete=models.CASCADE, related_name="comentarios")
+    autor = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="comentarios_feitos")
+    texto = models.TextField()
+    data = models.DateTimeField(auto_now_add=True)
+
+
     
