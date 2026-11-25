@@ -13,13 +13,15 @@
 
     <section class="feedbacks-container">
 
-    <a href="{% url 'perfil_aluno' request.user.username %}" class="voltar">&lt; Voltar</a>
+    <a href="{% url 'perfil_aluno' dono.username %}" class="voltar">&lt; Voltar</a>
+
 
     <div class="feedbacks-header">
-        <div>
-            <h2>Feedbacks enviados</h2>
-            <p>Veja os feedbacks que você deixou nas oportunidades.</p>
-        </div>
+        <h2>Feedbacks enviados</h2>
+        <p>
+        {% if eh_proprio %}Veja os feedbacks que você deixou nas oportunidades.
+        {% else %}Veja os feedbacks que {{ dono.first_name|default:dono.username }} deixou nas oportunidades.{% endif %}
+        </p>
 
         <span class="feedbacks-count">{{ feedbacks|length }} feedback{{ feedbacks|length|pluralize }}</span>
     </div>
@@ -52,9 +54,12 @@
             </div>
 
             <p class="feedback-text">{{ f.comentario }}</p>
+
         </article>
         {% empty %}
-        <p class="text-muted">Você ainda não enviou feedbacks.</p>
+
+            <p class="text-muted">{% if eh_proprio %}Você ainda não enviou feedbacks.{% else %}Nenhum feedback enviado ainda.{% endif %}</p>
+
         {% endfor %}
 
     </div>
