@@ -143,6 +143,23 @@ a.feedback-avatar {
   text-decoration: underline;
 }
 
+.feedback-author h3 a,
+a.feedback-avatar {
+    color: inherit;
+    text-decoration: none;
+}
+
+.feedback-avatar {
+    overflow: hidden;
+}
+.feedback-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
 
 @media (max-width: 600px) {
     .feedbacks-container {

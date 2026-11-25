@@ -30,7 +30,11 @@
         <article class="feedback-card">
             <div class="feedback-top">
                 <a href="{% url 'tela_perfil_org' f.destinatario.username %}" class="feedback-avatar">
-                {{ f.destinatario.username|slice:":2"|upper }}
+                    {% if f.destinatario.imagem %}
+                        <img src="{{ f.destinatario.imagem.url }}" alt="{{ f.destinatario.username }}">
+                    {% else %}
+                        {{ f.destinatario.username|slice:":2"|upper }}
+                    {% endif %}
                 </a>
 
                 <div class="feedback-author">
