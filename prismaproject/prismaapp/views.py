@@ -377,6 +377,7 @@ def criar_experiencia(request):
             data_inicio=data_inicio,
             data_fim=data_fim,
             descricao=descricao,
+            imagem=request.FILES.get("imagem"),
         )
         messages.success(request, "Experiência adicionada.")
 

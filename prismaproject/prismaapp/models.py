@@ -57,6 +57,7 @@ class Experiencia(models.Model):
     data_inicio = models.DateField()
     data_fim = models.DateField(null=True, blank=True)  # vazio = em andamento
     descricao = models.TextField(blank=True)
+    imagem = models.ImageField(upload_to='experiencias/', max_length=500, null=True, blank=True)
 
     class Meta:
         ordering = ["-data_inicio"]
