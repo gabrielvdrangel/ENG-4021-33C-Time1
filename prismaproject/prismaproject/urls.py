@@ -54,7 +54,11 @@ urlpatterns = [
     path("editar-publicacao/<uuid:code>/", views.tela_editar_publicacao, name="tela_editar_publicacao"),
     path("conversas/", views.conversas, name="conversas"),
     path("conversas/<str:username>/", views.chat, name="chat"),
-
+    path("publicacao/<uuid:code>/comentar/", views.comentar, name="comentar"),
+    path("comentario/<int:comentario_id>/remover/", views.remover_comentario, name="remover_comentario"),
+    path("publicacao/<uuid:code>/comentarios/", views.tela_comentarios, name="tela_comentarios"),
+    path("publicacao/<uuid:code>/comentar/", views.comentar, name="comentar"),
+    path("comentario/<int:comentario_id>/remover/", views.remover_comentario, name="remover_comentario"),
 ]
 
 if settings.DEBUG:

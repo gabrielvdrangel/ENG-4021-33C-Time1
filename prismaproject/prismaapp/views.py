@@ -9,9 +9,7 @@ from django.core.mail import send_mail
 from django.utils import timezone
 from datetime import date
 from django.db.models import Q
-
-
-from .models import Curso, Experiencia, Oportunidade, Usuario, Feedback, Mensagem
+from .models import Curso, Experiencia, Oportunidade, Usuario, Feedback, Mensagem,Comentario
 
 
 def login_user(request):
@@ -83,7 +81,7 @@ def perfil(request):
 
 @login_required
 def homepage(request):
-    oportunidades = Oportunidade.objects.select_related("usuario")
+    oportunidades = Oportunidade.objects.select_related("usuario").prefetch_related("comentarios__autor")
     usuarios = Usuario.objects.filter(curso__isnull=True, is_superuser=False, is_staff=False)
 
     if request.GET.get("seguindo"):
@@ -458,6 +456,36 @@ def tela_editar_publicacao(request, code):
         "publicacao": publicacao,
         "tipos": Oportunidade.TIPO_CHOICES,
     })
+
+@login_required
+def tela_comentarios(request, code):
+    post = get_object_or_404(Oportunidade.objects.select_related("usuario"), code=code)
+    comentarios = post.comentarios.select_related("autor").order_by("-data")
+    return render(request, "tela_comentarios.html", {"post": post, "comentarios": comentarios})
+
+
+@login_required
+def comentar(request, code):
+    post = get_object_or_404(Oportunidade, code=code)
+
+    if request.method == "POST":
+        texto = request.POST.get("texto", "").strip()
+        if texto:
+            Comentario.objects.create(oportunidade=post, autor=request.user, texto=texto)
+    return redirect("tela_comentarios", code=code)
+
+
+@login_required
+def remover_comentario(request, comentario_id):
+    comentario = get_object_or_404(Comentario, id=comentario_id)
+    code = comentario.oportunidade.code
+
+    pode_apagar = request.user in (comentario.autor, comentario.oportunidade.usuario)
+    if request.method == "POST" and pode_apagar:
+        comentario.delete()
+    return redirect("tela_comentarios", code=code)
+
+
 
 
 

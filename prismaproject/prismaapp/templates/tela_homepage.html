@@ -78,8 +78,10 @@
             </div>
 
             <div class="card-footer bg-white">
-              
-              <a class="btn btn-outline-primary" href="{% url 'tela_feedbacks' post.usuario.username %}"><i class="bi bi-chat-right-fill"></i></a>
+              <a class="btn btn-outline-primary btn-comentarios" href="{% url 'tela_comentarios' post.code %}" title="Ver comentários">
+                <i class="bi bi-chat-right-fill"></i>
+                <span class="contador">{{ post.comentarios.all|length }}</span>
+              </a>
             <form method="post" action="{% url 'alternar_salvo' post.code %}" class="d-inline">
             {% csrf_token %}
             {% if post in request.user.salvos.all %}
