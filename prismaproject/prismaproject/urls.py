@@ -38,7 +38,8 @@ urlpatterns = [
     path('perfil/editar/', editar_perfil, name='editar_perfil'),
     path('cadastro-aluno/', cadastro_aluno, name='cadastro_aluno'),
     path('add-publicacao/', add_publicacao, name='add_publicacao'),
-    path('feedbacks-perfil/', views.feedbacks_perfil, name='feedbacks_perfil'),
+        path('feedbacks-perfil/', views.feedbacks_perfil, name='feedbacks_perfil'),
+    path('feedbacks-perfil/<str:username>/', views.feedbacks_perfil, name='feedbacks_perfil_de'),
     path("login/", views.login_user, name="login"),
     path('logout/', logout_user, name='logout'),
     path("redefinir-email/", views.redefinir_email, name="redefinir_email"),
@@ -59,6 +60,7 @@ urlpatterns = [
     path("publicacao/<uuid:code>/comentarios/", views.tela_comentarios, name="tela_comentarios"),
     path("publicacao/<uuid:code>/comentar/", views.comentar, name="comentar"),
     path("comentario/<int:comentario_id>/remover/", views.remover_comentario, name="remover_comentario"),
+
 ]
 
 if settings.DEBUG:

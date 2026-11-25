@@ -14,7 +14,8 @@
 {% block content %}
 
     
-    <a href="{% url 'perfil' %}" class="voltar"><i class="bi bi-chevron-left"></i> Voltar</a>
+    <a href="{{ voltar_url }}" class="voltar"><i class="bi bi-chevron-left"></i> Voltar</a>
+
 
     <div class="caixa">
       <section class="topo">
@@ -55,7 +56,7 @@
               </button>
             {% endif %}
           </form>
-          <a href="{% url 'tela_feedbacks' aluno.username %}" class="btn btn-outline-primary">
+          <a href="{% url 'feedbacks_perfil_de' aluno.username %}" class="btn btn-outline-primary">
             Feedbacks e Recomendações
           </a>
           <a href="{% url 'chat' aluno.username %}" class="btn btn-primary">
