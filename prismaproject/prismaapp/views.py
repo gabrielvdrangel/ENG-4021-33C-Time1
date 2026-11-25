@@ -2,9 +2,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import request
-from django.http import request
+from django.urls import reverse
+from django.utils.http import url_has_allowed_host_and_scheme
 from django.shortcuts import redirect, render, get_object_or_404
-from django.shortcuts import render
 from django.core.mail import send_mail
 from django.utils import timezone
 from datetime import date
@@ -300,9 +300,19 @@ def add_publicacao(request):
 
 
 @login_required
-def feedbacks_perfil(request):
-    feedbacks = request.user.feedbacks_enviados.select_related("destinatario", "oportunidade").order_by("-data")
-    return render(request, 'feedbacks_perfil.html', {'feedbacks': feedbacks})
+def feedbacks_perfil(request, username=None):
+    if username:
+        dono = get_object_or_404(Usuario, username=username)
+    else:
+        dono = request.user
+
+    feedbacks = dono.feedbacks_enviados.select_related("destinatario", "oportunidade").order_by("-data")
+    return render(request, 'feedbacks_perfil.html', {
+        'feedbacks': feedbacks,
+        'dono': dono,
+        'eh_proprio': dono == request.user,
+    })
+
 
 
 @login_required
@@ -337,9 +347,16 @@ def tela_feedbacks(request,username):
 
 
 @login_required
-@login_required
 def perfil_aluno(request, username):
     aluno = get_object_or_404(Usuario, username=username)
+
+    voltar_url = request.META.get("HTTP_REFERER", "")
+    if not url_has_allowed_host_and_scheme(voltar_url, allowed_hosts={request.get_host()}):
+        voltar_url = reverse("perfil")
+
+    if voltar_url.rstrip("/").endswith(request.path.rstrip("/")):
+        voltar_url = reverse("perfil")
+
 
     return render(request, "perfil_aluno.html", {
         "aluno": aluno,
@@ -347,6 +364,7 @@ def perfil_aluno(request, username):
         "total_seguindo": aluno.seguindo.count(),
         "eh_proprio_perfil": aluno == request.user,
         "ja_segue": request.user.seguindo.filter(pk=aluno.pk).exists(),
+        "voltar_url": voltar_url,
     })
 
 
