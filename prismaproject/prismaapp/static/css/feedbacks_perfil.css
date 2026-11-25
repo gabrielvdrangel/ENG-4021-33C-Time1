@@ -132,6 +132,18 @@ body {
     overflow-wrap: anywhere;
 }
 
+.feedback-author h3 a,
+.autor-link,
+a.feedback-avatar {
+  color: inherit;
+  text-decoration: none;
+}
+.feedback-author h3 a:hover,
+.autor-link:hover {
+  text-decoration: underline;
+}
+
+
 @media (max-width: 600px) {
     .feedbacks-container {
         padding: 20px 12px;

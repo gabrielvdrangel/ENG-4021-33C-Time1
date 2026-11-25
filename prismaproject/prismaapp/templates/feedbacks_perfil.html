@@ -29,10 +29,16 @@
         {% for f in feedbacks %}
         <article class="feedback-card">
             <div class="feedback-top">
-                <div class="feedback-avatar">{{ f.destinatario.username|slice:":2"|upper }}</div>
+                <a href="{% url 'tela_perfil_org' f.destinatario.username %}" class="feedback-avatar">
+                {{ f.destinatario.username|slice:":2"|upper }}
+                </a>
 
                 <div class="feedback-author">
-                    <h3>{{ f.destinatario.get_full_name|default:f.destinatario.username }}</h3>
+                    <h3>
+                        <a href="{% url 'tela_perfil_org' f.destinatario.username %}">
+                        {{ f.destinatario.get_full_name|default:f.destinatario.username }}
+                        </a>
+                    </h3>
                     {% if f.oportunidade %}
                         <span>{{ f.oportunidade.get_tipo_display }}</span>
                     {% endif %}

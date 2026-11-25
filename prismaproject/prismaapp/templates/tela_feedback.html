@@ -28,9 +28,12 @@
     {% for f in feedbacks %}
       <article class="card">
         <header class="card-topo">
-          <strong>{{ f.autor.get_full_name|default:f.autor.username }}</strong>
+          <a href="{% url 'perfil_aluno' f.autor.username %}" class="autor-link">
+            <strong>{{ f.autor.get_full_name|default:f.autor.username }}</strong>
+          </a>
           <span class="data">{{ f.data|date:"d/m/Y" }}</span>
         </header>
+
         
         <p>{{ f.comentario }}</p>
       </article>
