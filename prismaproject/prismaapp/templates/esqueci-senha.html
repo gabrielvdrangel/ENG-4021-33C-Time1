@@ -26,6 +26,18 @@
       <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
     </div>
 
+    <label for="senha" class="rotulo">Insira sua senha</label>
+
+    <div class="form-group">
+      <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required>
+    </div>
+
+    <label for="nova_senha" class="rotulo">Insira sua nova senha</label>
+
+    <div class="form-group">
+      <input type="password" class="form-control" id="nova_senha" name="nova_senha" placeholder="Nova Senha" required>
+    </div>
+
     {% if mensagem %}
       <p>{{ mensagem }}</p>
     {% endif %}
