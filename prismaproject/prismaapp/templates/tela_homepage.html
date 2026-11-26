@@ -91,15 +91,19 @@
             {% endif %}
             </form>
             {% if user.matricula is not None %}
-            <form method="post" action="{% url 'alternar_candidatura' post.code %}" class="d-inline">
-            {% csrf_token %}
-            {% if user in post.candidatos.all %}
-              <button type="submit" class="btn btn-primary btn-candidatar">Candidatado <i class="bi bi-check-lg"></i></button>
-            {% else %}
-              <button type="submit" class="btn btn-outline-primary btn-candidatar">Candidatar-se</button>
+              {% if post.limite_inscricao >= today %}
+                <form method="post" action="{% url 'alternar_candidatura' post.code %}" class="d-inline">
+                {% csrf_token %}
+              {% if user in post.candidatos.all %}
+                <button type="submit" class="btn btn-primary btn-candidatar">Candidatado <i class="bi bi-check-lg"></i></button>
+              {% else %}
+                <button type="submit" class="btn btn-outline-primary btn-candidatar">Candidatar-se</button>
+              {% endif %}
+                </form>
+              {% else %}
+                <button type="button" class="btn btn-outline-primary btn-candidatar" disabled>Prazo encerrado</button>
+              {% endif %}
             {% endif %}
-            </form>
-          {% endif %}
 
             </div>
         </div>
