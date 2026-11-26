@@ -60,7 +60,8 @@ urlpatterns = [
     path("publicacao/<uuid:code>/comentarios/", views.tela_comentarios, name="tela_comentarios"),
     path("publicacao/<uuid:code>/comentar/", views.comentar, name="comentar"),
     path("comentario/<int:comentario_id>/remover/", views.remover_comentario, name="remover_comentario"),
-
+    path("avisos/enviar/", views.enviar_aviso, name="enviar_aviso"),
+    
 ]
 
 if settings.DEBUG:

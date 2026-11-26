@@ -140,6 +140,7 @@ def conversas(request):
     return render(request, "tela_conversas.html", {
         "conversas": vistos.values(),
         "seguindo": seguindo,
+        "oportunidades": request.user.oportunidades.order_by("-data_publicacao"),
     })
 
 
@@ -504,7 +505,32 @@ def remover_comentario(request, comentario_id):
         comentario.delete()
     return redirect("tela_comentarios", code=code)
 
+@login_required
+def enviar_aviso(request):
+    if request.method == "POST" and request.user.curso is None:
+        oportunidade_id = request.POST.get("oportunidade", "")
+        texto = request.POST.get("texto", "").strip()
 
+        post = None
+        if oportunidade_id.isdigit():
+            post = Oportunidade.objects.filter(id=int(oportunidade_id), usuario=request.user).first()
+
+        if post is None:
+            messages.error(request, "Selecione uma das suas oportunidades.")
+        elif not texto:
+            messages.error(request, "Escreva o aviso antes de enviar.")
+        else:
+            enviados = 0
+            for aluno in post.candidatos.all():
+                Mensagem.objects.create(
+                    remetente=request.user,
+                    destinatario=aluno,
+                    texto=f"[Aviso - {post.get_tipo_display()}] {texto}",
+                )
+                enviados += 1
+            messages.success(request, f"Aviso enviado para {enviados} candidato(s).")
+
+    return redirect("conversas")
 
 
 
