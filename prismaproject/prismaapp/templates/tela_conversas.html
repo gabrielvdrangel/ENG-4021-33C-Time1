@@ -19,10 +19,33 @@
     <div class="d-flex justify-content-between align-items-center mb-2">
     <h4 class="m-0">Conversas</h4>
 
-    <details class="position-relative">
-      <summary class="btn btn-outline-primary btn-sm">
-        <i class="bi bi-pencil-square"></i> Nova conversa
-      </summary>
+     {% if user.curso is None %}
+      <details class="menu-suspenso">
+        <summary class="btn btn-outline-primary btn-sm">
+          <i class="bi bi-megaphone"></i> Enviar aviso
+        </summary>
+
+        <form method="post" action="{% url 'enviar_aviso' %}" class="painel-aviso">
+          {% csrf_token %}
+          <select name="oportunidade" class="form-select form-select-sm campo-aviso" required>
+            <option value="">Selecione a oportunidade</option>
+            {% for op in oportunidades %}
+              <option value="{{ op.id }}">
+                {{ op.get_tipo_display }} · {{ op.descricao|truncatechars:30 }} ({{ op.candidatos.count }})
+              </option>
+            {% endfor %}
+          </select>
+          <textarea name="texto" rows="3" class="form-control form-control-sm campo-aviso"
+                    placeholder="Escreva o aviso..." required></textarea>
+          <button type="submit" class="btn btn-primary btn-sm botao-aviso">Enviar</button>
+        </form>
+      </details>
+      {% endif %}
+
+      <details class="menu-suspenso">
+        <summary class="btn btn-outline-primary btn-sm">
+          <i class="bi bi-pencil-square"></i> Nova conversa
+        </summary>
 
       <ul class="list-unstyled bg-white border rounded shadow-sm position-absolute end-0 mt-1 p-1"
         style="min-width: 220px; max-height: 320px; overflow-y: auto; z-index: 10;">
