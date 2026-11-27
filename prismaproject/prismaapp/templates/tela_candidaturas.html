@@ -25,24 +25,22 @@
         <p>{{ user.curso }}</p>
     </div>
 
-    <div class ="caixa">
-        {% for post in oportunidades %}
-        <div class="caixa">
-            <div class="logo-caixa">
-                {% if post.usuario.imagem %}<img src="{{ post.usuario.imagem.url }}">{% endif %}
-                <div class="caixa-texto">
-                    <h3 class="color">{{ post.descricao|truncatechars:60 }}</h3>
-                </div>
+    {% for post in oportunidades %}
+    <div class="caixa">
+        <div class="logo-caixa">
+            {% if post.usuario.imagem %}<img src="{{ post.usuario.imagem.url }}">{% endif %}
+            <div class="caixa-texto">
+                <h3 class="color">{{ post.descricao|truncatechars:60 }}</h3>
             </div>
-            <span>{{ post.usuario.first_name }}</span>
-            <span>{{ post.get_tipo_display }} · inscrições até {{ post.limite_inscricao|date:"d/m/Y" }}</span>
         </div>
-        {% empty %}
-        <div class="caixa">
-            <span>Você ainda não se candidatou a nenhuma oportunidade.</span>
-        </div>
-        {% endfor %}
+        <span>{{ post.usuario.first_name }}</span>
+        <span>{{ post.get_tipo_display }} · inscrições até {{ post.limite_inscricao|date:"d/m/Y" }}</span>
     </div>
+    {% empty %}
+    <div class="caixa">
+        <span>Você ainda não se candidatou a nenhuma oportunidade.</span>
+    </div>
+    {% endfor %}
 </div>
 
 {% endblock %}
