@@ -1,16 +1,14 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Prisma - Perfil</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/tema.css' %}">
-    <link rel="stylesheet" href="{% static 'css/css-perfil.css' %}">
-</head>
-<body>
 
+{% block title %}Perfil - Prisma{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/tema.css' %}">
+<link rel="stylesheet" href="{% static 'css/css-perfil.css' %}">
+{% endblock %}
+
+{% block content %}
     <div class="conteudo">
         <a href="{% url 'homepage' %}" class="voltar">&lt;</a>
 
@@ -60,6 +58,4 @@
 
         <a href="{% url 'logout' %}" class="sair-centro">Sair da conta</a>
     </div>
-
-</body>
-</html>
+{% endblock %}
