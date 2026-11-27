@@ -60,6 +60,30 @@
     display: block;
 }
 
+/* Botões do cabeçalho (Seguir, Enviar mensagem, Feedbacks): mesma linha, mesmo tamanho */
+.acoes{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.acoes form{
+    margin: 0;
+}
+
+.acoes .btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 40px;
+    padding: 0 18px;
+    font-size: 14px;
+    line-height: 1;
+    white-space: nowrap;
+}
+
 /* ===== Abas ===== */
 .filtro{
     display: flex;

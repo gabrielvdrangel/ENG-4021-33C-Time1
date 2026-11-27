@@ -23,8 +23,8 @@
                 <img src="https://previews.123rf.com/images/hugok1000/hugok10001905/hugok1000190500198/123291745-default-profile-avatar-illustration-in-blue-and-white-no-person.jpg" alt="{{ org.first_name }}">{% endif %}</div>
                 <h1>{{ org.first_name }}</h1>
 
-                {% if request.user != org %}
-                  <div class="d-flex gap-2 flex-wrap">
+                <div class="acoes">
+                  {% if request.user != org %}
                     <form method="post" action="{% url 'alternar_seguir' username=org.username %}">
                     {% csrf_token %}
                     {% if org in request.user.seguindo.all %}
@@ -36,15 +36,13 @@
                     <a href="{% url 'chat' org.username %}" class="btn btn-primary">
                       <i class="bi bi-chat-right"></i> Enviar mensagem
                     </a>
-                  </div>
-                {% endif %}
+                  {% endif %}
+                  <a href="{% url 'tela_feedbacks' username=org.username %}" class="btn btn-primary">Feedbacks</a>
+                </div>
 
             </section>
- 
-    <div class="filtro">
 
-      <a href="{% url 'tela_feedbacks' username=org.username %}" class="btn btn-primary">Feedbacks</a>
-    </div>
+    <div class="filtro"></div>
  
     <div class="feed">
       {% for post in oportunidades %}
