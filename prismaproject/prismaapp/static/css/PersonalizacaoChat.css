@@ -50,11 +50,16 @@
 
 /*===========================================Cabeçalho da conversa=================================================================*/
 
+a.perfil,
+a.perfil:hover{
+    text-decoration: none;
+    color: inherit;
+}
+
 .perfil{
     display: flex;
     align-items: center;
     padding: 12px 10px 16px;
-    border-bottom: 1px solid var(--cinza-claro);
 }
 
 .avatar{

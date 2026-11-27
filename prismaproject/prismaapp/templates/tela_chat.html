@@ -20,7 +20,7 @@
       <i class="bi bi-arrow-left"></i>
     </a>
 
-    <div class="perfil">
+    <a class="perfil" href="{% if outro.curso is not None %}{% url 'perfil_aluno' outro.username %}{% else %}{% url 'tela_perfil_org' outro.username %}{% endif %}">
       {% if outro.imagem %}
         <img class="avatar" src="{{ outro.imagem.url }}">
       {% endif %}
@@ -28,7 +28,7 @@
         <strong>{{ outro.get_full_name|default:outro.username }}</strong>
         <small>{{ outro.curso|default:"" }}</small>
       </div>
-    </div>
+    </a>
 
     <div class="mensagem">
       <div class="lista">

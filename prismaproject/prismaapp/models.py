@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.urls import reverse
 import uuid
 
 
@@ -82,5 +83,30 @@ class Comentario(models.Model):
     texto = models.TextField()
     data = models.DateTimeField(auto_now_add=True)
 
+class Notificacao(models.Model):
+    TIPO_CHOICES = [
+        ("seguidor", "Novo seguidor"),
+        ("prazo", "Prazo próximo"),
+        ("mensagem", "Nova mensagem"),
+    ]
+    destinatario = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="notificacoes")
+    origem = models.ForeignKey(Usuario, on_delete=models.CASCADE, null=True, blank=True, related_name="+")
+    oportunidade = models.ForeignKey(Oportunidade, on_delete=models.CASCADE, null=True, blank=True, related_name="+")
+    tipo = models.CharField(max_length=20, choices=TIPO_CHOICES)
+    texto = models.CharField(max_length=255)
+    data = models.DateTimeField(auto_now_add=True)
+    lida = models.BooleanField(default=False)
 
-    
+    class Meta:
+        ordering = ["-data"]
+
+    @property
+    def url(self):
+        if self.tipo == "prazo":
+            return reverse("prazos")
+        if self.tipo == "mensagem" and self.origem:
+            return reverse("chat", args=[self.origem.username])
+        if self.tipo == "seguidor" and self.origem:
+            nome = "perfil_aluno" if self.origem.curso is not None else "tela_perfil_org"
+            return reverse(nome, args=[self.origem.username])
+        return "#"   

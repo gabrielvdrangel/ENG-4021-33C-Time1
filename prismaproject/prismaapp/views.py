@@ -7,9 +7,9 @@ from django.utils.http import url_has_allowed_host_and_scheme
 from django.shortcuts import redirect, render, get_object_or_404
 from django.core.mail import send_mail
 from django.utils import timezone
-from datetime import date
+from datetime import date, timedelta
 from django.db.models import Q
-from .models import Curso, Experiencia, Oportunidade, Usuario, Feedback, Mensagem,Comentario
+from .models import Curso, Experiencia, Oportunidade, Usuario, Feedback, Mensagem,Comentario, Notificacao
 
 
 def login_user(request):
@@ -54,7 +54,45 @@ def prazos(request):
 
 @login_required
 def notificacoes(request):
-    return render(request, "tela_notificacoes.html")
+    agora = timezone.now()
+
+    for op in request.user.candidaturas.filter(
+        limite_inscricao__gte=agora,
+        limite_inscricao__lte=agora + timedelta(hours=48),
+    ).select_related("usuario"):
+        Notificacao.objects.get_or_create(
+            destinatario=request.user,
+            tipo="prazo",
+            oportunidade=op,
+            defaults={
+                "origem": op.usuario,
+                "texto": f"O prazo de {op.get_tipo_display()} termina em "
+                         f"{op.limite_inscricao.strftime('%d/%m às %H:%M')}",
+            },
+        )
+
+    lista = request.user.notificacoes.select_related("origem", "oportunidade")
+    novas = set(lista.filter(lida=False).values_list("id", flat=True))
+    lista.filter(lida=False).update(lida=True)
+
+    tipo = request.GET.get("tipo", "")
+    q = request.GET.get("q", "").strip()
+    if tipo in dict(Notificacao.TIPO_CHOICES):
+            lista = lista.filter(tipo=tipo)
+    if q:
+        lista = lista.filter(
+            Q(texto__icontains=q)
+            | Q(origem__first_name__icontains=q)
+            | Q(origem__username__icontains=q)
+        )
+
+    return render(request, "tela_notificacoes.html", {
+        "notificacoes": lista,
+        "novas": novas,
+        "tipos": Notificacao.TIPO_CHOICES,
+        "tipo_atual": tipo,
+        "q": q,
+    })
 
 
 @login_required
@@ -103,19 +141,38 @@ def chat(request, username):
     if outro == request.user:
         return redirect("conversas")
 
+    # Ao abrir a conversa, remove as notificações de mensagem desse remetente
+    Notificacao.objects.filter(
+        destinatario=request.user, origem=outro, tipo="mensagem"
+    ).delete()
+    Mensagem.objects.filter(
+        remetente=outro, destinatario=request.user, lida=False
+    ).update(lida=True)
+
     if request.method == "POST":
         texto = request.POST.get("texto", "").strip()
         if texto:
             Mensagem.objects.create(remetente=request.user, destinatario=outro, texto=texto)
+            nome = request.user.get_full_name() or request.user.username
+            # Um único card por remetente: atualiza o existente em vez de criar outro
+            Notificacao.objects.update_or_create(
+                destinatario=outro, origem=request.user, tipo="mensagem",
+                defaults={
+                    "texto": f"{nome} enviou uma mensagem: {texto[:60]}",
+                    "data": timezone.now(),
+                    "lida": False,
+                },
+            )
+
         return redirect("chat", username=outro.username)
 
     mensagens = (
-    Mensagem.objects
-    .filter(Q(remetente=request.user, destinatario=outro)
-            | Q(remetente=outro, destinatario=request.user))
-    .select_related("remetente")
-    .order_by("id")
-)
+        Mensagem.objects
+        .filter(Q(remetente=request.user, destinatario=outro)
+                | Q(remetente=outro, destinatario=request.user))
+        .select_related("remetente")
+        .order_by("id")
+    )
 
     return render(request, "tela_chat.html", {"outro": outro, "mensagens": mensagens})
 
@@ -421,8 +478,12 @@ def alternar_seguir(request, username):
             request.user.seguindo.remove(alvo)
         else:
             request.user.seguindo.add(alvo)
+            nome = request.user.get_full_name() or request.user.username
+            Notificacao.objects.get_or_create(
+                destinatario=alvo, origem=request.user, tipo="seguidor", lida=False,
+                defaults={"texto": f"{nome} começou a seguir você"},
+            )
 
-    # Alunos têm curso; organizações não.
     if alvo and alvo.curso is not None:
         return redirect("perfil_aluno", username=username)
     return redirect("tela_perfil_org", username=username)

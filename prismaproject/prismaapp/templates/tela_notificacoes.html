@@ -13,58 +13,43 @@
 
 {% block content %}
     
-      <div class="topo">
-        <button type="button" class="btn btn-outline-primary">PS</button>
-        <button type="button" class="btn btn-outline-primary">Mensagens</button>
-        <button type="button" class="btn btn-outline-primary">Monitoria</button>
-        
+      <form method="get" class="topo">
+        <a href="{% url 'notificacoes' %}"
+          class="btn btn-outline-primary {% if not tipo_atual %}active{% endif %}">Todas</a>
+        {% for valor, nome in tipos %}
+          <a href="?tipo={{ valor }}"
+            class="btn btn-outline-primary {% if tipo_atual == valor %}active{% endif %}">
+            {% if valor == "mensagem" %}Mensagens{% elif valor == "seguidor" %}Seguidores{% else %}Prazos{% endif %}
+          </a>
+        {% endfor %}
+
         <div class="input-group input-group-sm busca">
-          <input type="search" class="form-control" placeholder="Pesquisar no Prisma..." aria-label="Pesquisar" />
-          <button type="button" class="btn btn-outline-primary" aria-label="Buscar">
-          <i class="bi bi-search"></i>
+          {% if tipo_atual %}<input type="hidden" name="tipo" value="{{ tipo_atual }}" />{% endif %}
+          <input type="search" name="q" value="{{ q }}" class="form-control"
+                placeholder="Pesquisar nas notificações..." aria-label="Pesquisar" />
+          <button type="submit" class="btn btn-outline-primary" aria-label="Buscar">
+            <i class="bi bi-search"></i>
           </button>
         </div>
-
-      </div>
+      </form>
 
       <div class="blocoprincipal">
- 
-        <a href="" class="caixa">
-          <img src="{% static 'img/EmpresaJuniorPefil.png' %}" class="avatar" />
-
-          <div>
-
-            <strong>Empresa Junior</strong><br />
-            <small>Estamos com o processo seletivo aberto</small>
-
-          </div>
-
-        </a>
- 
-        <a href="" class="caixa">
-          <img src="{% static 'img/RioBotzPefil.png' %}" class="avatar" />
-
-          <div>
-            
-            <strong>Rio Botz</strong><br />
-            <small>Parabéns você foi aprovador no processo seletivo</small>
-
-          </div>
-        </a>
- 
-        <a href="" class="caixa">
-          <img src="{% static 'img/DepartamentoInformatica.png' %}" class="avatar" />
-
-          <div>
-
-            <strong>Departamento de Informatica</strong><br />
-            <small>A monitoria no LABGRAD vai ser às 15 hoje</small>
-
-          </div>
-        </a>
- 
-      
- 
-      </div>    
+        {% for n in notificacoes %}
+          <a href="{{ n.url }}" class="caixa {% if n.id in novas %}nova{% endif %}">
+            {% if n.origem and n.origem.imagem %}
+              <img src="{{ n.origem.imagem.url }}" class="avatar" />
+            {% else %}
+              <img src="{% static 'img/perfil.png' %}" class="avatar" />
+            {% endif %}
+            <div>
+              <strong>{{ n.origem.get_full_name|default:n.origem.username|default:"Prisma" }}</strong><br />
+              <small>{{ n.texto }}</small><br />
+              <small class="text-muted">{{ n.data|timesince }} atrás</small>
+            </div>
+          </a>
+        {% empty %}
+          <p class="text-center text-muted mt-4">Você não tem notificações.</p>
+        {% endfor %}
+      </div>  
 
 {% endblock %}
