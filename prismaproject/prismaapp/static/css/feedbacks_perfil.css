@@ -133,17 +133,6 @@ body {
 }
 
 .feedback-author h3 a,
-.autor-link,
-a.feedback-avatar {
-  color: inherit;
-  text-decoration: none;
-}
-.feedback-author h3 a:hover,
-.autor-link:hover {
-  text-decoration: underline;
-}
-
-.feedback-author h3 a,
 a.feedback-avatar {
     color: inherit;
     text-decoration: none;

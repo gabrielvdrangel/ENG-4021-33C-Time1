@@ -102,12 +102,6 @@ h1 {
     flex-shrink: 0;
 }
 
-.card-acoes {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
 .card-corpo {
   display: flex;
   align-items: center;
@@ -122,10 +116,6 @@ h1 {
 
 .btn-msg {
   flex-shrink: 0;
-}
-
-
-.btn-msg {
   width: 40px;
   height: 40px;
   padding: 0;

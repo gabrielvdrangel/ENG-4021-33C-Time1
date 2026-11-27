@@ -37,7 +37,7 @@
 
     <p class="subtitulo">{{ comentarios|length }} comentário(s)</p>
 
-    <!-- Campo de novo comentário -->
+    
     <form method="post" action="{% url 'comentar' post.code %}" class="novo-comentario">
       {% csrf_token %}
       <input type="hidden" name="next" value="{{ voltar_url }}">
@@ -47,7 +47,8 @@
       <button type="submit" class="btn btn-primary">Publicar</button>
     </form>
 
-    <!-- Lista de comentários -->
+
+
     {% for c in comentarios %}
       <div class="comentario">
         <a href="{% if c.autor.matricula %}{% url 'perfil_aluno' c.autor.username %}{% else %}{% url 'tela_perfil_org' c.autor.username %}{% endif %}">

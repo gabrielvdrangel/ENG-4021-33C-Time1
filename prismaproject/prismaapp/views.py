@@ -13,7 +13,6 @@ from .models import Curso, Experiencia, Oportunidade, Usuario, Feedback, Mensage
 
 
 def _url_segura(request, url):
-    """Devolve a URL se ela for interna ao site; senão, None."""
     if url and url_has_allowed_host_and_scheme(url, allowed_hosts={request.get_host()}):
         return url
     return None
@@ -590,8 +589,6 @@ def tela_comentarios(request, code):
     post = get_object_or_404(Oportunidade.objects.select_related("usuario"), code=code)
     comentarios = post.comentarios.select_related("autor").order_by("-data")
 
-    # "Voltar" leva para onde o usuário estava antes de abrir os comentários.
-    # Depois de comentar, a página recarrega com ?next=, preservando essa origem.
     voltar_url = _url_segura(request, request.GET.get("next"))
     if not voltar_url:
         referer = _url_segura(request, request.META.get("HTTP_REFERER"))
