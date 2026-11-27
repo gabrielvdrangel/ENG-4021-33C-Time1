@@ -89,8 +89,8 @@
                   </a>
                   <form method="post" action="{% url 'remover_publicacao' post.code %}" data-confirmar="Você tem certeza que deseja remover esta publicação?">
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-outline-primary btn-sm" title="Remover">
-                      <i class="bi bi-trash-fill"></i>
+                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Remover publicação" aria-label="Remover publicação">
+                      <i class="bi bi-trash"></i>
                     </button>
                   </form>
                 </div>

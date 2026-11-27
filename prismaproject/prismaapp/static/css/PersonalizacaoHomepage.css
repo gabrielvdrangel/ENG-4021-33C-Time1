@@ -69,7 +69,8 @@ i{
     --bs-btn-active-color: var(--branco);
 }
 
-.btn-outline-primary{
+.btn-outline-primary,
+.btn-outline-danger{
     --bs-btn-color: var(--laranja);
     --bs-btn-border-color: var(--laranja);
     --bs-btn-hover-bg: var(--laranja);

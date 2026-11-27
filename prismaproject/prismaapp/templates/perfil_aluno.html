@@ -79,8 +79,8 @@
           <summary class="btn btn-outline-primary btn-sm"><i class="bi bi-plus-lg"></i> Adicionar experiência</summary>
           <form method="post" action="{% url 'criar_experiencia' %}" class="form-exp" enctype="multipart/form-data">
             {% csrf_token %}
-            <input type="text" name="titulo" class="form-control" placeholder="Cargo / função (ex.: Trainee de desenvolvimento)" maxlength="150" required>
-            <input type="text" name="organizacao" class="form-control" placeholder="Organização (ex.: Empresa Júnior)" maxlength="150" required>
+            <input type="text" name="titulo" class="form-control" placeholder="Cargo / função " maxlength="150" required>
+            <input type="text" name="organizacao" class="form-control" placeholder="Organização " maxlength="150" required>
             <div class="datas">
               <label>Início <input type="date" name="data_inicio" class="form-control" required></label>
               <label>Término <input type="date" name="data_fim" class="form-control"></label>
