@@ -112,7 +112,7 @@
             <span class="tag conc">Concluída</span>
           {% endif %}
           {% if eh_proprio_perfil %}
-            <form method="post" action="{% url 'remover_experiencia' exp.id %}">
+            <form method="post" action="{% url 'remover_experiencia' exp.id %}" data-confirmar="Você tem certeza que deseja remover esta experiência?">
               {% csrf_token %}
               <button type="submit" class="btn btn-sm btn-outline-danger" title="Remover experiência" aria-label="Remover experiência">
                 <i class="bi bi-trash"></i>

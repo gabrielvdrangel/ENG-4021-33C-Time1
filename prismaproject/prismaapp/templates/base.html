@@ -29,5 +29,44 @@
     </header>
 
     {% block content %}{% endblock %}
+
+    <div id="confirmar-overlay" class="confirmar-overlay" hidden>
+        <div class="confirmar-box" role="dialog" aria-modal="true" aria-labelledby="confirmar-msg">
+            <p id="confirmar-msg"></p>
+            <div class="confirmar-botoes">
+                <button type="button" id="confirmar-cancelar" class="btn btn-outline-primary">Cancelar</button>
+                <button type="button" id="confirmar-remover" class="btn btn-danger">Remover</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    (function () {
+        var overlay = document.getElementById('confirmar-overlay');
+        var msg = document.getElementById('confirmar-msg');
+        var formPendente = null;
+
+        function fechar() { overlay.hidden = true; formPendente = null; }
+
+        // Qualquer form com data-confirmar="..." pede confirmação antes de enviar
+        document.addEventListener('submit', function (e) {
+            var texto = e.target.dataset.confirmar;
+            if (!texto) return;
+            e.preventDefault();
+            formPendente = e.target;
+            msg.textContent = texto;
+            overlay.hidden = false;
+        });
+
+        document.getElementById('confirmar-remover').addEventListener('click', function () {
+            var f = formPendente;
+            fechar();
+            if (f) f.submit();
+        });
+        document.getElementById('confirmar-cancelar').addEventListener('click', fechar);
+        overlay.addEventListener('click', function (e) { if (e.target === overlay) fechar(); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') fechar(); });
+    })();
+    </script>
 </body>
 </html>

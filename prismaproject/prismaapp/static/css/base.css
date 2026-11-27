@@ -153,3 +153,18 @@ body{
         flex: 0 1 auto;
     }
 }
+
+/* Modal de confirmação de remoção */
+.confirmar-overlay {
+    position: fixed; inset: 0; z-index: 2000;
+    background: rgba(0, 0, 0, .5);
+    display: flex; align-items: center; justify-content: center;
+}
+.confirmar-overlay[hidden] { display: none; }
+.confirmar-box {
+    background: #fff; border-radius: 12px; padding: 24px;
+    max-width: 380px; width: calc(100% - 32px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+}
+.confirmar-box p { margin: 0 0 20px; font-size: 1.05rem; }
+.confirmar-botoes { display: flex; justify-content: flex-end; gap: 10px; }

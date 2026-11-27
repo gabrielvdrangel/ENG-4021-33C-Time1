@@ -64,7 +64,7 @@
                 <small>{{ post.data_publicacao }}</small>
               </div>
               {% if post.usuario == user %}
-              <form method="post" action="{% url 'remover_publicacao' post.code %}" class="ms-auto">
+              <form method="post" action="{% url 'remover_publicacao' post.code %}" class="ms-auto" data-confirmar="Você tem certeza que deseja remover esta publicação?">
               {% csrf_token %}
                 <button type="submit" class="btn btn-outline-primary btn-sm" title="Remover"><i class="bi bi-trash-fill"></i></button>
               </form>
