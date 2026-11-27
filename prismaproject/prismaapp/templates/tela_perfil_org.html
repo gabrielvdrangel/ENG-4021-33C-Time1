@@ -24,14 +24,19 @@
                 <h1>{{ org.first_name }}</h1>
 
                 {% if request.user != org %}
-                  <form method="post" action="{% url 'alternar_seguir' username=org.username %}">
-                  {% csrf_token %}
-                  {% if org in request.user.seguindo.all %}
-                    <button type="submit" class="btn btn-outline-danger">Seguindo</button>
-                  {% else %}
-                    <button type="submit" class="btn btn-danger">Seguir</button>
-                  {% endif %}
-                  </form>
+                  <div class="d-flex gap-2 flex-wrap">
+                    <form method="post" action="{% url 'alternar_seguir' username=org.username %}">
+                    {% csrf_token %}
+                    {% if org in request.user.seguindo.all %}
+                      <button type="submit" class="btn btn-outline-danger">Seguindo</button>
+                    {% else %}
+                      <button type="submit" class="btn btn-danger">Seguir</button>
+                    {% endif %}
+                    </form>
+                    <a href="{% url 'chat' org.username %}" class="btn btn-primary">
+                      <i class="bi bi-chat-right"></i> Enviar mensagem
+                    </a>
+                  </div>
                 {% endif %}
 
             </section>
@@ -77,6 +82,10 @@
 
               {% if post.usuario == user %}
                 <div class="ms-auto d-flex gap-2">
+                  <a href="{% url 'candidatos' post.code %}" class="btn btn-outline-primary btn-sm btn-comentarios" title="Ver candidatos">
+                    <i class="bi bi-people-fill"></i>
+                    <span class="contador">{{ post.candidatos.count }}</span>
+                  </a>
                   <a href="{% url 'tela_editar_publicacao' post.code %}" class="btn btn-outline-primary btn-sm" title="Editar">
                     <i class="bi bi-pencil-fill"></i>
                   </a>

@@ -68,6 +68,12 @@
   </div>
   </div>
 
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert {% if message.tags == 'error' %}alert-danger{% else %}alert-success{% endif %} py-2">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+
   {% for c in conversas %}
     <a href="{% url 'chat' c.usuario.username %}" class="caixa">
       {% if c.usuario.imagem %}

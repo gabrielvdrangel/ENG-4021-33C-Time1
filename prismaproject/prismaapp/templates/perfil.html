@@ -37,7 +37,8 @@
         <span class="icone-card">&#9873;</span>
         <p>Salvos</p>
     </a>
-    <a href="{% url 'candidaturas' usuario.username %}" class="card">
+    {% if usuario.matricula is not None %}
+    <a href="{% url 'candidaturas' %}" class="card">
         <span class="icone-card">&#9776;</span>
         <p>Candidaturas</p>
     </a>
@@ -49,6 +50,12 @@
         <span class="icone-card">&#10003;</span>
         <p>Realizados</p>
     </a>
+    {% else %}
+    <a href="{% url 'tela_perfil_org' usuario.username %}" class="card">
+        <span class="icone-card">&#9776;</span>
+        <p>Minhas publicações</p>
+    </a>
+    {% endif %}
 </div>
 
         <a href="{% url 'logout' %}" class="sair-centro">Sair da conta</a>

@@ -3,13 +3,25 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import request
 from django.urls import reverse
-from django.utils.http import url_has_allowed_host_and_scheme
+from django.utils.http import url_has_allowed_host_and_scheme, urlencode
 from django.shortcuts import redirect, render, get_object_or_404
 from django.core.mail import send_mail
 from django.utils import timezone
 from datetime import date, timedelta
 from django.db.models import Q
 from .models import Curso, Experiencia, Oportunidade, Usuario, Feedback, Mensagem,Comentario, Notificacao
+
+
+def _url_segura(request, url):
+    """Devolve a URL se ela for interna ao site; senão, None."""
+    if url and url_has_allowed_host_and_scheme(url, allowed_hosts={request.get_host()}):
+        return url
+    return None
+
+
+def _voltar_para_origem(request, padrao="homepage"):
+    """Redireciona para a página de onde o usuário veio (ex.: perfil da organização)."""
+    return redirect(_url_segura(request, request.META.get("HTTP_REFERER")) or padrao)
 
 
 def login_user(request):
@@ -96,6 +108,16 @@ def notificacoes(request):
 
 
 @login_required
+def abrir_notificacao(request, id):
+    """Ao clicar numa notificação de seguidor, ela é removida e o usuário vai ao perfil."""
+    n = get_object_or_404(Notificacao, id=id, destinatario=request.user)
+    destino = n.destino
+    if n.tipo == "seguidor":
+        n.delete()
+    return redirect(destino if destino != "#" else "notificacoes")
+
+
+@login_required
 def salvos(request):
     return render(request, "tela_salvos.html")
 
@@ -125,14 +147,17 @@ def homepage(request):
     if request.GET.get("seguindo"):
         oportunidades = oportunidades.filter(usuario__in=request.user.seguindo.all())
 
-    return render(request, "tela_homepage.html", context={"oportunidades": oportunidades, "usuarios": usuarios})
+    return render(request, "tela_homepage.html", context={
+        "oportunidades": oportunidades,
+        "usuarios": usuarios,
+        "today": timezone.now(),
+    })
 
 
 @login_required
-def candidaturas(request, username):
-    usuario = Usuario.objects.filter(username=username).first()
-    oportunidade = Oportunidade.objects.filter(candidatos=usuario)
-    return render(request, "tela_candidaturas.html", context={"oportunidades": oportunidade})
+def candidaturas(request):
+    oportunidades = request.user.candidaturas.select_related("usuario").order_by("limite_inscricao")
+    return render(request, "tela_candidaturas.html", context={"oportunidades": oportunidades})
 
 
 @login_required
@@ -218,6 +243,8 @@ def cadastro_organizacao(request):
 
         if not nome or not email or not senha:
             erro = "Todos os campos são obrigatórios."
+        elif "/" in nome:
+            erro = "O nome da organização não pode conter \"/\"."
         elif Usuario.objects.filter(email=email).exists() or Usuario.objects.filter(username=nome).exists():
             erro = "Este email ou nome de usuário já está em uso."
         else:
@@ -234,8 +261,8 @@ def cadastro_organizacao(request):
 
 @login_required
 def tela_perfil_org(request, username):
-    org = Usuario.objects.filter(username=username).first()
-    oportunidades=Oportunidade.objects.filter(usuario=org).all()
+    org = get_object_or_404(Usuario, username=username)
+    oportunidades = Oportunidade.objects.filter(usuario=org)
     return render(request, 'tela_perfil_org.html',context={"org": org, "oportunidades": oportunidades})
     
 def esqueci_senha(request):
@@ -264,15 +291,18 @@ def redefinir_email(request):
     mensagem = None
 
     if request.method == "POST":
-        username = request.POST.get("username", "").strip()
+        email_atual = request.POST.get("email_atual", "").strip()
         novo_email = request.POST.get("novo_email", "").strip()
         senha = request.POST.get("senha", "")
 
-        user = authenticate(request, username=username, password=senha)
+        usuario = Usuario.objects.filter(email__iexact=email_atual).first() if email_atual else None
+        user = authenticate(request, username=usuario.username, password=senha) if usuario else None
 
         if user is None:
-            mensagem = "Usuário ou senha inválidos."
-        elif Usuario.objects.filter(email__iexact=novo_email).exists():
+            mensagem = "E-mail ou senha inválidos."
+        elif not novo_email:
+            mensagem = "Informe o novo e-mail."
+        elif Usuario.objects.filter(email__iexact=novo_email).exclude(pk=user.pk).exists():
             mensagem = "Este email já está em uso."
         else:
             user.email = novo_email
@@ -286,6 +316,13 @@ def editar_perfil(request):
     user = request.user
     if request.method == "POST":
         curso = (request.POST.get("curso") or "").strip() or None
+        # Aluno não pode ficar sem curso (senão passa a ser tratado como organização).
+        if user.matricula is not None and not curso:
+            return render(request, "editar-perfil.html", {
+                "usuario": user,
+                "cursos": Curso.objects.all(),
+                "erro": "Selecione um curso da lista.",
+            })
         # Aceita o curso atual (contas antigas com texto livre) ou um curso da lista.
         if curso and curso != user.curso and not Curso.objects.filter(nome=curso).exists():
             return render(request, "editar-perfil.html", {
@@ -329,8 +366,9 @@ def cadastro_aluno(request):
         if not cursos.filter(nome=curso).exists():
             return erro("Selecione um curso da lista.")
 
+        # A matrícula é única e segura para URLs; o nome fica em first_name.
         Usuario.objects.create_user(
-            username=nome,
+            username=matricula,
             password=senha,
             email=email,
             first_name=nome,
@@ -499,26 +537,35 @@ def alternar_salvo(request, code):
         else:
             request.user.salvos.add(alvo)
 
-    return redirect("homepage")
+    return _voltar_para_origem(request)
 
 
 @login_required
 def alternar_candidatura(request, code):
-    post = Oportunidade.objects.filter(code=code).first()
-    if request.method == "POST":
-        if request.user in post.candidatos.all():
+    post = get_object_or_404(Oportunidade, code=code)
+    eh_aluno = request.user.matricula is not None
+    if request.method == "POST" and eh_aluno:
+        if post.candidatos.filter(pk=request.user.pk).exists():
             post.candidatos.remove(request.user)
-        else:
+        elif post.limite_inscricao >= timezone.now():
             post.candidatos.add(request.user)
-    return redirect('homepage') 
+    return _voltar_para_origem(request)
 
 
 @login_required
 def remover_publicacao(request, code):
-    post = Oportunidade.objects.filter(code=code).first()
+    post = get_object_or_404(Oportunidade, code=code, usuario=request.user)
     if request.method == "POST":
         post.delete()
-    return redirect('homepage')
+    return _voltar_para_origem(request)
+
+
+@login_required
+def candidatos(request, code):
+    # Só o dono da publicação vê quem se candidatou
+    post = get_object_or_404(Oportunidade, code=code, usuario=request.user)
+    lista = post.candidatos.order_by("first_name", "username")
+    return render(request, "tela_candidatos.html", {"post": post, "candidatos": lista})
 
 @login_required
 def tela_editar_publicacao(request, code):
@@ -542,7 +589,29 @@ def tela_editar_publicacao(request, code):
 def tela_comentarios(request, code):
     post = get_object_or_404(Oportunidade.objects.select_related("usuario"), code=code)
     comentarios = post.comentarios.select_related("autor").order_by("-data")
-    return render(request, "tela_comentarios.html", {"post": post, "comentarios": comentarios})
+
+    # "Voltar" leva para onde o usuário estava antes de abrir os comentários.
+    # Depois de comentar, a página recarrega com ?next=, preservando essa origem.
+    voltar_url = _url_segura(request, request.GET.get("next"))
+    if not voltar_url:
+        referer = _url_segura(request, request.META.get("HTTP_REFERER"))
+        if referer and request.path not in referer:
+            voltar_url = referer
+    voltar_url = voltar_url or reverse("homepage")
+
+    return render(request, "tela_comentarios.html", {
+        "post": post,
+        "comentarios": comentarios,
+        "voltar_url": voltar_url,
+    })
+
+
+def _redirect_comentarios(request, code):
+    url = reverse("tela_comentarios", kwargs={"code": code})
+    proximo = _url_segura(request, request.POST.get("next"))
+    if proximo:
+        url += "?" + urlencode({"next": proximo})
+    return redirect(url)
 
 
 @login_required
@@ -553,7 +622,7 @@ def comentar(request, code):
         texto = request.POST.get("texto", "").strip()
         if texto:
             Comentario.objects.create(oportunidade=post, autor=request.user, texto=texto)
-    return redirect("tela_comentarios", code=code)
+    return _redirect_comentarios(request, code)
 
 
 @login_required
@@ -564,7 +633,7 @@ def remover_comentario(request, comentario_id):
     pode_apagar = request.user in (comentario.autor, comentario.oportunidade.usuario)
     if request.method == "POST" and pode_apagar:
         comentario.delete()
-    return redirect("tela_comentarios", code=code)
+    return _redirect_comentarios(request, code)
 
 @login_required
 def enviar_aviso(request):

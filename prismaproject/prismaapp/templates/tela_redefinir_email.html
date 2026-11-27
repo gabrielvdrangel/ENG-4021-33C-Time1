@@ -20,9 +20,9 @@
    <form method="post">
     {% csrf_token %}
 
-    <label for="username" class="rotulo">Usuário</label>
+    <label for="email_atual" class="rotulo">E-mail atual</label>
     <div class="form-group">
-      <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+      <input type="email" class="form-control" id="email_atual" name="email_atual" placeholder="E-mail atual" required>
     </div>
 
     <label for="novo_email" class="rotulo">Novo email</label>

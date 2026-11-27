@@ -102,6 +102,13 @@ class Notificacao(models.Model):
 
     @property
     def url(self):
+        # Seguidor: passa por uma rota que apaga a notificação ao clicar
+        if self.tipo == "seguidor":
+            return reverse("abrir_notificacao", args=[self.pk])
+        return self.destino
+
+    @property
+    def destino(self):
         if self.tipo == "prazo":
             return reverse("prazos")
         if self.tipo == "mensagem" and self.origem:

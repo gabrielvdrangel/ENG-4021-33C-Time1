@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Candidatos - Prisma{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/tema.css' %}">
+<link rel="stylesheet" href="{% static 'css/padrao.css' %}">
+<link rel="stylesheet" href="{% static 'css/listas.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="conteudo">
+
+    <h2 class="color">Candidatos</h2>
+    <span id="subtitulo" class="datas">
+        {{ post.get_tipo_display }} · {{ post.descricao|truncatechars:60 }} · inscrições até {{ post.limite_inscricao|date:"d/m/Y H:i" }}
+    </span>
+
+    <div id="abas">
+        <a href="{% url 'tela_perfil_org' user.username %}" class="link-abas">&lt; Voltar para minhas publicações</a>
+    </div>
+
+    {% for aluno in candidatos %}
+        <div class="caixa">
+            <a href="{% url 'perfil_aluno' aluno.username %}" class="logo-caixa">
+                {% if aluno.imagem %}
+                    <img src="{{ aluno.imagem.url }}" alt="Foto de {{ aluno.first_name }}">
+                {% else %}
+                    <img src="{% static 'img/perfil.png' %}" alt="Foto de {{ aluno.first_name }}">
+                {% endif %}
+                <div class="caixa-texto">
+                    <h3 class="color">{{ aluno.get_full_name|default:aluno.username }}</h3>
+                </div>
+            </a>
+            <span>{{ aluno.curso|default:"Curso não informado" }}{% if aluno.periodo %} · {{ aluno.periodo }}º período{% endif %}</span>
+            <a class="link-abas" href="{% url 'chat' aluno.username %}">Enviar mensagem</a>
+        </div>
+    {% empty %}
+        <div class="caixa">
+            <span>Ninguém se candidatou a esta oportunidade ainda.</span>
+        </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}
